@@ -2,7 +2,7 @@
 
 # Master3
 
-[![Download](https://img.shields.io/badge/download-%5E1.0.9-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/download)
+[![Download](https://img.shields.io/badge/download-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/download)
 [![Demo](https://img.shields.io/badge/-demo-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/positions)
 [![Documentation](https://img.shields.io/badge/-documentation-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/documentation)
 ![Joomla](https://img.shields.io/badge/joomla-3.9+-1A3867.svg?style=for-the-badge)
