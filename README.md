@@ -8,5 +8,6 @@
 [![Download](https://img.shields.io/badge/-download-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/download)
 [![Demo](https://img.shields.io/badge/-demo-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/positions)
 [![Documentation](https://img.shields.io/badge/-documentation-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/documentation)
+[![Suppurt](https://img.shields.io/badge/-support-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/support)
 
 ### Master3 – template for Joomla! 3, based on the ![UIkit 3 framework](https://github.com/uikit/uikit)
