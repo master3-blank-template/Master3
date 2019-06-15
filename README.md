@@ -13,4 +13,4 @@
 ![Joomla](https://img.shields.io/badge/joomla-3.9+-1A3867.svg?style=for-the-badge)
 ![Php](https://img.shields.io/badge/php-5.6+-8892BF.svg?style=for-the-badge)
 
-### ![Master3](https://master3.alekvolsk.info/) – modern, comfortable and flexible template for Joomla! 3, based on the ![UIkit 3 framework](https://github.com/uikit/uikit)
+### ![Master3](https://master3.alekvolsk.info/) – modern, comfortable and flexible template for Joomla! 3. <br>Based on the ![UIkit 3 framework](https://github.com/uikit/uikit)
