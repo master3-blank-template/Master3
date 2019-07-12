@@ -15,3 +15,9 @@
 ![Php](https://img.shields.io/badge/php-5.6+-8892BF.svg?style=for-the-badge)
 
 ### [Master3](https://master3.alekvolsk.info/) – modern, comfortable and flexible template for Joomla! 3. <br>Based on the [UIkit 3 framework](https://github.com/uikit/uikit)
+
+---
+
+### !!! WARNING IMPORTANT !!!
+
+#### Do not use this repository for installation on the site - there is no UIkit in it! <br>To install on the site, download the distribution kit of the template from the official site of this product.
