@@ -1,0 +1,74 @@
+/* Custom CSS for admin panel */
+
+#menu-assignment .menu-links>li {
+    display: inline-block;
+}
+
+.control-label>label>p {
+    margin-bottom: 0px;
+}
+
+dl {
+    display: inline-block;
+    margin: 0 !important;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #eee;
+}
+
+dl>* {
+    font-size: 1.1em;
+    line-height: 1.6 !important;
+}
+
+dl>dt {
+    float: left;
+    width: 100px;
+}
+
+dl>dd {
+    padding-left: 100px;
+}
+
+.checkboxes {
+    max-width: 260px;
+    max-height: 155px;
+    overflow-y: auto;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #f7f7f7;
+}
+
+.subform-repeatable-group:nth-child(2n+1) {
+    background-color: #f7f7f7 !important;
+}
+
+.subform-repeatable-group:nth-child(2n) {
+    background-color: #fdfdfd !important;
+}
+
+.subform-table-layout input.input-small {
+    width: 90px !important;
+}
+
+.subform-repeatable-container hr {
+    margin: 4px 0 8px;
+}
+
+tr.subform-repeatable-group:hover td {
+    background: #f0f0f0 !important;
+}
+
+input.text-danger {
+    color: #900 !important;
+}
+
+input.text-success {
+    color: #3c763d !important;
+}
+
+input.text-primary {
+    color: #1f496e !important;
+}

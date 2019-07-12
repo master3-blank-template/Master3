@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="form">
+        <fieldset name="fsInfo" label="TPL_MASTER3_MODULE_FORM_FIELDSET_INFO">
+            <field name="name" type="text" label="TPL_MASTER3_MODULE_FORM_NAME" class="input-xlarge input-large-text text-success" readonly="true" />
+            <field name="id" type="text" label="TPL_MASTER3_MODULE_FORM_ID" class="input-mini text-danger" readonly="true" />
+            <field name="type" type="text" label="TPL_MASTER3_MODULE_FORM_TYPE" readonly="true" />
+            <field name="position" type="text" label="TPL_MASTER3_MODULE_FORM_POSITION" class="text-primary" readonly="true" />
+            <field name="lang" type="text" label="TPL_MASTER3_MODULE_FORM_LANG" readonly="true" />
+        </fieldset>
+        <fieldset name="fsBox" label="TPL_MASTER3_MODULE_FORM_FIELDSET_BOX">
+            <field name="display" type="list" label="TPL_MASTER3_MODULE_FORM_DISPLAY" default="" class="input-medium">
+                <option value="">TPL_MASTER3_MODULE_FORM_DISPLAY_ALWAYS</option>
+                <option value="uk-hidden@s">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_S</option>
+                <option value="uk-hidden@m">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_M</option>
+                <option value="uk-hidden@l">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_L</option>
+                <option value="uk-hidden@xl">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_XL</option>
+                <option value="uk-visible@s">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_S</option>
+                <option value="uk-visible@m">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_M</option>
+                <option value="uk-visible@l">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_L</option>
+                <option value="uk-visible@xl">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_XL</option>
+            </field>
+            <field name="moduleBox" type="list" label="TPL_MASTER3_MODULE_FORM_BOX" default="uk-panel" class="input-medium">
+                <option value="uk-panel">TPL_MASTER3_MODULE_FORM_BOX_NONE</option>
+                <option value="uk-card uk-card-body uk-card-default">TPL_MASTER3_MODULE_FORM_BOX_DEFAULT</option>
+                <option value="uk-card uk-card-body uk-card-primary">TPL_MASTER3_MODULE_FORM_BOX_PRIMARY</option>
+                <option value="uk-card uk-card-body uk-card-secondary">TPL_MASTER3_MODULE_FORM_BOX_SECONDARY</option>
+            </field>
+            <field name="modulePadding" type="list" label="TPL_MASTER3_MODULE_FORM_PADDING" default="" class="input-medium" showon="moduleBox!:uk-panel">
+                <option value="">TPL_MASTER3_MODULE_FORM_PADDING_DEFAULT</option>
+                <option value="uk-card-small">TPL_MASTER3_MODULE_FORM_PADDING_SMALL</option>
+                <option value="uk-card-large">TPL_MASTER3_MODULE_FORM_PADDING_LARGE</option>
+            </field>
+            <field name="moduleAlign" type="list" label="TPL_MASTER3_MODULE_FORM_ALIGN" default="" class="input-medium">
+                <option value="">TPL_MASTER3_MODULE_FORM_ALIGN_DEFAULT</option>
+                <option value="uk-flex-left">TPL_MASTER3_MODULE_FORM_ALIGN_LEFT</option>
+                <option value="uk-flex-center">TPL_MASTER3_MODULE_FORM_ALIGN_CENTER</option>
+                <option value="uk-flex-right">TPL_MASTER3_MODULE_FORM_ALIGN_RIGHT</option>
+            </field>
+            <field name="light" type="radio" label="TPL_MASTER3_MODULE_FORM_LIGHT" default="0" class="btn-group">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="moduleClass" type="text" label="TPL_MASTER3_MODULE_FORM_CLASS" default="" class="input-xlarge" />
+            <field name="moduleDataAttrs" type="text" label="TPL_MASTER3_MODULE_FORM_DATA_ATTRS" default="" class="input-xlarge" filter="raw" />
+            <field name="offtoggle" type="radio" label="TPL_MASTER3_MODULE_FORM_OFFTOGGLE" default="0" class="btn-group" showon="type:mod_menu">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fieldset>
+        <fieldset name="fsTitle" label="TPL_MASTER3_MODULE_FORM_FIELDSET_TITLE">
+            <field name="titleTag" type="list" label="TPL_MASTER3_MODULE_FORM_TITLETAG" default="module" class="input-medium">
+                <option value="module">TPL_MASTER3_MODULE_FORM_TITLETAG_FROMMODULE</option>
+                <option value="h1">H1</option>
+                <option value="h2">H2</option>
+                <option value="h3">H3</option>
+                <option value="h4">H4</option>
+                <option value="h5">H5</option>
+                <option value="h6">H6</option>
+                <option value="div">Div</option>
+                <option value="none">TPL_MASTER3_MODULE_FORM_TITLETAG_NONE</option>
+            </field>
+            <field name="titleClass" type="text" label="TPL_MASTER3_MODULE_FORM_TITLECLASS" default="" class="input-xlarge" />
+            <field name="titleLink" type="text" label="TPL_MASTER3_MODULE_FORM_TITLELINK" default="" class="input-xlarge" />
+        </fieldset>
+    </fields>
+</form>

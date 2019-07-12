@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="form">
+        <fieldset name="fsMenu">
+            <field name="itemtitle" type="text" label="TPL_MASTER3_MENU_FORM_ITEMTITLE" class="input-xlarge input-large-text text-success" readonly="true" />
+            <field name="menutitle" type="text" label="TPL_MASTER3_MENU_FORM_MENUTITLE" readonly="true" />
+            <field name="menuid" type="text" label="TPL_MASTER3_MENU_FORM_ID" class="input-mini text-danger" readonly="true" />
+            <field name="subtitle" type="text" label="TPL_MASTER3_MENU_FORM_SUBTITLE" default="" />
+            <field name="gridColumns" type="list" label="TPL_MASTER3_MENU_FORM_GRIDCOLUMNS" default="1" class="input-mini">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </field>
+            <field name="gridDivider" type="radio" label="TPL_MASTER3_MENU_FORM_GRIDDIVIDER" default="0" class="btn-group">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="dropdownClass" type="text" label="TPL_MASTER3_MENU_FORM_DD_CLASS" default="" class="input-xlarge" />
+        </fieldset>
+    </fields>
+</form>

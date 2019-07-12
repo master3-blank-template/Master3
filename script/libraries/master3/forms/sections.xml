@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="form">
+        <fieldset name="fsLayouts">
+            <field name="nameLayout" type="text" label="TPL_MASTER3_LAYOUTS_FORM_LNAME" default="" class="input-xlarge input-large-text" requred="true" />
+            <field name="menuassignLayout" type="menuitem" label="TPL_MASTER3_LAYOUTS_FORM_MENUASSIGN" default="" class="input-xxlarge" multiple="true" />
+            <field name="htmlAttrs" type="text" label="TPL_MASTER3_LAYOUTS_FORM_HTMLATTRS_LABEL" default="" class="input-xxlarge" />
+            <field name="bodyClasses" type="text" label="TPL_MASTER3_LAYOUTS_FORM_BODYCLASSES_LABEL" default="" class="input-xxlarge" />
+            <field name="noComponentMain" type="radio" label="TPL_MASTER3_LAYOUTS_FORM_COMPONENT_MAIN_LABEL" default="0" class="btn-group">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+            <field name="sectionList" type="subformsections" label="TPL_MASTER3_TAB_SECTIONS_LABEL" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.tabs" buttons="none">
+                <form hidden="true" name="fsLayoutSections" repeat="true">
+                    <fieldset name="fsSection" label="TPL_MASTER3_SECTION_FORM_FIELDSET_SECTION">
+                        <field name="name" type="text" label="TPL_MASTER3_SECTION_FORM_NAME" class="input-medium input-large-text text-danger" readonly="true" />
+                        <field name="id" type="text" label="TPL_MASTER3_SECTION_FORM_ID" default="" class="input-medium" />
+                        <field name="style" type="list" label="TPL_MASTER3_SECTION_FORM_STYLE" default="uk-section-default" class="input-medium">
+                            <option value="uk-section-default">TPL_MASTER3_SECTION_FORM_STYLE_DEFAULT</option>
+                            <option value="uk-section-muted">TPL_MASTER3_SECTION_FORM_STYLE_MUTED</option>
+                            <option value="uk-section-primary">TPL_MASTER3_SECTION_FORM_STYLE_PRIMARY</option>
+                            <option value="uk-section-secondary">TPL_MASTER3_SECTION_FORM_STYLE_SECONDARY</option>
+                        </field>
+                        <field name="light" type="radio" label="TPL_MASTER3_SECTION_FORM_LIGHT" default="0" class="btn-group">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+                        </field>
+                        <field name="padding" type="list" label="TPL_MASTER3_SECTION_FORM_PADDING" default="" class="input-medium">
+                            <option value="uk-section">TPL_MASTER3_SECTION_FORM_PADDING_DEFAULT</option>
+                            <option value="uk-section uk-section-xlarge">TPL_MASTER3_SECTION_FORM_PADDING_XLARGE</option>
+                            <option value="uk-section uk-section-large">TPL_MASTER3_SECTION_FORM_PADDING_LARGE</option>
+                            <option value="uk-section uk-section-small">TPL_MASTER3_SECTION_FORM_PADDING_SMALL</option>
+                            <option value="uk-section uk-section-xsmall">TPL_MASTER3_SECTION_FORM_PADDING_XSMALL</option>
+                            <option value="uk-section uk-padding-remove-vertical">TPL_MASTER3_SECTION_FORM_PADDING_NONE</option>
+                        </field>
+                        <field name="image" type="media" label="TPL_MASTER3_SECTION_FORM_IMAGE" default="" class="input-medium" />
+                        <field name="imageAlign" type="list" label="TPL_MASTER3_SECTION_FORM_IMAGEALIGN" default="uk-background-cover" class="input-medium" showon="image!:">
+                            <option value="uk-background-cover">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_COVER</option>
+                            <option value="uk-background-contain">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_CONTAIN</option>
+                            <option value="uk-background-top-left">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_TOP_LEFT</option>
+                            <option value="uk-background-top-center">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_TOP_CENTER</option>
+                            <option value="uk-background-top-right">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_TOP_RIGHT</option>
+                            <option value="uk-background-center-left">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_CENTER_LEFT</option>
+                            <option value="uk-background-center-center">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_CENTER_CENTER</option>
+                            <option value="uk-background-center-right">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_CENTER_RIGHT</option>
+                            <option value="uk-background-bottom-left">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_BOTTOM_LEFT</option>
+                            <option value="uk-background-bottom-center">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_BOTTOM_CENTER</option>
+                            <option value="uk-background-bottom-right">TPL_MASTER3_SECTION_FORM_IMAGEALIGN_BOTTOM_RIGHT</option>
+                        </field>
+                        <field name="imageNoRepeat" type="radio" label="TPL_MASTER3_SECTION_FORM_IMAGENOREPEAT" default="1" class="btn-group" showon="image!:">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+                        </field>
+                        <field name="imageFix" type="radio" label="TPL_MASTER3_SECTION_FORM_IMAGEFIX" default="0" class="btn-group" showon="image!:">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+                        </field>
+                        <field name="class" type="text" label="TPL_MASTER3_SECTION_FORM_CLASS" />
+                        <field name="modulesstyle" type="list" label="TPL_MASTER3_SECTION_FORM_MODULESSTYLE" default="master3" class="input-medium">
+                            <option value="master3">master3</option>
+                            <option value="navbar">navbar</option>
+                            <option value="empty">empty</option>
+                        </field>
+                    </fieldset>
+                    <fieldset name="fsContainer" label="TPL_MASTER3_SECTION_FORM_FIELDSET_CONTAINER">
+                        <field name="container" type="list" label="TPL_MASTER3_SECTION_FORM_CONTAINER" default="" class="input-medium">
+                            <option value="uk-container">TPL_MASTER3_SECTION_FORM_CONTAINER_DEFAULT</option>
+                            <option value="uk-container uk-container-xsmall">TPL_MASTER3_SECTION_FORM_CONTAINER_XSMALL</option>
+                            <option value="uk-container uk-container-small">TPL_MASTER3_SECTION_FORM_CONTAINER_SMALL</option>
+                            <option value="uk-container uk-container-large">TPL_MASTER3_SECTION_FORM_CONTAINER_LARGE</option>
+                            <option value="uk-container uk-container-expand">TPL_MASTER3_SECTION_FORM_CONTAINER_EXPAND</option>
+                            <option value="uk-panel">TPL_MASTER3_SECTION_FORM_CONTAINER_NONE</option>
+                        </field>
+                    </fieldset>
+                    <fieldset name="fsGrid" label="TPL_MASTER3_SECTION_FORM_FIELDSET_GRID">
+                        <field name="responsive" type="list" label="TPL_MASTER3_SECTION_FORM_RESPOPNSIVE" default="medium" class="input-medium">
+                            <option value="large">TPL_MASTER3_SECTION_FORM_RESPOPNSIVE_LARGE</option>
+                            <option value="medium">TPL_MASTER3_SECTION_FORM_RESPOPNSIVE_MEDIUM</option>
+                            <option value="small">TPL_MASTER3_SECTION_FORM_RESPOPNSIVE_SMALL</option>
+                            <option value="stacked">TPL_MASTER3_SECTION_FORM_RESPOPNSIVE_STACKED</option>
+                        </field>
+                        <field name="gutter" type="list" label="TPL_MASTER3_SECTION_FORM_GUTTER" default="" class="input-medium">
+                            <option value="">TPL_MASTER3_SECTION_FORM_GUTTER_DEFAULT</option>
+                            <option value="uk-grid-small">TPL_MASTER3_SECTION_FORM_GUTTER_SMALL</option>
+                            <option value="uk-grid-medium">TPL_MASTER3_SECTION_FORM_GUTTER_MEDIUM</option>
+                            <option value="uk-grid-large">TPL_MASTER3_SECTION_FORM_GUTTER_LARGE</option>
+                            <option value="uk-grid-collapse">TPL_MASTER3_SECTION_FORM_GUTTER_COLLAPSE</option>
+                        </field>
+                        <field name="divider" type="radio" label="TPL_MASTER3_SECTION_FORM_DIVIDER" default="0" class="btn-group">
+                            <option value="1">JYES</option>
+                            <option value="0">JNO</option>
+                        </field>
+                    </fieldset>
+                </form>
+            </field>
+        </fieldset>
+    </fields>
+</form>

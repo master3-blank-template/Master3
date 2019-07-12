@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="form">
+        <fieldset name="fsFiles">
+            <field name="fName" type="text" label="TPL_MASTER3_FILES_FORM_FNAME" class="input-xlarge" readonly="true" />
+            <field name="fInclude" type="radio" label="TPL_MASTER3_FILES_FORM_FINCLUDE" default="0" class="btn-group">
+                <option value="1">JYES</option>
+                <option value="0">JNO</option>
+            </field>
+        </fieldset>
+    </fields>
+</form>

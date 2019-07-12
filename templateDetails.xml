@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.9" type="template" client="site" method="upgrade">
+    <name>Master3</name>
+    <version>1.1.14</version>
+    <creationDate>June 2019</creationDate>
+    <author>Aleksey A. Morozov</author>
+    <authorEmail>alekvolsk@yandex.ru</authorEmail>
+    <authorUrl>https://master3.alekvolsk.info/</authorUrl>
+    <copyright>Copyright (C) 2019 Aleksey A. Morozov. All rights reserved.</copyright>
+    <license>GNU GPL v3 or later; see http://www.gnu.org/licenses/gpl-3.0.txt</license>
+    <description><![CDATA[
+        <a href="https://master3.alekvolsk.info/" target="_blank" style="display:inline-flex;align-items:center;margin:30px 0;color:#1E87F0;text-decoration:none;"><svg height="50" viewBox="0 0 122 141" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M61 0L84.6129 13.6266L61 27.2631L37.3871 13.6266L61 0ZM97.4032 21.0155L73.7805 34.6421L98.3871 48.8492V77.2634L122 63.6368V35.2127L97.4032 21.0155ZM36.3934 99.4005V126.664L61 140.871L84.6129 127.244L36.3934 99.4005ZM73.7805 106.229C73.7805 106.229 65.0339 101.181 97.3934 119.855H97.4032L122 105.658V78.385L73.7805 106.229ZM0 105.658V48.8689L23.6129 62.5053V119.285L0 105.658Z" fill="#1E87F0"/></svg><span style="margin-left:20px;font-weight:400;"><span style="display:block;font-size:20px;line-height:20px;margin-bottom:10px;"><strong>Master3</strong></span><span style="display:block;font-size:15px;line-height:20px;"><strong>The Joomla! 3 site template based on UIkit 3.</strong></span></span></a>
+        <p style="margin-bottom:0;font-weight:400;">&copy; 2019 <a href="https://alekvolsk.pw" target="_blank"><u>Aleksey A. Morozov</u></a>. All right reserved.</p>
+        <p style="margin-bottom:20px;font-weight:400;">If you want to support the project, you can donate us via <a href="https://www.paypal.me/alekvolsk" target="_blank"><u>PayPal</u></a> or <a href="https://money.yandex.ru/to/410011461392459" target="_blank"><u>Yandex</u></a>.</p>
+        <p style="margin-bottom:20px;font-weight:400;">The changelog a template is available on the <a href="https://master3.alekvolsk.info/download" target="_blank"><u>download page</u></a>.</p>
+    ]]></description>
+    <scriptfile>script.php</scriptfile>
+    
+    <updateservers>
+        <server type="extension" priority="1" name="Master3"><![CDATA[https://master3.alekvolsk.info/files/master3_update.xml]]></server>
+    </updateservers>
+    
+    <files>
+        <filename>index.php</filename>
+        <filename>component.php</filename>
+        <filename>component_ajax.php</filename>
+        <filename>error.php</filename>
+        <filename>offline.php</filename>
+        <filename>template_preview.png</filename>
+        <filename>template_thumbnail.png</filename>
+        <filename>templateDetails.xml</filename>
+        <folder>html</folder>
+        <folder>layouts</folder>
+        <folder>uikit</folder>
+    </files>
+    
+    <positions>
+        <position section="toolbar">toolbar-left</position>
+        <position section="toolbar">toolbar-right</position>
+        <position section="headbar">logo</position>
+        <position section="headbar">headbar</position>
+        <position section="navbar">navbar-left</position>
+        <position section="navbar">navbar-center</position>
+        <position section="navbar">navbar-right</position>
+        <position section="breadcrumb">breadcrumb</position>
+        <position section="main">main-top</position>
+        <position section="main">main-bottom</position>
+        <position section="main">sidebar-a</position>
+        <position section="main">sidebar-b</position>
+        <position section="block-a">block-a</position>
+        <position section="block-b">block-b</position>
+        <position section="block-c">block-c</position>
+        <position section="block-d">block-d</position>
+        <position section="block-e">block-e</position>
+        <position section="block-f">block-f</position>
+        <position section="block-g">block-g</position>
+        <position section="block-h">block-h</position>
+        <position section="block-i">block-i</position>
+        <position section="block-k">block-k</position>
+        <position section="footer">footer-left</position>
+        <position section="footer">footer-center</position>
+        <position section="footer">footer-right</position>
+        <position offcanvas="">offcanvas</position>
+        <position offcanvas="">offcanvas-menu</position>
+    </positions>
+    
+    <languages>
+        <language tag="en-GB">language/en-GB/en-GB.tpl_master3.ini</language>
+        <language tag="en-GB">language/en-GB/en-GB.tpl_master3.sys.ini</language>
+    </languages>
+    
+    <config>
+        <fields name="params" addfieldpath="/libraries/master3/fields">
+            
+            <fieldset name="basic" label="TPL_MASTER3_TAB_BASIC_LABEL">
+                <field name="versions" type="versions" label="TPL_MASTER3_VERSIONS_LABEL" />
+                <field name="spacerVersions" type="spacer" hr="true" />
+
+                <field name="templateLayouts" type="subformlayouts" label="TPL_MASTER3_TEMPLATELAYOUTS_LABEL" formsource="libraries/master3/forms/layouts.xml" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.repeatable-table" buttons="none" />
+                <field name="spacerLauouts" type="spacer" hr="true" />
+                
+                <field name="noteLogo" type="note" label="TPL_MASTER3_SUBTITLE_LOGO" />
+                <field name="logoFile" type="media" label="TPL_MASTER3_LOGO_LABEL" description="TPL_MASTER3_LOGO_DESC" class="input-xlarge" default="" />
+                <field name="siteTitle" type="text" label="TPL_MASTER3_TITLE_LABEL" description="TPL_MASTER3_TITLE_DESC" class="input-xlarge" default="" filter="string" />
+                <field name="spacerLogo" type="spacer" hr="true" />
+
+                <field name="noteIcons" type="note" label="TPL_MASTER3_SUBTITLE_ICONS" />
+                <field name="favicon" type="media" label="TPL_MASTER3_FAVICON_LABEL" class="input-xlarge" default="" />
+                <field name="faviconApple" type="media" label="TPL_MASTER3_FAVICONAPPLE_LABEL" class="input-xlarge" default="" />
+                <field name="spacerIcons" type="spacer" hr="true" />
+                
+                <field name="noteSidebars" type="note" label="TPL_MASTER3_SUBTITLE_SIDEBARS" />
+                <field name="sbWidth" type="list" label="TPL_MASTER3_SIDEBARS_WIDTH_LABEL" default="1-5" class="input-medium">
+                    <option value="1-6">18% ( 1/6)</option>
+                    <option value="1-5">20% ( 1/5 )</option>
+                    <option value="1-4">25% ( 1/4 )</option>
+                    <option value="1-3">33% ( 1/3 )</option>
+                    <option value="2-5">40% ( 2/5 )</option>
+                    <option value="1-2">50% ( 1/2 )</option>
+                </field>
+                <field name="sbPosA" type="list" label="TPL_MASTER3_SIDEBARS_POSA_LABEL" default="1" class="input-medium">
+                    <option value="1">TPL_MASTER3_SIDEBARS_POS_LEFT</option>
+                    <option value="0">TPL_MASTER3_SIDEBARS_POS_RIGHT</option>
+                </field>
+                <field name="sbPosB" type="list" label="TPL_MASTER3_SIDEBARS_POSB_LABEL" default="0" class="input-medium">
+                    <option value="1">TPL_MASTER3_SIDEBARS_POS_LEFT</option>
+                    <option value="0">TPL_MASTER3_SIDEBARS_POS_RIGHT</option>
+                </field>
+                <field name="spacerSidebars" type="spacer" hr="true" />
+
+                <field name="totop" type="radio" label="TPL_MASTER3_TOTOP_LABEL" default="1" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="offlineLoginForm" type="radio" label="TPL_MASTER3_OLF_LABEL" default="1" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="denyUserAuthorization" type="radio" label="TPL_MASTER3_DUA_LABEL" default="0" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="spacerSM" type="spacer" hr="true" />
+                <field name="systemmsg" type="list" label="TPL_MASTER3_SYSTEMMSG_LABEL" default="alert">
+                    <option value="alert">TPL_MASTER3_SYSTEMMSG_ALERT</option>
+                    <option value="notify">TPL_MASTER3_SYSTEMMSG_NOTIFY</option>
+                </field>
+                <field name="systemmsgPos" type="list" label="TPL_MASTER3_SYSTEMMSG_NOTIFYPOS_LABEL" default="top-right" showon="systemmsg:notify">
+                    <option value="top-left">TPL_MASTER3_SYSTEMMSG_NOTIFYPOS_TOP_LEFT</option>
+                    <option value="top-center">TPL_MASTER3_SYSTEMMSG_NOTIFYPOS_TOP_CENTER</option>
+                    <option value="top-right">TPL_MASTER3_SYSTEMMSG_NOTIFYPOS_TOP_RIGHT</option>
+                    <option value="bottom-left">TPL_MASTER3_SYSTEMMSG_NOTIFYPOS_BOTTOM_LEFT</option>
+                    <option value="bottom-center">TPL_MASTER3_SYSTEMMSG_NOTIFYPOS_BOTTOM_CENTER</option>
+                    <option value="bottom-right">TPL_MASTER3_SYSTEMMSG_NOTIFYPOS_BOTTOM_RIGHT</option>
+                </field>
+                <field name="systemmsgTimeout" type="text" label="TPL_MASTER3_SYSTEMMSG_NOTIFYT_TIMEOUT_LABEL" default="5" class="input-small" showon="systemmsg:notify" />
+            </fieldset>
+
+            <fieldset name="head" label="TPL_MASTER3_TAB_HEAD_LABEL">
+                <field name="noteFonts" type="note" label="TPL_MASTER3_SUBTITLE_FONTS" />
+                
+                <field name="fontHtml" type="text" label="TPL_MASTER3_FONT_HTML_LABEL" description="TPL_MASTER3_FONT_DESC" class="input-xlarge" default="" filter="string" />
+                <field name="fontHeading" type="text" label="TPL_MASTER3_FONT_HEADING_LABEL" description="TPL_MASTER3_FONT_DESC" class="input-xlarge" default="" filter="string" />
+                <field name="fontLogo" type="text" label="TPL_MASTER3_FONT_LOGO_LABEL" description="TPL_MASTER3_FONT_DESC" class="input-xlarge" default="" filter="string" />
+                <field name="fontNavbar" type="text" label="TPL_MASTER3_FONT_NAVBAR_LABEL" description="TPL_MASTER3_FONT_DESC" class="input-xlarge" default="" filter="string" />
+                <field name="fontPre" type="text" label="TPL_MASTER3_FONT_PRE_LABEL" description="TPL_MASTER3_FONT_DESC" class="input-xlarge" default="" filter="string" />
+                <field name="fontsVariants" type="checkboxes" label="TPL_MASTER3_FONT_VARIANTS_LABEL" description="TPL_MASTER3_FONT_VARIANTS_DESC" default="regular" required="true">
+                    <option value="100">100</option>
+                    <option value="100italic">100italic</option>
+                    <option value="200">200</option>
+                    <option value="200italic">200italic</option>
+                    <option value="300">300</option>
+                    <option value="300italic">300italic</option>
+                    <option value="regular">regular</option>
+                    <option value="italic">italic</option>
+                    <option value="500">500</option>
+                    <option value="500italic">500italic</option>
+                    <option value="600">600</option>
+                    <option value="600italic">600italic</option>
+                    <option value="700">700</option>
+                    <option value="700italic">700italic</option>
+                    <option value="800">800</option>
+                    <option value="800italic">800italic</option>
+                    <option value="900">900</option>
+                    <option value="900italic">900italic</option>
+                </field>
+                <field name="fontsSubsets" type="checkboxes" label="TPL_MASTER3_FONT_SUBSETS_LABEL" description="TPL_MASTER3_FONT_SUBSETS_DESC" default="latin" required="true">
+                    <option value="latin">latin</option>
+                    <option value="latin-ext">latin-ext</option>
+                    <option value="arabic">arabic</option>
+                    <option value="bengali">bengali</option>
+                    <option value="cyrillic">cyrillic</option>
+                    <option value="cyrillic-ext">cyrillic-ext</option>
+                    <option value="devanagari">devanagari</option>
+                    <option value="greek">greek</option>
+                    <option value="greek-ext">greek-ext</option>
+                    <option value="gujarati">gujarati</option>
+                    <option value="gurmukhi">gurmukhi</option>
+                    <option value="hebrew">hebrew</option>
+                    <option value="japanese">japanese</option>
+                    <option value="kannada">kannada</option>
+                    <option value="khmer">khmer</option>
+                    <option value="korean">korean</option>
+                    <option value="malayalam">malayalam</option>
+                    <option value="myanmar">myanmar</option>
+                    <option value="oriya">oriya</option>
+                    <option value="sinhala">sinhala</option>
+                    <option value="tamil">tamil</option>
+                    <option value="telugu">telugu</option>
+                    <option value="thai">thai</option>
+                    <option value="vietnamese">vietnamese</option>
+                </field>
+                <field name="spacerFonts" type="spacer" hr="true" />
+                
+                <field name="noteCSS" type="note" label="TPL_MASTER3_SUBTITLE_CSS" />
+                <field name="cssUikit" type="list" label="TPL_MASTER3_CSS_UIKIT_LABEL" default="uikit.min.css">
+                    <option value="none">TPL_MASTER3_CSS_UIKIT_NO</option>
+                    <option value="uikit.css">TPL_MASTER3_CSS_UIKIT_BASED</option>
+                    <option value="uikit.min.css">TPL_MASTER3_CSS_UIKIT_MINIFIED</option>
+                    <option value="uikit-rtl.css">TPL_MASTER3_CSS_UIKIT_RTL</option>
+                    <option value="uikit-rtl.min.css">TPL_MASTER3_CSS_UIKIT_RTLMINIFIED</option>
+                </field>
+                <field name="cssFiles" type="subformfiles" label="TPL_MASTER3_CSS_FILES_LABEL" formsource="libraries/master3/forms/files.xml" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.repeatable-table" buttons="none" folder="css" />
+                <field name="cssAddons" type="textarea" label="TPL_MASTER3_CSS_ADDONS_LABEL" description="TPL_MASTER3_CSS_ADDONS_DESC" rows="3" default="" class="input-xxlarge" />
+                <field name="spacerCSS" type="spacer" hr="true" />
+                
+                <field name="noteJS" type="note" label="TPL_MASTER3_SUBTITLE_JS" />
+                <field name="jsJQ" type="radio" label="TPL_MASTER3_JS_JQ_LABEL" default="0" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="jsUikit" type="list" label="TPL_MASTER3_JS_UIKIT_LABEL" default="uikit.min.js">
+                    <option value="none">TPL_MASTER3_JS_UIKIT_NO</option>
+                    <option value="uikit.js">TPL_MASTER3_JS_UIKIT_BASED</option>
+                    <option value="uikit.min.js">TPL_MASTER3_JS_UIKIT_MINIFIED</option>
+                </field>
+                <field name="jsIcons" type="list" label="TPL_MASTER3_JS_ICONS_LABEL" default="uikit-icons.min.js">
+                    <option value="none">TPL_MASTER3_JS_ICONS_NO</option>
+                    <option value="uikit-icons.js">TPL_MASTER3_JS_ICONS_BASED</option>
+                    <option value="uikit-icons.min.js">TPL_MASTER3_JS_ICONS_MINIFIED</option>
+                </field>
+                <field name="jsFiles" type="subformfiles" label="TPL_MASTER3_JS_FILES_LABEL" formsource="libraries/master3/forms/files.xml" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.repeatable-table" buttons="none" folder="js" />
+                <field name="jsAddons" type="textarea" label="TPL_MASTER3_JS_ADDONS_LABEL" description="TPL_MASTER3_JS_ADDONS_DESC" rows="3" default="" class="input-xxlarge" />
+                <field name="spacerJS" type="spacer" hr="true" />
+                
+                <field name="ss" type="aes" label="" script="0" styles="1" />
+            </fieldset>
+
+            <fieldset name="sections" label="TPL_MASTER3_TAB_SECTIONS_LABEL">
+                <field name="descSections" type="note" label="TPL_MASTER3_SECTIONS_NOTE_LABEL" description="TPL_MASTER3_SECTIONS_NOTE_DESC" class="alert alert-info uk-alert" />
+                <field name="warnSections" type="note" label="TPL_MASTER3_SECTIONS_WARN_LABEL" description="TPL_MASTER3_SECTIONS_WARN_DESC" class="alert alert-warning uk-alert uk-alert-warning" />
+                <field name="sections" type="subform" label="TPL_MASTER3_SECTIONS_LAYOUTS_LABEL" formsource="libraries/master3/forms/sections.xml" groupByFieldset="true" multiple="true" layout="joomla.form.field.subform.repeatable" buttons="add,remove" />
+            </fieldset>
+
+            <fieldset name="modules" label="TPL_MASTER3_TAB_MODULES_LABEL">
+                <field name="descModules" type="note" label="TPL_MASTER3_MODULES_NOTE_LABEL" description="TPL_MASTER3_MODULES_NOTE_DESC" class="alert alert-info uk-alert" />
+                <field name="modules" type="subformmodules" label="TPL_MASTER3_TAB_MODULES_LABEL" formsource="libraries/master3/forms/modules.xml" groupByFieldset="true" multiple="true" layout="joomla.form.field.subform.tabs" buttons="none" />
+            </fieldset>
+
+            <fieldset name="menu" label="TPL_MASTER3_TAB_MENU_LABEL">
+                <field name="noteNavbar" type="note" label="TPL_MASTER3_SUBTITLE_NAVBAR" />
+                <field name="navbarSticky" type="radio" label="TPL_MASTER3_NAVBAR_STICKY_LABEL" default="0" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="navbarTransparent" type="radio" label="TPL_MASTER3_NAVBAR_TRANSPARENT_LABEL" default="0" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="navbarClickMode" type="radio" label="TPL_MASTER3_NAVBAR_CLICKMODE_LABEL" default="0" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="navbarDropbar" type="radio" label="TPL_MASTER3_NAVBAR_DROPBAR_LABEL" default="0" class="btn-group">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="navbarDropbarPush" type="radio" label="TPL_MASTER3_NAVBAR_DROPBARPUSH_LABEL" default="0" class="btn-group" showon="navbarDropbar:1">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+                <field name="navbarBoundary" type="list" label="TPL_MASTER3_NAVBAR_BOUNDARY_LABEL" default="" class="input-medium">
+                    <option value="">TPL_MASTER3_NAVBAR_BOUNDARY_NONE</option>
+                    <option value="left">TPL_MASTER3_NAVBAR_BOUNDARY_LEFT</option>
+                    <option value="center">TPL_MASTER3_NAVBAR_BOUNDARY_CENTER</option>
+                    <option value="right">TPL_MASTER3_NAVBAR_BOUNDARY_RIGHT</option>
+                    <option value="justify">TPL_MASTER3_NAVBAR_BOUNDARY_JUSTIFY</option>
+                </field>
+                <field name="offtoggle" type="list" label="TPL_MASTER3_NAVBAR_OFFTOGGLE_LABEL" default="@m" class="input-medium">
+                    <option value="@s">TPL_MASTER3_NAVBAR_OFFTOGGLE_SMALL</option>
+                    <option value="@m">TPL_MASTER3_NAVBAR_OFFTOGGLE_MEDIUM</option>
+                    <option value="@l">TPL_MASTER3_NAVBAR_OFFTOGGLE_LARGE</option>
+                </field>
+                <field name="nbLeftDisplay" type="list" label="TPL_MASTER3_NAVBAR_LEFT_DISPLAY" default="" class="input-medium">
+                    <option value="">TPL_MASTER3_MODULE_FORM_DISPLAY_ALWAYS</option>
+                    <option value="uk-hidden@s">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_S</option>
+                    <option value="uk-hidden@m">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_M</option>
+                    <option value="uk-hidden@l">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_L</option>
+                    <option value="uk-hidden@xl">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_XL</option>
+                    <option value="uk-visible@s">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_S</option>
+                    <option value="uk-visible@m">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_M</option>
+                    <option value="uk-visible@l">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_L</option>
+                    <option value="uk-visible@xl">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_XL</option>
+                </field>
+                <field name="nbCenterDisplay" type="list" label="TPL_MASTER3_NAVBAR_CENTER_DISPLAY" default="" class="input-medium">
+                    <option value="">TPL_MASTER3_MODULE_FORM_DISPLAY_ALWAYS</option>
+                    <option value="uk-hidden@s">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_S</option>
+                    <option value="uk-hidden@m">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_M</option>
+                    <option value="uk-hidden@l">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_L</option>
+                    <option value="uk-hidden@xl">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_XL</option>
+                    <option value="uk-visible@s">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_S</option>
+                    <option value="uk-visible@m">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_M</option>
+                    <option value="uk-visible@l">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_L</option>
+                    <option value="uk-visible@xl">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_XL</option>
+                </field>
+                <field name="nbRightDisplay" type="list" label="TPL_MASTER3_NAVBAR_RIGHT_DISPLAY" default="" class="input-medium">
+                    <option value="">TPL_MASTER3_MODULE_FORM_DISPLAY_ALWAYS</option>
+                    <option value="uk-hidden@s">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_S</option>
+                    <option value="uk-hidden@m">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_M</option>
+                    <option value="uk-hidden@l">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_L</option>
+                    <option value="uk-hidden@xl">TPL_MASTER3_MODULE_FORM_DISPLAY_HIDDEN_XL</option>
+                    <option value="uk-visible@s">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_S</option>
+                    <option value="uk-visible@m">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_M</option>
+                    <option value="uk-visible@l">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_L</option>
+                    <option value="uk-visible@xl">TPL_MASTER3_MODULE_FORM_DISPLAY_VISIBLE_XL</option>
+                </field>
+                <field name="spacerNavbar" type="spacer" hr="true" />
+
+                <field name="offcanvas" type="subformoffcanvas" label="TPL_MASTER3_MENU_OFFCANVAS_LABEL" formsource="libraries/master3/forms/offcanvas.xml" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.tabs" buttons="none" />
+                <field name="menuitems" type="subformmenus" label="TPL_MASTER3_MENU_ITEMS_LABEL" description="TPL_MASTER3_MENU_ITEMS_DESC" formsource="libraries/master3/forms/menus.xml" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.tabs" buttons="none" />
+            </fieldset>
+
+        </fields>
+    </config>
+
+</extension>

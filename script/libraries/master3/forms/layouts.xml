@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form>
+    <fields name="form">
+        <fieldset name="fsLayouts">
+            <field name="name" type="text" label="TPL_MASTER3_LAYOUTS_FORM_LNAME" class="input-xlarge" readonly="true" />
+            <field name="menuassign" type="menuitem" label="TPL_MASTER3_LAYOUTS_FORM_MENUASSIGN" default="" class="input-xxlarge" multiple="true" />
+        </fieldset>
+    </fields>
+</form>
