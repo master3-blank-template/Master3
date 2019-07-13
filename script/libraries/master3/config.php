@@ -212,14 +212,11 @@ final class Master3Config
             $layout->menu = isset($item->form->menuassignLayout) ? $item->form->menuassignLayout : [];
             $layout->active = false;
 
-            $layout->bodyClass = isset($item->form->bodyClasses) ? trim($item->form->bodyClasses) : '';
-            $this->bodyClass = $layout->menu === [] ? $layout->bodyClass : '';
+            $this->bodyClass = isset($item->form->bodyClasses) ? trim($item->form->bodyClasses) : '';
             
-            $layout->htmlAttrs = isset($item->form->htmlAttrs) ? trim($item->form->htmlAttrs) : '';
-            $this->htmlAttrs = $layout->menu === [] ? $layout->htmlAttrs : '';
-
-            $layout->noComponentMain = isset($item->form->noComponentMain) && $item->form->noComponentMain;
-            $this->isNoContent = $layout->menu === [] ? $layout->noComponentMain : false;
+            $this->htmlAttrs = isset($item->form->htmlAttrs) ? trim($item->form->htmlAttrs) : '';
+            
+            $this->isNoContent = isset($item->form->noComponentMain) && $item->form->noComponentMain;
 
             $layout->list = [];
 
