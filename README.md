@@ -20,4 +20,4 @@
 
 ### !!! WARNING IMPORTANT !!!
 
-#### Do not use this repository for installation on the site - there is no UIkit in it! <br>To install on the site, download the distribution kit of the template from the official site of this product.
+#### Do not use this repository for installation on the site — there is no UIkit in it! <br>To install on the site, download the distribution kit of the template from the official site of this product.
