@@ -52,6 +52,11 @@ final class Master3Config
     /*
      * string
      */
+    protected $layoutName = '';
+
+    /*
+     * string
+     */
     protected $htmlAttrs = '';
 
     /*
@@ -207,16 +212,22 @@ final class Master3Config
 
         $prmSections = $this->params->get('sections', []);
 
+        $allSectionsMenuIsd = [];
+        foreach ($prmSections as $item) {
+            if (isset($item->form->menuassignLayout)) {
+                $allSectionsMenuIsd = array_merge($allSectionsMenuIsd, $item->form->menuassignLayout);
+            }
+        }
+        $allSectionsMenuIsd = array_values($allSectionsMenuIsd);
+        
         foreach ($prmSections as $item) {
             $layout = new \stdClass();
             $layout->menu = isset($item->form->menuassignLayout) ? $item->form->menuassignLayout : [];
             $layout->active = false;
 
-            $this->bodyClass = isset($item->form->bodyClasses) ? trim($item->form->bodyClasses) : '';
-            
-            $this->htmlAttrs = isset($item->form->htmlAttrs) ? trim($item->form->htmlAttrs) : '';
-            
-            $this->isNoContent = isset($item->form->noComponentMain) && $item->form->noComponentMain;
+            $layout->htmlAttrs = isset($item->form->htmlAttrs) ? trim($item->form->htmlAttrs) : '';
+            $layout->bodyClass = isset($item->form->bodyClasses) ? trim($item->form->bodyClasses) : '';
+            $layout->noComponentMain = isset($item->form->noComponentMain) && $item->form->noComponentMain;
 
             $layout->list = [];
 
@@ -258,19 +269,19 @@ final class Master3Config
             unset($layout);
         }
 
-        $sectionlayoutActive = '';
 
         foreach ($sections as $sectionName => $section) {
-            if (in_array($this->menuActiveId, $section->menu)) {
-                $sectionlayoutActive = $sectionName;
+            if ((!$section->menu && !in_array($this->menuActiveId, $allSectionsMenuIsd)) || in_array($this->menuActiveId, $section->menu)) {
+                $this->layoutName = $sectionName;
+                $this->htmlAttrs = $section->htmlAttrs;
                 $this->bodyClass = $section->bodyClass;
                 $this->isNoContent = $section->noComponentMain;
                 break;
             }
         }
 
-        if (isset($sections[$sectionlayoutActive])) {
-            $sections[$sectionlayoutActive]->active = true;
+        if (isset($sections[$this->layoutName])) {
+            $sections[$this->layoutName]->active = true;
             $this->bodyClass = $section->bodyClass;
         }
 
@@ -702,6 +713,10 @@ final class Master3Config
 
         $out[] = $this->bodyClass;
         
+        $out[] = 'tmpl-layout--' . $this->getLayout();
+        
+        $out[] = 'sc-layout--' . $this->layoutName;
+
         $option = $app->input->getCmd('option', '');
         $out[] = $option ? 'option--' . $option : '';
         
@@ -720,7 +735,7 @@ final class Master3Config
         $menuItem = Factory::getApplication()->getMenu('site')->getActive();
         $out[] = isset($menuItem) ? $menuItem->params->get('pageclass_sfx', '') : '';
 
-        return trim(implode(' ', $out));
+        return trim(implode(' ', array_diff($out, ['', 0, null])));
     }
 
 
