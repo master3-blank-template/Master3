@@ -84,7 +84,7 @@ class JFormFieldSubformModules extends \JFormFieldSubform
     protected function getFormFields()
     {
         $xml = simplexml_load_file($this->formsource);
-        $xmlFields = (array)$xml->fields;
+        $xmlFields = (array) $xml->fields;
 
         $fields = [];
         foreach ($xmlFields['fieldset'] as $fieldset) {
@@ -112,8 +112,8 @@ class JFormFieldSubformModules extends \JFormFieldSubform
             ->join('LEFT', '#__extensions AS e ON e.element = m.module AND e.client_id = m.client_id')
             ->where('m.published = 1')
             ->where('e.enabled = 1')
-            ->where('(m.publish_up = ' . $db->quote($nullDate) . ' OR m.publish_up <= ' . $db->quote($now) . ')')
-            ->where('(m.publish_down = ' . $db->quote($nullDate) . ' OR m.publish_down >= ' . $db->quote($now) . ')')
+            ->where('(m.publish_up = ' . $db->quote($nullDate) . ' OR m.publish_up <= ' . $db->quote($now) . ' OR m.publish_up is null)')
+            ->where('(m.publish_down = ' . $db->quote($nullDate) . ' OR m.publish_down >= ' . $db->quote($now) . ' OR m.publish_down is null)')
             ->where('m.access IN (' . $groups . ')')
             ->where('m.client_id = 0')
             ->order('m.position, m.ordering, m.id');

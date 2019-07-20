@@ -15,9 +15,12 @@ class master3InstallerScript
 	protected $files = [
 		'/layouts/joomla/form/field/subform/tabs.php',
 		'/layouts/joomla/form/field/subform/tabs/section.php',
+		'/media/master3/aes/aes.css',
+		'/media/master3/aes/aes.js',
+		'/media/master3/images/favicon.png',
+		'/media/master3/images/apple-touch-icon.png',
+		'/media/master3/images/master3logo.svg',
 		'/media/system/css/subform-tabs.css',
-		'/libraries/master3/fields/aes.css',
-		'/libraries/master3/fields/aes.js',
 		'/libraries/master3/fields/aes.php',
 		'/libraries/master3/fields/subformfiles.php',
 		'/libraries/master3/fields/subformlayouts.php',
@@ -32,9 +35,6 @@ class master3InstallerScript
 		'/libraries/master3/forms/modules.xml',
 		'/libraries/master3/forms/offcanvas.xml',
 		'/libraries/master3/forms/sections.xml',
-		'/libraries/master3/images/favicon.png',
-		'/libraries/master3/images/apple-touch-icon.png',
-		'/libraries/master3/images/master3logo.svg',
 		'/libraries/master3/config.php'
 	];
 
@@ -43,33 +43,48 @@ class master3InstallerScript
 		'/libraries/master3/fields/',
 		'/libraries/master3/forms/',
 		'/libraries/master3/images/',
-		'/libraries/master3/'
+		'/libraries/master3/',
+		'/media/master3/images/',
+		'/media/master3/aes/',
+		'/media/master3/'
 	];
 
 	function preflight($type, $parent)
 	{
-		$msg = '';
-		
-		$ver = new Version();
+		if (strtolower($type) === 'install' && Version::MAJOR_VERSION < 4) {
+			$msg = '';
 
-		$minJVer = $parent->get('manifest')->attributes()->version;
+			$ver = new Version();
 
-		if (version_compare($ver->getShortVersion(), $minJVer, 'lt')) {
-			$msg .= '<p>Cannot install Master3 template in a Joomla release prior to ' . $minJVer . '</p>';
+			$minJVer = $parent->get('manifest')->attributes()->version;
+
+			if (version_compare($ver->getShortVersion(), $minJVer, 'lt')) {
+				$msg .= '<p>Cannot install Master3 template in a Joomla release prior to ' . $minJVer . '</p>';
+			}
+
+			if (version_compare(phpversion(), '5.6.0', 'lt')) {
+				$msg .= '<p>To install Master3 upgrade PHP version to minimum 5.6</p>';
+			}
+
+			if ($msg) {
+				Factory::getApplication()->enqueueMessage($msg, 'error');
+				return false;
+			}
+
+			$this->uninstall_old($parent);
 		}
 
-		if (version_compare(phpversion(), '5.6.0', 'lt')) {
-			$msg .= '<p>To install Master3 upgrade PHP version to minimum 5.6</p>';
-		}
-
-		if ($msg) {
-			Factory::getApplication()->enqueueMessage($msg, 'error');
-			return false;
+		if (strtolower($type) === 'uninstall') {
+			$this->uninstall($parent);
 		}
 	}
 
 	function postflight($type, $parent)
 	{
+		if (strtolower($type) === 'uninstall') {
+			return;
+		}
+
 		$msg = '';
 
 		foreach ($this->files as $file) {
@@ -139,12 +154,43 @@ class master3InstallerScript
 	{
 		foreach ($this->files as $file) {
 			$dst = Path::clean(JPATH_ROOT . $file);
-			@unlink($dst);
+			if (is_file($dst)) {
+				@unlink($dst);
+			}
 		}
 		foreach ($this->dirs as $dir) {
 			$dst = Path::clean(JPATH_ROOT . $dir);
-			@rmdir($dst);
+			if (is_dir($dst)) {
+				@rmdir($dst);
+			}
 		}
 	}
 
+	function uninstall_old()
+	{
+		$old_files = [
+			'/libraries/master3/fields/aes.css',
+			'/libraries/master3/fields/aes.js',
+			'/libraries/master3/images/favicon.png',
+			'/libraries/master3/images/apple-touch-icon.png',
+			'/libraries/master3/images/master3logo.svg'
+		];
+
+		$old_dirs = [
+			'/libraries/master3/images/'
+		];
+		
+		foreach ($old_files as $file) {
+			$dst = Path::clean(JPATH_ROOT . $file);
+			if (is_file($dst)) {
+				@unlink($dst);
+			}
+		}
+		foreach ($old_dirs as $dir) {
+			$dst = Path::clean(JPATH_ROOT . $dir);
+			if (is_dir($dst)) {
+				@rmdir($dst);
+			}
+		}
+	}
 }

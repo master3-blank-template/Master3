@@ -18,12 +18,12 @@ defined('_JEXEC') or die;
 
 final class Master3Config
 {
-    
+
     /*
      * Instance
      */
     private static $instance = null;
-    
+
     /*
      * Document object
      */
@@ -73,8 +73,8 @@ final class Master3Config
      * bool
      */
     public $isWebP = false;
-    
-    
+
+
     /*
      * Get static Instance
      * 
@@ -88,8 +88,8 @@ final class Master3Config
 
         return self::$instance;
     }
-    
-    
+
+
     /*
      * Get WebP support
      */
@@ -104,27 +104,27 @@ final class Master3Config
         preg_match('/(Trident)(?:\/| )([0-9.]+)/', $agent, $IE);
         preg_match('/(rv)(?:\:| )([0-9.]+)/', $agent, $rv);
         preg_match('/(MSIE|Opera|Firefox|Chrome|Chromium|YandexSearch|YaBrowser)(?:\/| )([0-9.]+)/', $agent, $bi);
-    
+
         $isAndroid = isset($Android[1]);
         $isWin10 = strpos($agent, 'Windows NT 10.0') !== false;
-        
+
         if ($Safari && !$isAndroid) {
             $browserName = 'Safari';
-            $browserVersion = (int)$Safari[2];
+            $browserVersion = (int) $Safari[2];
         } elseif ($Opera) {
             $browserName = 'Opera';
-            $browserVersion = (int)$Opera[2];
+            $browserVersion = (int) $Opera[2];
         } elseif ($Edge) {
             $browserName = 'Edge';
-            $browserVersion = (int)$Edge[2];
+            $browserVersion = (int) $Edge[2];
         } elseif ($IE) {
             $browserName = 'IE';
-            $browserVersion = isset($rv[2]) ? (int)$rv[2] : ($isWin10 ? 11 : (int)$IE[2]);
+            $browserVersion = isset($rv[2]) ? (int) $rv[2] : ($isWin10 ? 11 : (int) $IE[2]);
         } else {
             $browserName = isset($bi[1]) ? $bi[1] : ($isAndroid ? 'Android' : 'Unknown');
-            $browserVersion = isset($bi[2]) ? (int)$bi[2] :  ($isAndroid ? (float)$Android[2] : 0);
+            $browserVersion = isset($bi[2]) ? (int) $bi[2] : ($isAndroid ? (float) $Android[2] : 0);
         }
-        
+
         $browsers = [
             'Chrome' => 32,
             'Firefox' => 65,
@@ -137,8 +137,8 @@ final class Master3Config
 
         $this->isWebP = in_array($browserName, array_keys($browsers)) && ($browserVersion >= $browsers[$browserName]);
     }
-    
-    
+
+
     /*
      * Get template name
      * 
@@ -146,13 +146,14 @@ final class Master3Config
      */
     static public function getTemplateName()
     {
-        if (Factory::getApplication()->isAdmin() === false) {
-            return Factory::getApplication()->getTemplate('site')->template;
+        $app = Factory::getApplication();
+        if ($app->isClient('administrator') === false) {
+            return $app->getTemplate('site')->template;
         }
 
-        $input = Factory::getApplication()->input;
+        $input = $app->input;
 
-        $id = ($input->get('option') == 'com_templates' && (int)$input->get('id') !== 0) ? (int)$id = $input->get('id') : 0;
+        $id = ($input->get('option') == 'com_templates' && (int) $input->get('id') !== 0) ? (int) $id = $input->get('id') : 0;
 
         $db = Factory::getDbo();
         $query = $db->getQuery(true)
@@ -170,7 +171,7 @@ final class Master3Config
         return $templateName;
     }
 
-    
+
     /*
      * Constrictor
      */
@@ -182,19 +183,22 @@ final class Master3Config
 
         $this->params = $this->doc->params;
 
+        $app = Factory::getApplication();
+
         if (!isset($this->params)) {
-            $template = Factory::getApplication()->getTemplate(true);
+            $template = $app->getTemplate(true);
             $this->params = $template->params;
         }
 
-        $menuItem = Factory::getApplication()->getMenu('site')->getActive();
-        $this->menuActiveId = isset($menuItem) ? $menuItem->id : Factory::getApplication()->getMenu('site')->getDefault()->id;
+        $menuItem = $app->getMenu('site')->getActive();
+        $menuDefault = $app->getMenu('site')->getDefault();
+        $this->menuActiveId = isset($menuItem) ? $menuItem->id : $menuDefault->id;
 
-        $link = Route::_('index.php?Itemid=' . Factory::getApplication()->getMenu('site')->getDefault()->id);
+        $link = Route::_('index.php?Itemid=' . $menuDefault->id);
         $this->isMain = (Uri::current() == Uri::base()) || (Uri::current() == Uri::base() . substr($link, strlen(Uri::base(true)) + 1));
 
         $this->checkWebP();
-        
+
 
         // param temlateLayouts recompose
         $layouts = [];
@@ -219,7 +223,7 @@ final class Master3Config
             }
         }
         $allSectionsMenuIsd = array_values($allSectionsMenuIsd);
-        
+
         foreach ($prmSections as $item) {
             $layout = new \stdClass();
             $layout->menu = isset($item->form->menuassignLayout) ? $item->form->menuassignLayout : [];
@@ -287,7 +291,7 @@ final class Master3Config
 
         $this->params->set('sections', $sections);
 
-        
+
         // param modules recompose
         $modules = [];
 
@@ -316,7 +320,7 @@ final class Master3Config
 
         $this->params->set('modules', $modules);
 
-        
+
         // param menu recompose
         $menuItems = [];
         $navbarBoundary = $this->params->get('navbarBoundary', '') === 'justify';
@@ -337,7 +341,7 @@ final class Master3Config
 
         $this->params->set('menuitems', $menuItems);
 
-        
+
         // param offcanvas recompose
         $offcanvas = [];
 
@@ -416,14 +420,14 @@ final class Master3Config
         }
     }
 
-    
+
     /*
      * Head section data
      */
     protected function setHead()
     {
         $tpath = 'templates/' . $this->name;
-        
+
         /*
          * load google fonts
          */
@@ -442,7 +446,7 @@ final class Master3Config
             HTMLHelper::stylesheet($tpath . '/uikit/dist/css/' . $cssUikit, [], ['options' => ['version' => 'auto']]);
         }
 
-        $cssFiles = (array)$this->params->get('cssFiles');
+        $cssFiles = (array) $this->params->get('cssFiles');
         foreach ($cssFiles as $cssFile) {
             if ($cssFile->form->fInclude) {
                 $cssFile = realpath(Path::clean(JPATH_ROOT . '/templates/' . $this->name . '/css/' . htmlspecialchars(trim($cssFile->form->fName))));
@@ -463,7 +467,7 @@ final class Master3Config
             }
         }
 
-        
+
         /*
          * load template js
          */
@@ -481,7 +485,7 @@ final class Master3Config
             HTMLHelper::script($tpath . '/uikit/dist/js/' . $jsIcons, [], ['options' => ['version' => 'auto']]);
         }
 
-        $jsFiles = (array)$this->params->get('jsFiles');
+        $jsFiles = (array) $this->params->get('jsFiles');
         foreach ($jsFiles as $jsFile) {
             if ($jsFile->form->fInclude) {
                 $jsFile = realpath(Path::clean(JPATH_ROOT . '/templates/' . $this->name . '/js/' . htmlspecialchars(trim($jsFile->form->fName))));
@@ -506,19 +510,18 @@ final class Master3Config
         /*
          * compose head section
          */
-        $out = [];
         $this->doc->setHtml5(true);
         $this->doc->setGenerator('');
         $this->doc->setMetaData('viewport', 'width=device-width,initial-scale=1');
         $this->doc->setMetaData('X-UA-Compatible', 'IE=edge', 'http-equiv');
-        
+
         // favicon
         $favicon = $this->params->get('favicon', '');
         if ($favicon && is_file(Path::clean(JPATH_BASE . '/' . $favicon))) {
             $type = $this->getMime(Path::clean(JPATH_BASE . '/' . $favicon));
             $this->doc->addFavicon(Uri::base(true) . '/' . $favicon, $type, 'shortcut icon');
         }
-        
+
         // favicon for apple devices
         $faviconApple = $this->params->get('faviconApple', '');
         if ($faviconApple && is_file(Path::clean(JPATH_BASE . '/' . $faviconApple))) {
@@ -712,27 +715,27 @@ final class Master3Config
         $out = [];
 
         $out[] = $this->bodyClass;
-        
+
         $out[] = 'tmpl-layout--' . $this->getLayout();
-        
+
         $out[] = 'sc-layout--' . $this->layoutName;
 
         $option = $app->input->getCmd('option', '');
         $out[] = $option ? 'option--' . $option : '';
-        
+
         $view = $app->input->getCmd('view', '');
         $out[] = $view ? 'view--' . $view : '';
-        
+
         $layout = $app->input->getCmd('layout', '');
         $out[] = $layout ? 'layout--' . $layout : '';
-        
+
         $task = $app->input->getCmd('task', '');
         $out[] = $task ? 'task--' . $task : '';
-        
+
         $Itemid = $app->input->getCmd('Itemid', '');
         $out[] = $Itemid ? 'Itemid--' . $Itemid : '';
 
-        $menuItem = Factory::getApplication()->getMenu('site')->getActive();
+        $menuItem = $app->getMenu('site')->getActive();
         $out[] = isset($menuItem) ? $menuItem->params->get('pageclass_sfx', '') : '';
 
         return trim(implode(' ', array_diff($out, ['', 0, null])));
@@ -873,7 +876,7 @@ final class Master3Config
      */
     public function getOffcanvasParams($position)
     {
-        $offcanvas = (array)$this->params->get('offcanvas');
+        $offcanvas = (array) $this->params->get('offcanvas');
 
         if (isset($offcanvas[$position])) {
             $oc = $offcanvas[$position];
@@ -888,7 +891,7 @@ final class Master3Config
         return $oc;
     }
 
-    
+
     /*
      * Get modile params
      * 
@@ -898,7 +901,7 @@ final class Master3Config
      */
     public function getModuleParams($moduleId)
     {
-        $modules = (array)$this->params->get('modules');
+        $modules = (array) $this->params->get('modules');
 
         if (isset($modules[$moduleId])) {
             $module = $modules[$moduleId];
@@ -940,7 +943,7 @@ final class Master3Config
      */
     public function getMenuItemParams($itemId)
     {
-        $menuItems = (array)$this->params->get('menuitems');
+        $menuItems = (array) $this->params->get('menuitems');
 
         if (isset($menuItems[$itemId])) {
             $menuItem = $menuItems[$itemId];
@@ -966,7 +969,6 @@ final class Master3Config
      */
     public function getDUA()
     {
-        return (int)$this->params->get('denyUserAuthorization', 0);
+        return (int) $this->params->get('denyUserAuthorization', 0);
     }
-
 }

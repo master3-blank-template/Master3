@@ -25,20 +25,18 @@ class JFormFieldAes extends FormField
 
     protected function getInput()
     {
-        if (Factory::getApplication()->isAdmin() === false) {
+        if (Factory::getApplication()->isClient('administrator') === false) {
             return '';
         }
 
-        $path = Uri::root() . str_replace('\\', '/', str_replace(JPATH_ROOT . DIRECTORY_SEPARATOR, '', __DIR__));
-
         if ((int)$this->element['styles'] == true) {
-            HTMLHelper::stylesheet($path . '/aes.css ');
+            HTMLHelper::stylesheet('media/master3/aes/aes.css', ['version' => 'auto']);
         }
 
         if ((int)$this->element['script'] == true) {
-            HTMLHelper::script($path . '/aes.js');
+            HTMLHelper::script('media/master3/aes/aes.js', ['version' => 'auto']);
         }
-
+        
         return '';
     }
 }
