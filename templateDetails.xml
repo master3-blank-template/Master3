@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="template" client="site" method="upgrade">
     <name>Master3</name>
-    <version>1.1.17</version>
+    <version>1.1.18</version>
     <creationDate>July 2019</creationDate>
     <author>Aleksey A. Morozov</author>
     <authorEmail>alekvolsk@yandex.ru</authorEmail>
@@ -259,7 +259,7 @@
                     <option value="1">JYES</option>
                     <option value="0">JNO</option>
                 </field>
-                <field name="navbarBoundary" type="list" label="TPL_MASTER3_NAVBAR_BOUNDARY_LABEL" default="" class="input-medium">
+                <field name="navbarBoundary" type="list" label="TPL_MASTER3_NAVBAR_BOUNDARY_LABEL" description="TPL_MASTER3_NAVBAR_BOUNDARY_DESC" default="" class="input-medium">
                     <option value="">TPL_MASTER3_NAVBAR_BOUNDARY_NONE</option>
                     <option value="left">TPL_MASTER3_NAVBAR_BOUNDARY_LEFT</option>
                     <option value="center">TPL_MASTER3_NAVBAR_BOUNDARY_CENTER</option>

@@ -24,6 +24,7 @@ function getL2Items($items, $id)
 }
 
 $templateConfig = \Master3Config::getInstance();
+$navbarClickMode = $templateConfig->params->get('navbarClickMode', 0);
 
 $id = '';
 $l2_i = 0;
@@ -95,7 +96,7 @@ foreach ($list as $i => &$item) {
 
     if ($item->deeper) {
         if ((int)$item->level === 1) {
-            $boundary = $miParams->dropdownJustify ? ' data-uk-drop="boundary:.uk-navbar;boundary-align:true;pos:bottom-justify;"' : '';
+            $boundary = $miParams->dropdownJustify ? ' data-uk-drop="boundary:.uk-navbar;boundary-align:true;pos:bottom-justify;' . ($navbarClickMode ? 'mode:click;' : '') . '"' : '';
             $dropdownClass = $miParams->dropdownClass ? ' ' . $miParams->dropdownClass : '';
 
             if ($miParams->cols === 1) {
