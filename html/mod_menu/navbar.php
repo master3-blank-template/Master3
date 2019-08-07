@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu.navbar
@@ -12,15 +13,17 @@ use Joomla\CMS\Helper\ModuleHelper;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
 
-function getL2Items($items, $id)
-{
-    $result = 0;
-    foreach ($items as $item) {
-        if ((int)$item->level === 2 && (int)$item->parent_id === $id) {
-            $result++;
+if (!function_exists('getL2Items')) {
+    function getL2Items($items, $id)
+    {
+        $result = 0;
+        foreach ($items as $item) {
+            if ((int) $item->level === 2 && (int) $item->parent_id === $id) {
+                $result++;
+            }
         }
+        return $result;
     }
-    return $result;
 }
 
 $templateConfig = \Master3Config::getInstance();
@@ -38,7 +41,7 @@ $class_sfx = $class_sfx ? ' ' . trim($class_sfx) : '';
 echo '<ul class="uk-navbar-nav' . $class_sfx . '"' . $id . '>';
 
 foreach ($list as $i => &$item) {
-    if ((int)$item->level === 1) {
+    if ((int) $item->level === 1) {
         $miParams = $templateConfig->getMenuItemParams($item->id);
     }
 
@@ -66,11 +69,11 @@ foreach ($list as $i => &$item) {
         $class .= ' uk-parent';
     }
 
-    if ($item->type == 'separator' && (int)$item->level > 1) {
+    if ($item->type == 'separator' && (int) $item->level > 1) {
         $class .= ' uk-nav-header';
     }
 
-    if ($item->type == 'heading' && (int)$item->level > 1) {
+    if ($item->type == 'heading' && (int) $item->level > 1) {
         $class .= ' uk-nav-header';
     }
 
@@ -78,7 +81,7 @@ foreach ($list as $i => &$item) {
 
     switch ($item->type) {
         case 'separator':
-            if ((int)$item->level === 1) {
+            if ((int) $item->level === 1) {
                 require ModuleHelper::getLayoutPath('mod_menu', 'navbar_heading');
             }
             break;
@@ -95,16 +98,16 @@ foreach ($list as $i => &$item) {
     }
 
     if ($item->deeper) {
-        if ((int)$item->level === 1) {
+        if ((int) $item->level === 1) {
             $boundary = $miParams->dropdownJustify ? ' data-uk-drop="boundary:.uk-navbar;boundary-align:true;pos:bottom-justify;' . ($navbarClickMode ? 'mode:click;' : '') . '"' : '';
             $dropdownClass = $miParams->dropdownClass ? ' ' . $miParams->dropdownClass : '';
 
             if ($miParams->cols === 1) {
                 echo '<div class="uk-navbar-dropdown' . $dropdownClass . '"' . $boundary . '><ul class="uk-nav uk-navbar-dropdown-nav">';
             } else {
-                $l2_ic = getL2Items($list, (int)$item->id);
-                $l2_cnt = (int)floor($l2_ic / $miParams->cols);
-                $l2_rod = (int)($l2_ic % $miParams->cols);
+                $l2_ic = getL2Items($list, (int) $item->id);
+                $l2_cnt = (int) floor($l2_ic / $miParams->cols);
+                $l2_rod = (int) ($l2_ic % $miParams->cols);
                 $l2_i = 0;
                 $l2_aItem = 0;
                 $l2_arr = [];
@@ -127,13 +130,13 @@ foreach ($list as $i => &$item) {
     } elseif ($item->shallower) {
         echo '</li>';
 
-        $level_diff = (int)$item->level_diff - 1;
+        $level_diff = (int) $item->level_diff - 1;
 
         if ($level_diff) {
             echo str_repeat('</ul></li>', $level_diff);
         }
 
-        if (((int)$item->level - (int)$item->level_diff) === 1) {
+        if (((int) $item->level - (int) $item->level_diff) === 1) {
 
             if ($miParams->cols === 1) {
                 echo '</ul></div></li>';
@@ -156,7 +159,7 @@ foreach ($list as $i => &$item) {
     } else {
         echo '</li>';
 
-        if ((int)$item->level === 2 && isset($l2_arr) && isset($l2_aItem)) {
+        if ((int) $item->level === 2 && isset($l2_arr) && isset($l2_aItem)) {
             $l2_i++;
             if ($l2_arr[$l2_aItem] === $l2_i) {
                 echo '</ul></div><div><ul class="uk-nav uk-navbar-dropdown-nav">';
