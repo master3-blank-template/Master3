@@ -31,4 +31,4 @@ if ($miParams->subtitle) {
 
 $linktype .= '</span>';
 
-echo '<a>' . $linktype . '</a>';
+echo '<span class="uk-flex uk-flex-center uk-flex-middle">' . $linktype . '</span>';
