@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="library" client="site">
     <name>UIkit</name>
-    <version>3.1.9</version>
+    <version>3.2.0</version>
     <creationDate>September 2019</creationDate>
     <author>YOOtheme</author>
     <authorUrl>https://github.com/uikit/uikit</authorUrl>

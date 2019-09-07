@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="template" client="site" method="upgrade">
     <name>Master3</name>
-    <version>1.1.24</version>
+    <version>1.1.25</version>
     <creationDate>September 2019</creationDate>
     <author>Aleksey A. Morozov</author>
     <authorEmail>alekvolsk@yandex.ru</authorEmail>
@@ -10,11 +10,12 @@
     <license>GNU GPL v3 or later; see http://www.gnu.org/licenses/gpl-3.0.txt</license>
     <description><![CDATA[
         <div style="display:inline-flex;align-items:center;margin:30px 0;color:#1E87F0;text-decoration:none;"><svg height="50" viewBox="0 0 122 141" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M61 0L84.6129 13.6266L61 27.2631L37.3871 13.6266L61 0ZM97.4032 21.0155L73.7805 34.6421L98.3871 48.8492V77.2634L122 63.6368V35.2127L97.4032 21.0155ZM36.3934 99.4005V126.664L61 140.871L84.6129 127.244L36.3934 99.4005ZM73.7805 106.229C73.7805 106.229 65.0339 101.181 97.3934 119.855H97.4032L122 105.658V78.385L73.7805 106.229ZM0 105.658V48.8689L23.6129 62.5053V119.285L0 105.658Z" fill="#1E87F0"/></svg><span style="margin-left:20px;font-weight:400;"><span style="display:block;font-size:20px;line-height:20px;margin-bottom:10px;"><strong>Master3</strong></span><span style="display:block;font-size:15px;line-height:20px;"><strong>The Joomla! 3 site template based on UIkit 3.</strong></span></span></div>
-        <p><a href="https://master3.alekvolsk.info/" target="_blank">Official page</a>&nbsp;&nbsp;&nbsp;<a href="https://master3.alekvolsk.info/documentation" target="_blank">Documentation</a>&nbsp;&nbsp;&nbsp;<a href="https://master3.alekvolsk.info/positions" target="_blank">Positions</a></p>
+        <p style="margin-bottom:20px;"><a href="https://master3.alekvolsk.info/" target="_blank">Official page</a>&nbsp;&nbsp;&nbsp;<a href="https://master3.alekvolsk.info/documentation" target="_blank">Documentation</a>&nbsp;&nbsp;&nbsp;<a href="https://master3.alekvolsk.info/positions" target="_blank">Positions</a></p>
         <p>&copy; 2019 <a href="https://alekvolsk.pw" target="_blank"><u>Aleksey A. Morozov</u></a>. All right reserved.</p>
         <p>If you want to support the project, you can donate us via <a href="https://www.paypal.me/alekvolsk" target="_blank"><u>PayPal</u></a> or <a href="https://money.yandex.ru/to/410011461392459" target="_blank"><u>Yandex</u></a>.</p>
-        <p>The changelog a template is available on the <a href="https://master3.alekvolsk.info/download" target="_blank"><u>download page</u></a>.</p>
+        <p style="margin-bottom:30px;">The changelog a template is available on the <a href="https://master3.alekvolsk.info/download" target="_blank"><u>download page</u></a>.</p>
     ]]></description>
+    <php_minimum>5.6</php_minimum>
     <scriptfile>script.php</scriptfile>
     
     <updateservers>

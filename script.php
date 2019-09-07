@@ -9,6 +9,7 @@
 use Joomla\CMS\Factory;
 use Joomla\CMS\Version;
 use Joomla\CMS\Filesystem\Path;
+use Joomla\CMS\Language\Text;
 
 class master3InstallerScript
 {
@@ -51,19 +52,26 @@ class master3InstallerScript
 
 	function preflight($type, $parent)
 	{
+		$minJoomlaVersion = $parent->get('manifest')->attributes()->version[0];
+
+		if (!class_exists('Joomla\CMS\Version')) {
+			JFactory::getApplication()->enqueueMessage(JText::sprintf('J_JOOMLA_COMPATIBLE', JText::_($parent->manifest->name[0]), $minJoomlaVersion), 'error');
+			return false;
+		}
+		
 		if (strtolower($type) === 'install' && Version::MAJOR_VERSION < 4) {
 			$msg = '';
-
+			$name = Text::_($parent->manifest->name[0]);
+			$minPhpVersion = $parent->manifest->php_minimum[0];
+	
 			$ver = new Version();
 
-			$minJVer = $parent->get('manifest')->attributes()->version;
-
-			if (version_compare($ver->getShortVersion(), $minJVer, 'lt')) {
-				$msg .= '<p>Cannot install Master3 template in a Joomla release prior to ' . $minJVer . '</p>';
+			if (version_compare($ver->getShortVersion(), $minJoomlaVersion, 'lt')) {
+				$msg .= Text::sprintf('J_JOOMLA_COMPATIBLE', $name, $minJoomlaVersion);
 			}
 
-			if (version_compare(phpversion(), '5.6.0', 'lt')) {
-				$msg .= '<p>To install Master3 upgrade PHP version to minimum 5.6</p>';
+			if (version_compare(phpversion(), $minPhpVersion, 'lt')) {
+				$msg .= Text::sprintf('J_PHP_COMPATIBLE', $name, $minPhpVersion);
 			}
 
 			if ($msg) {
