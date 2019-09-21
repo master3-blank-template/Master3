@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="template" client="site" method="upgrade">
     <name>Master3</name>
-    <version>1.1.25</version>
+    <version>1.1.26</version>
     <creationDate>September 2019</creationDate>
     <author>Aleksey A. Morozov</author>
     <authorEmail>alekvolsk@yandex.ru</authorEmail>
@@ -13,7 +13,7 @@
         <p style="margin-bottom:20px;"><a href="https://master3.alekvolsk.info/" target="_blank">Official page</a>&nbsp;&nbsp;&nbsp;<a href="https://master3.alekvolsk.info/documentation" target="_blank">Documentation</a>&nbsp;&nbsp;&nbsp;<a href="https://master3.alekvolsk.info/positions" target="_blank">Positions</a></p>
         <p>&copy; 2019 <a href="https://alekvolsk.pw" target="_blank"><u>Aleksey A. Morozov</u></a>. All right reserved.</p>
         <p>If you want to support the project, you can donate us via <a href="https://www.paypal.me/alekvolsk" target="_blank"><u>PayPal</u></a> or <a href="https://money.yandex.ru/to/410011461392459" target="_blank"><u>Yandex</u></a>.</p>
-        <p style="margin-bottom:30px;">The changelog a template is available on the <a href="https://master3.alekvolsk.info/download" target="_blank"><u>download page</u></a>.</p>
+        <p style="margin-bottom:30px;">The template changelog is available on the <a href="https://master3.alekvolsk.info/download" target="_blank"><u>download page</u></a>.</p>
     ]]></description>
     <php_minimum>5.6</php_minimum>
     <scriptfile>script.php</scriptfile>
