@@ -443,7 +443,9 @@ final class Master3Config
          */
         $cssUikit = $this->params->get('cssUikit', 'uikit.min.css');
         if ($cssUikit !== 'none') {
-            HTMLHelper::stylesheet($tpath . '/uikit/dist/css/' . $cssUikit, [], ['options' => ['version' => 'auto']]);
+            $isRTL = strpos($cssUikit, 'rtl') !== false;
+            $isMin = strpos($cssUikit, 'min') !== false;
+            HTMLHelper::_('uikit3.css', $isRTL, $isMin);
         }
 
         $cssFiles = (array) $this->params->get('cssFiles');
@@ -477,12 +479,14 @@ final class Master3Config
 
         $jsUikit = $this->params->get('jsUikit', 'uikit.min.js');
         if ($jsUikit !== 'none') {
-            HTMLHelper::script($tpath . '/uikit/dist/js/' . $jsUikit, [], ['options' => ['version' => 'auto']]);
+            $isMin = strpos($jsUikit, 'min') !== false;
+            HTMLHelper::_('uikit3.js', $isMin);
         }
 
         $jsIcons = $this->params->get('jsIcons', 'uikit-icons.min.js');
         if ($jsIcons !== 'none') {
-            HTMLHelper::script($tpath . '/uikit/dist/js/' . $jsIcons, [], ['options' => ['version' => 'auto']]);
+            $isMin = strpos($jsIcons, 'min') !== false;
+            HTMLHelper::_('uikit3.icons', $isMin);
         }
 
         $jsFiles = (array) $this->params->get('jsFiles');
