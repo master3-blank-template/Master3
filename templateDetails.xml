@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="template" client="site" method="upgrade">
     <name>Master3</name>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <creationDate>September 2019</creationDate>
     <author>Aleksey A. Morozov</author>
     <authorEmail>alekvolsk@yandex.ru</authorEmail>
