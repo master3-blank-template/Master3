@@ -213,7 +213,7 @@ class master3InstallerScript
 			if ($xml) {
 				$xml = (array) $xml;
 				$uikitVersion = $xml['version'];
-				if (!version_compare($actualVersion, $uikitVersion, 'lt')) {
+				if (!version_compare($actualVersion, $uikitVersion, 'gt')) {
 					$isUikit3 = true;
 				}
 			}

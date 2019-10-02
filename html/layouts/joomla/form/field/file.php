@@ -51,9 +51,10 @@ extract($displayData);
 HTMLHelper::_('jquery.framework');
 HTMLHelper::_('script', 'system/html5fallback.js', array('version' => 'auto', 'relative' => true, 'conditional' => 'lt IE 9'));
 
-$maxSize = HTMLHelper::_('number.bytes', Utility::getMaxUploadSize());
+$maxSize = Text::sprintf('JGLOBAL_MAXIMUM_UPLOAD_SIZE_LIMIT', HTMLHelper::_('number.bytes', Utility::getMaxUploadSize()));
+$hint = isset($hint) && $hint ? $hint . ', ' . $maxSize : $maxSize;
 ?>
-<div uk-form-custom>
+<div class="uk-button-group uk-width" data-uk-form-custom>
 <input type="file" name="<?php echo $name; ?>" id="<?php echo $id; ?>" <?php
     echo !empty($size) ? ' size="' . $size . '"' : '';
     echo !empty($accept) ? ' accept="' . $accept . '"' : '';
@@ -62,6 +63,6 @@ $maxSize = HTMLHelper::_('number.bytes', Utility::getMaxUploadSize());
     echo $disabled ? ' disabled' : '';
     echo $autofocus ? ' autofocus' : '';
     echo !empty($onchange) ? ' onchange="' . $onchange . '"' : '';
-    echo $required ? ' required aria-required="true"' : ''; ?> /><br>
-    <?php echo Text::sprintf('JGLOBAL_MAXIMUM_UPLOAD_SIZE_LIMIT', $maxSize); ?>
+    echo $required ? ' required aria-required="true"' : ''; ?> />
+    <input class="uk-input uk-form-width-medium" type="text" placeholder="<?php echo htmlspecialchars($hint, ENT_COMPAT, 'UTF-8'); ?>" disabled>
 </div>

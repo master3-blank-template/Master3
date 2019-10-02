@@ -51,6 +51,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 extract($displayData);
 
 // Load the modal behavior script.
+HTMLHelper::_('behavior.core');
 HTMLHelper::_('behavior.modal');
 
 // Include jQuery
@@ -62,20 +63,19 @@ $options = array(
     'onShow' => 'jMediaRefreshImgpathTip',
 );
 
-
 $attr = '';
 
-$attr .= ' title="' . htmlspecialchars('<span id="TipImgpath"></span>', ENT_COMPAT, 'UTF-8') . '"';
+$attr .= ' data-uk-tooltip="' . htmlspecialchars($value, ENT_COMPAT, 'UTF-8') . '"';
 
 // Initialize some field attributes.
-$attr .= !empty($class) ? ' class="uk-input input-small field-media-input ' . $class . '"' : ' class="uk-input input-small"';
+$attr .= !empty($class) ? ' class="uk-input field-media-input ' . $class . '"' : ' class="uk-input"';
 $attr .= !empty($size) ? ' size="' . $size . '"' : '';
 
 // Initialize JavaScript field attributes.
 $attr .= !empty($onchange) ? ' onchange="' . $onchange . '"' : '';
 
 // The text field.
-echo '<div class="uk-button-group uk-width input-prepend input-append">';
+echo '<div class="uk-button-group uk-width">';
 
 // The Preview.
 $showPreview = true;
@@ -92,6 +92,7 @@ switch ($preview) {
     case 'true':
     case 'show':
         break;
+
     case 'tooltip':
     default:
         $showAsTooltip = true;
@@ -100,10 +101,10 @@ switch ($preview) {
         break;
 }
 
-echo '    <input type="text" name="' . $name . '" id="' . $id . '" value="'
-    . htmlspecialchars($value, ENT_COMPAT, 'UTF-8') . '" readonly="readonly"' . $attr . ' data-basepath="'
-    . Uri::root() . '"/>';
-
+echo '<input type="text" name="' . $name . '" id="' . $id . 
+    '" value="' . htmlspecialchars($value, ENT_COMPAT, 'UTF-8') . 
+    '" readonly="readonly"' . $attr . ' data-basepath="' . Uri::root() . '">';
 ?>
-<a class="modal btn uk-button uk-button-primary" title="<?php echo Text::_('JLIB_FORM_BUTTON_SELECT'); ?>" href="<?php echo ($readonly ?: ($link ? : 'index.php?option=com_media&amp;view=images&amp;tmpl=component&amp;asset=' . $asset . '&amp;author=' . $authorField) . '&amp;fieldid=' . $id . '&amp;folder=' . $folder) . '"' . ' rel="{handler: \'iframe\', size: {x: 800, y: 500}}"'; ?>><?php echo Text::_('JLIB_FORM_BUTTON_SELECT'); ?></a><a class="btn uk-button uk-button-default" data-uk-tooltip="<?php echo Text::_('JLIB_FORM_BUTTON_CLEAR'); ?>" href="#" onclick="jInsertFieldValue('', '<?php echo $id; ?>'); return false;"><span data-uk-close="icon:close" aria-hidden="true"></span></a>
+<a class="modal uk-button uk-button-primary" title="<?php echo Text::_('JLIB_FORM_BUTTON_SELECT'); ?>" href="<?php echo ($readonly ?: ($link ?: 'index.php?option=com_media&amp;view=images&amp;tmpl=component&amp;asset=' . $asset . '&amp;author=' . $authorField) . '&amp;fieldid=' . $id . '&amp;folder=' . $folder); ?>" rel="{handler: \'iframe\', size: {x: 800, y: 500}}"><?php echo Text::_('JLIB_FORM_BUTTON_SELECT'); ?></a>
+<a class="uk-button uk-button-default" data-uk-tooltip="<?php echo Text::_('JLIB_FORM_BUTTON_CLEAR'); ?>" href="#" onclick="jInsertFieldValue('', '<?php echo $id; ?>'); return false;"><span data-uk-close="icon:close" aria-hidden="true"></span></a>
 </div>
