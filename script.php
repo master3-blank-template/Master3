@@ -28,6 +28,7 @@ class master3InstallerScript
 		'/media/master3/images/master3logo.svg',
 		'/media/system/css/subform-tabs.css',
 		'/libraries/master3/fields/aes.php',
+		'/libraries/master3/fields/poslist.php',
 		'/libraries/master3/fields/subformfiles.php',
 		'/libraries/master3/fields/subformlayouts.php',
 		'/libraries/master3/fields/subformmenus.php',

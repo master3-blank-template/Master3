@@ -309,7 +309,7 @@ final class Master3Config
 
             $module->display = $item->form->display;
             $module->align = $item->form->moduleAlign;
-            $module->offtoggle = isset($item->form->offtoggle) && $item->form->offtoggle == 1;
+            $module->offtoggle = isset($item->form->offtoggle) ? $item->form->offtoggle : false;
             $module->titleTag = $item->form->titleTag;
             $module->titleClass = htmlspecialchars($item->form->titleClass, ENT_COMPAT, 'UTF-8');
             $module->titleLink = htmlspecialchars($item->form->titleLink, ENT_QUOTES, 'UTF-8');
