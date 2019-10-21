@@ -18,6 +18,14 @@ use Joomla\CMS\Helper\AuthenticationHelper;
 $app = Factory::getApplication();
 $twofactormethods = AuthenticationHelper::getTwoFactorMethods();
 
+$favicon = $this->params->get('favicon');
+$favicon = $favicon ?: 'media/master3/images/favicon.png';
+$this->addFavicon(Uri::base(true) . '/' . $favicon, 'image/png', 'shortcut icon');
+
+$faviconApple = $this->params->get('faviconApple');
+$faviconApple = $faviconApple ?: 'media/master3/images/apple-touch-icon.png';
+$this->addHeadLink(Uri::base(true) . '/' . $faviconApple, 'apple-touch-icon-precomposed');
+
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">

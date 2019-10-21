@@ -59,7 +59,7 @@ $upper_limit = $lang->getUpperLimitSearchWord();
             $orders[] = HTMLHelper::_('select.option', 'alpha', Text::_('COM_SEARCH_ALPHABETICAL'));
             $orders[] = HTMLHelper::_('select.option', 'category', Text::_('JCATEGORY'));
 
-            echo HTMLHelper::_('select.genericlist', $orders, 'ordering', 'class="uk-select uk-form-small uk-form-width-small"', 'value', 'text', $this->ordering);
+            echo HTMLHelper::_('select.genericlist', $orders, 'ordering', 'class="uk-select uk-form-small uk-form-width-medium"', 'value', 'text', $this->ordering);
             ?>
         </div>
     </div>
@@ -82,13 +82,33 @@ $upper_limit = $lang->getUpperLimitSearchWord();
     </div>
     <?php } ?>
 
-    <?php if ($this->total > 0) { ?>
+    <?php
+    if ($this->total > 0) {
+        $pagesCounter = $this->pagination->getPagesCounter();
+    ?>
     <div class="uk-flex uk-flex-wrap uk-flex-between">
         <div class="form-limit">
-            <label for="limit"><?php echo Text::_('JGLOBAL_DISPLAY_NUM'); ?></label>
-            <?php echo $this->pagination->getLimitBox(); ?>
+            <label for="limit" class="uk-form-label"><?php echo Text::_('JGLOBAL_DISPLAY_NUM'); ?></label>
+            <?php
+				$limits = array();
+                
+                for ($i = 5; $i <= 30; $i += 5) {
+			        $limits[] = HTMLHelper::_('select.option', "$i");
+		        }
+
+		        $limits[] = HTMLHelper::_('select.option', '50', Text::_('J50'));
+		        $limits[] = HTMLHelper::_('select.option', '100', Text::_('J100'));
+		        $limits[] = HTMLHelper::_('select.option', '0', Text::_('JALL'));
+
+                $selected = $this->pagination->get('viewall') ? 0 : $this->pagination->limit;
+                
+                echo HTMLHelper::_('select.genericlist', $limits, $this->pagination->prefix . 'limit', 'class="uk-select uk-form-small uk-form-width-small" onchange="this.form.submit()"', 'value', 'text', $selected);
+            ?>
         </div>
-        <div class="uk-badge"><?php echo $this->pagination->getPagesCounter(); ?></div>
+
+        <?php if (isset($pagesCounter)) { ?>
+        <div class="uk-badge"><?php echo $pagesCounter; ?></div>
+        <?php } ?>
     </div>
     <?php } ?>
 

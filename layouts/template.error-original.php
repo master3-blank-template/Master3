@@ -29,8 +29,8 @@ $link = Uri::base(true);
     <title><?php echo $this->title; ?> – <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <link href="/libraries/master3/images/favicon.png" rel="shortcut icon" type="image/png" />
-    <link href="/templates/<?php echo $this->template; ?>/uikit/dist/css/uikit.min.css" rel="stylesheet" />
+    <link href="/media/master3/images/favicon.png" rel="shortcut icon" type="image/png" />
+    <link href="/media/uikit3/dist/css/uikit.min.css" rel="stylesheet" />
 </head>
 <body>
     
