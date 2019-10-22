@@ -18,19 +18,17 @@ $isBacktrace = $errorLevelStr === 'development';
 
 $errorCode = $this->error->getCode();
 
-$link = Uri::base(true);
-
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
     <meta charset="utf-8" />
-	<base href="<?php echo Uri::base() . substr($link, 1); ?>" />
+	<base href="<?php echo Uri::base(); ?>" />
     <title><?php echo $this->title; ?> – <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
-    <link href="/media/master3/images/favicon.png" rel="shortcut icon" type="image/png" />
-    <link href="/media/uikit3/dist/css/uikit.min.css" rel="stylesheet" />
+    <link href="<?php echo Uri::base(true); ?>/media/master3/images/favicon.png" rel="shortcut icon" type="image/png" />
+    <link href="<?php echo Uri::base(true); ?>/media/uikit3/dist/css/uikit.min.css" rel="stylesheet" />
 </head>
 <body>
     
@@ -46,7 +44,7 @@ $link = Uri::base(true);
         <div class="uk-container">
             <div class="uk-navbar">
                 <ul class="uk-navbar-nav">
-                    <li><a href="<?php echo $link; ?>"><?php echo Text::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?></a></li>
+                    <li><a href="<?php echo Uri::base(true); ?>"><?php echo Text::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?></a></li>
                 </ul>
             </div>
         </div>
