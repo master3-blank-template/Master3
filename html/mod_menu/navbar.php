@@ -18,7 +18,7 @@ if (!function_exists('getL2Items')) {
     {
         $result = 0;
         foreach ($items as $item) {
-            if ((int) $item->level === 2 && (int) $item->parent_id === $id) {
+            if ((int) $item->level === ($firstLevel + 1) && (int) $item->parent_id === $id) {
                 $result++;
             }
         }
@@ -38,11 +38,15 @@ if ($tagId = $params->get('tag_id', '')) {
 
 $class_sfx = $class_sfx ? ' ' . trim($class_sfx) : '';
 
+$firstLevel = (int) $list[array_key_first($list)]->level;
+
 echo '<ul class="uk-navbar-nav' . $class_sfx . '"' . $id . '>';
 
 foreach ($list as $i => &$item) {
-    if ((int) $item->level === 1) {
+    if ((int) $item->level === $firstLevel) {
         $miParams = $templateConfig->getMenuItemParams($item->id);
+    } else {
+        unset($miParams);
     }
 
     $class = 'item-' . $item->id;
@@ -69,19 +73,11 @@ foreach ($list as $i => &$item) {
         $class .= ' uk-parent';
     }
 
-    if ($item->type == 'separator' && (int) $item->level > 1) {
-        $class .= ' uk-nav-header';
-    }
-
-    if ($item->type == 'heading' && (int) $item->level > 1) {
-        $class .= ' uk-nav-header';
-    }
-
     echo '<li class="' . trim($class) . '">';
 
     switch ($item->type) {
         case 'separator':
-            if ((int) $item->level === 1) {
+            if ((int) $item->level === $firstLevel) {
                 require ModuleHelper::getLayoutPath('mod_menu', 'navbar_heading');
             }
             break;
@@ -98,7 +94,7 @@ foreach ($list as $i => &$item) {
     }
 
     if ($item->deeper) {
-        if ((int) $item->level === 1) {
+        if ((int) $item->level === $firstLevel) {
             $boundary = $miParams->dropdownJustify ? ' data-uk-drop="boundary:.uk-navbar;boundary-align:true;pos:bottom-justify;' . ($navbarClickMode ? 'mode:click;' : '') . '"' : '';
             $dropdownClass = $miParams->dropdownClass ? ' ' . $miParams->dropdownClass : '';
 
@@ -136,7 +132,7 @@ foreach ($list as $i => &$item) {
             echo str_repeat('</ul></li>', $level_diff);
         }
 
-        if (((int) $item->level - (int) $item->level_diff) === 1) {
+        if (((int) $item->level - (int) $item->level_diff) === $firstLevel) {
 
             if ($miParams->cols === 1) {
                 echo '</ul></div></li>';
@@ -159,7 +155,7 @@ foreach ($list as $i => &$item) {
     } else {
         echo '</li>';
 
-        if ((int) $item->level === 2 && isset($l2_arr) && isset($l2_aItem)) {
+        if ((int) $item->level === ($firstLevel + 1) && isset($l2_arr) && isset($l2_aItem)) {
             $l2_i++;
             if ($l2_arr[$l2_aItem] === $l2_i) {
                 echo '</ul></div><div><ul class="uk-nav uk-navbar-dropdown-nav">';

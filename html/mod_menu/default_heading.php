@@ -11,8 +11,11 @@ defined('_JEXEC') or die;
 use Joomla\CMS\HTML\HTMLHelper;
 
 $linktype = $item->title;
+$linkClass = '';
 
 if ($item->menu_image) {
+    $linkClass = 'uk-flex uk-flex-middle ';
+
     if ($item->menu_image_css) {
         $image_attributes['class'] = $item->menu_image_css;
         $linktype = HTMLHelper::_('image', $item->menu_image, $item->title, $image_attributes);
@@ -21,8 +24,8 @@ if ($item->menu_image) {
     }
 
     if ($item->params->get('menu_text', 1)) {
-        $linktype .= '<span class="uk-display-inline-block">' . $item->title . '</span>';
+        $linktype .= '<span class="uk-display-inline-block uk-margin-small-left">' . $item->title . '</span>';
     }
 }
 
-echo '<a class="uk-nav-header">' . $linktype . '</a>';
+echo '<span class="'. $linkClass . 'uk-nav-header">' . $linktype . '</span>';

@@ -42,10 +42,6 @@ foreach ($list as $i => &$item) {
     }
 
     if ($item->type == 'separator') {
-        $class .= ' uk-nav-header';
-    }
-
-    if ($item->type == 'heading' && (int)$item->level > 1) {
         $class .= ' uk-nav-divider';
     }
 

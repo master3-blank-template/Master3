@@ -10,19 +10,23 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
 
-$linktype = $item->title;
-
 if ($item->menu_image) {
+    $linktype = '<span class="uk-flex uk-flex-middle">';
+
     if ($item->menu_image_css) {
         $image_attributes['class'] = $item->menu_image_css;
-        $linktype = HTMLHelper::_('image', $item->menu_image, $item->title, $image_attributes);
+        $linktype .= HTMLHelper::_('image', $item->menu_image, $item->title, $image_attributes);
     } else {
-        $linktype = HTMLHelper::_('image', $item->menu_image, $item->title);
+        $linktype .= HTMLHelper::_('image', $item->menu_image, $item->title);
     }
 
     if ($item->params->get('menu_text', 1)) {
-        $linktype .= '<span class="uk-display-inline-block">' . $item->title . '</span>';
+        $linktype .= '<span class="uk-display-inline-block' . ((int)$item->level !== $firstLevel ? ' uk-nav-header' : '') . ' uk-margin-small-left">' . $item->title . '</span>';
     }
+
+    $linktype .= '</span>';
+} else {
+    $linktype = '<span' . ((int)$item->level !== $firstLevel ? ' class="uk-nav-header"' : '') . '>' . $item->title . '</span>';
 }
 
-echo '<a class="uk-nav-header">' . $linktype . '</a>';
+echo $linktype;
