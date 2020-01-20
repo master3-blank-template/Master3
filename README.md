@@ -8,7 +8,7 @@
 [![Suppurt](https://img.shields.io/badge/-support-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/support)
 
 ![Last Update](https://img.shields.io/badge/last_update-2020.01.20-28A5F5.svg?style=for-the-badge)
-![Version](https://img.shields.io/badge/version-1.2.6-28A5F5.svg?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.2.7-28A5F5.svg?style=for-the-badge)
 ![UIkit](https://img.shields.io/badge/UIkit-3.2.7-1e87f0.svg?style=for-the-badge)
 
 ![Joomla](https://img.shields.io/badge/joomla-3.9+-1A3867.svg?style=for-the-badge)

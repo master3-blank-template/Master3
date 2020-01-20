@@ -195,10 +195,16 @@ class master3InstallerScript
 		];
 		
 		foreach ($old_files as $file) {
-			\JFile::delete(Path::clean(JPATH_ROOT . $file));
+			$_file = Path::clean(JPATH_ROOT . $file);
+			if (is_file($_file)) {
+				\JFile::delete($_file);
+			}
 		}
 		foreach ($old_dirs as $dir) {
-			\JFolder::delete(Path::clean(JPATH_ROOT . $dir));
+			$_dir = Path::clean(JPATH_ROOT . $dir);
+			if (is_file($_dir)) {
+				\JFolder::delete($_dir);
+			}
 		}
 	}
 
