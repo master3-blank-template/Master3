@@ -68,6 +68,7 @@
                             <option value="uk-container uk-container-xsmall">TPL_MASTER3_SECTION_FORM_CONTAINER_XSMALL</option>
                             <option value="uk-container uk-container-small">TPL_MASTER3_SECTION_FORM_CONTAINER_SMALL</option>
                             <option value="uk-container uk-container-large">TPL_MASTER3_SECTION_FORM_CONTAINER_LARGE</option>
+                            <option value="uk-container uk-container-xlarge">TPL_MASTER3_SECTION_FORM_CONTAINER_XLARGE</option>
                             <option value="uk-container uk-container-expand">TPL_MASTER3_SECTION_FORM_CONTAINER_EXPAND</option>
                             <option value="uk-panel">TPL_MASTER3_SECTION_FORM_CONTAINER_NONE</option>
                         </field>
