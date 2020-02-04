@@ -44,7 +44,7 @@ $errorCode = $this->error->getCode();
         <div class="uk-container">
             <div class="uk-navbar">
                 <ul class="uk-navbar-nav">
-                    <li><a href="<?php echo Uri::base(true); ?>"><?php echo Text::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?></a></li>
+                    <li><a href="<?php echo Uri::base(true) ?: '/'; ?>"><?php echo Text::_('JERROR_LAYOUT_GO_TO_THE_HOME_PAGE'); ?></a></li>
                 </ul>
             </div>
         </div>
