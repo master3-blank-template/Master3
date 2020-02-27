@@ -14,7 +14,7 @@ use Joomla\CMS\Helper\ModuleHelper;
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
 
 if (!function_exists('getL2Items')) {
-    function getL2Items($items, $id)
+    function getL2Items($items, $id, $firstLevel)
     {
         $result = 0;
         foreach ($items as $item) {
@@ -45,8 +45,6 @@ echo '<ul class="uk-navbar-nav' . $class_sfx . '"' . $id . '>';
 foreach ($list as $i => &$item) {
     if ((int) $item->level === $firstLevel) {
         $miParams = $templateConfig->getMenuItemParams($item->id);
-    } else {
-        unset($miParams);
     }
 
     $class = 'item-' . $item->id;
@@ -101,7 +99,7 @@ foreach ($list as $i => &$item) {
             if ($miParams->cols === 1) {
                 echo '<div class="uk-navbar-dropdown' . $dropdownClass . '"' . $boundary . '><ul class="uk-nav uk-navbar-dropdown-nav">';
             } else {
-                $l2_ic = getL2Items($list, (int) $item->id);
+                $l2_ic = getL2Items($list, (int) $item->id, (int)$firstLevel);
                 $l2_cnt = (int) floor($l2_ic / $miParams->cols);
                 $l2_rod = (int) ($l2_ic % $miParams->cols);
                 $l2_i = 0;
