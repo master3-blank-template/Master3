@@ -2,7 +2,7 @@
 /*
  * @package     Joomla.Site
  * @subpackage  Templates.master3
- * @copyright   Copyright (C) 2019 Aleksey A. Morozov. All rights reserved.
+ * @copyright   Copyright (C) Aleksey A. Morozov. All rights reserved.
  * @license     GNU General Public License version 3 or later; see http://www.gnu.org/licenses/gpl-3.0.txt
  */
 
@@ -16,8 +16,6 @@ use Joomla\Archive\Archive;
 
 class master3InstallerScript
 {
-	private $uikitCompatible = '<p>UIkit3 installation error: %s. The operation of the template is not possible.</p>';
-
 	protected $files = [
 		'/layouts/joomla/form/field/subform/tabs.php',
 		'/layouts/joomla/form/field/subform/tabs/section.php',
@@ -107,7 +105,7 @@ class master3InstallerScript
 				mkdir(dirname($dstfile), 0755, true);
 			}
 			if (!copy($srcfile, $dstfile)) {
-				$msg .= '<p>Do not copiig file ' . $file . '</p>';
+				$msg .= Text::sprintf('TPL_MASTER3_UNABLE_TO_COPY', $file);
 			}
 		}
 
@@ -115,7 +113,7 @@ class master3InstallerScript
 		$dstfile = Path::clean(JPATH_ROOT . '/templates/master3/layouts/template.default.php');
 		if (!file_exists($dstfile)) {
 			if (!copy($srcfile, $dstfile)) {
-				$msg .= '<p>Do not copiig file template.default-original.php => template.default.php in /templates/master3/layouts/, please do this manually</p>';
+				$msg .= Text::sprintf('TPL_MASTER3_UNABLE_TO_COPY', 'template.default-original.php => template.default.php in /templates/master3/layouts/');
 			}
 		}
 
@@ -123,7 +121,7 @@ class master3InstallerScript
 		$dstfile = Path::clean(JPATH_ROOT . '/templates/master3/layouts/template.error.php');
 		if (!file_exists($dstfile)) {
 			if (!copy($srcfile, $dstfile)) {
-				$msg .= '<p>Do not copiig file template.error-original.php => template.error.php in /templates/master3/layouts/, please do this manually</p>';
+				$msg .= Text::sprintf('TPL_MASTER3_UNABLE_TO_COPY', 'template.error-original.php => template.error.php in /templates/master3/layouts/');
 			}
 		}
 
@@ -131,7 +129,7 @@ class master3InstallerScript
 		$dstfile = Path::clean(JPATH_ROOT . '/templates/master3/layouts/template.offline.php');
 		if (!file_exists($dstfile)) {
 			if (!copy($srcfile, $dstfile)) {
-				$msg .= '<p>Do not copiig file template.offline-original.php => template.offline.php in /templates/master3/layouts/, please do this manually</p>';
+				$msg .= Text::sprintf('TPL_MASTER3_UNABLE_TO_COPY', 'template.offline-original.php => template.offline.php in /templates/master3/layouts/');
 			}
 		}
 
@@ -142,7 +140,7 @@ class master3InstallerScript
 				mkdir(dirname($dstfile), 0755, true);
 			}
 			if (!copy($srcfile, $dstfile)) {
-				$msg .= '<p>Do not creating file custom.css, please do this manually</p>';
+				$msg .= Text::sprintf('TPL_MASTER3_UNABLE_TO_CREATE', 'custom.css in /templates/master3/css/');
 			}
 		}
 
@@ -153,13 +151,13 @@ class master3InstallerScript
 				mkdir(dirname($dstfile), 0755, true);
 			}
 			if (!copy($srcfile, $dstfile)) {
-				$msg .= '<p>Do not creating file custom.js, please do this manually</p>';
+				$msg .= Text::sprintf('TPL_MASTER3_UNABLE_TO_CREATE', 'custom.js in /templates/master3/js/');
 			}
 		}
 
 		$result = $this->installUikit3($parent);
 		if ($result !== true) {
-			$msg .= Text::sprintf($this->uikitCompatible, $result);
+			$msg .= Text::sprintf('TPL_MASTER3_UIKIT3_INSTALLATION_ERROR', $result);
 		}
 
 		if ($msg) {
@@ -172,9 +170,11 @@ class master3InstallerScript
 	{
 		foreach ($this->files as $file) {
 			\JFile::delete(Path::clean(JPATH_ROOT . $file));
+			InstallerHelper::cleanupInstall(Path::clean(JPATH_ROOT . $file));
 		}
 		foreach ($this->dirs as $dir) {
 			\JFolder::delete(Path::clean(JPATH_ROOT . $dir));
+			InstallerHelper::cleanupInstall(Path::clean(JPATH_ROOT . $dir));
 		}
 	}
 
@@ -198,12 +198,14 @@ class master3InstallerScript
 			$_file = Path::clean(JPATH_ROOT . $file);
 			if (is_file($_file)) {
 				\JFile::delete($_file);
+				InstallerHelper::cleanupInstall($_file);
 			}
 		}
 		foreach ($old_dirs as $dir) {
 			$_dir = Path::clean(JPATH_ROOT . $dir);
 			if (is_file($_dir)) {
 				\JFolder::delete($_dir);
+				InstallerHelper::cleanupInstall($_dir);
 			}
 		}
 	}
@@ -236,35 +238,35 @@ class master3InstallerScript
 
 			$contents = file_get_contents($uikitFile);
 			if ($contents === false) {
-				return "failed to download UIkit3 installation file ({$uikitFile})";
+				return Text::sprintf('TPL_MASTER3_UIKIT3_IE_FAILED_DOWNLOAD', $uikitFile);
 			}
 
 			$resultContents = file_put_contents($tmpFile, $contents);
 			if ($resultContents == false) {
-				return "failed to save UIkit3 installation file ({$tmpFile})";
+				return Text::sprintf('TPL_MASTER3_UIKIT3_IE_FAILED_INSTALLATION', $tmpFile);
 			}
 
 			if (!file_exists($tmpFile)) {
-				return "not exists UIkit3 installation file ({$tmpFile})";
+				return Text::sprintf('TPL_MASTER3_UIKIT3_IE_NOT_EXISTS', $tmpFile);
 			}
 
 			$archive = new Archive(['tmp_path' => $tmp]);
 			try {
 				$archive->extract($tmpFile, $extDir);
 			} catch (\Exception $e) {
-				return "failed to unzip UIkit3 installation file ({$tmpFile}, {$extDir}, {$e})";
+				return Text::sprintf('TPL_MASTER3_UIKIT3_IE_FAILER_UNZIP', $tmpFile, $extDir, $e->getMesage());
 			}
 
 			$installer = new Installer();
 			$installer->setPath('source', $extDir);
 			if (!$installer->findManifest()) {
 				InstallerHelper::cleanupInstall($tmpFile, $extDir);
-				return 'the correct manifest of the UIkit 3 installation file was not found';
+				return Text::_('TPL_MASTER3_UIKIT3_IE_INCORRECT_MANIFEST');
 			}
 
 			if (!$installer->install($extDir)) {
 				InstallerHelper::cleanupInstall($tmpFile, $extDir);
-				return 'UIkit3 installation error';
+				return Text::_('TPL_MASTER3_UIKIT3_IE_INSTALLER_ERROR');
 			}
 			
 			InstallerHelper::cleanupInstall($tmpFile, $extDir);

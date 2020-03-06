@@ -20,7 +20,7 @@ use Joomla\CMS\Language\Associations;
 HTMLHelper::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 // Create shortcuts to some parameters.
-$params = $this->item->params;
+$params = $this->params;
 $images = json_decode($this->item->images);
 $urls = json_decode($this->item->urls);
 $canEdit = $params->get('access-edit');
@@ -48,10 +48,10 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
         $assocParam);
     ?>
     
-    <?php if ($this->params->get('show_page_heading') && !$params->get('show_title')) { ?>
-    <h1 class="uk-article-title" itemprop="headline"><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
-    <?php } elseif ($params->get('show_title')) { ?>
-    <h1 class="uk-article-title" itemprop="headline"><?php echo $this->escape($this->item->title); ?></h1>
+    <?php if ($params->get('show_page_heading') && !$params->get('show_title')) { ?>
+    <h1 class="uk-article-title uk-margin-medium-bottom" itemprop="headline"><?php echo $this->escape($params->get('page_heading')); ?></h1>
+    <?php } elseif ($params->get('show_title') != false) { ?>
+    <h1 class="uk-article-title uk-margin-medium-bottom" itemprop="headline"><?php echo $this->escape($this->item->title); ?></h1>
     <?php } ?>
 
     <meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? Factory::getConfig()->get('language') : $this->item->language; ?>" />
