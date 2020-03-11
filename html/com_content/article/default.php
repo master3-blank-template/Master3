@@ -20,7 +20,7 @@ use Joomla\CMS\Language\Associations;
 HTMLHelper::addIncludePath(JPATH_COMPONENT . '/helpers');
 
 // Create shortcuts to some parameters.
-$params = $this->params;
+$params = $this->item->params;
 $images = json_decode($this->item->images);
 $urls = json_decode($this->item->urls);
 $canEdit = $params->get('access-edit');

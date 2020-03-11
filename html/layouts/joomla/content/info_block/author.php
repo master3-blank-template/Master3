@@ -21,7 +21,7 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 <dd class="createdby" itemprop="author" itemscope itemtype="https://schema.org/Person">
     <?php
     if ($jsIcons !== 'none') {
-        echo '<span data-uk-icon="icon:user"></span>&nbsp;';
+        echo '<span data-uk-icon="icon:user"></span> ';
     }
     $author = ($displayData['item']->created_by_alias ? : $displayData['item']->author);
     $author = '<span itemprop="name">' . $author . '</span>';

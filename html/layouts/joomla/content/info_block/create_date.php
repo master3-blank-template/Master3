@@ -21,7 +21,7 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 <dd class="create">
     <?php
     if ($jsIcons !== 'none') {
-        echo '<span data-uk-icon="icon:calendar"></span>&nbsp;';
+        echo '<span data-uk-icon="icon:calendar"></span>';
     }
     ?>
     <time datetime="<?php echo HTMLHelper::_('date', $displayData['item']->created, 'c'); ?>" itemprop="dateCreated">

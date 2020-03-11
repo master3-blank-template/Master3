@@ -21,10 +21,10 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 <dd class="modified">
     <?php
     if ($jsIcons !== 'none') {
-        echo '<span data-uk-icon="icon:calendar"></span>&nbsp;';
+        echo '<span data-uk-icon="icon:calendar"></span>';
     }
     ?>
-    <time datetime="<?php echo HTMLHelper::_( 'date', $displayData[ 'item' ]->modified, 'c' ); ?>" itemprop="dateModified">
-        <?php echo Text::sprintf( 'COM_CONTENT_LAST_UPDATED', HTMLHelper::_( 'date', $displayData[ 'item' ]->modified, Text::_( 'd.m.Y' ) ) ); ?>
+    <time datetime="<?php echo HTMLHelper::_('date', $displayData['item']->modified, 'c'); ?>" itemprop="dateModified">
+        <?php echo Text::sprintf('COM_CONTENT_LAST_UPDATED', HTMLHelper::_('date', $displayData['item']->modified, Text::_('d.m.Y'))); ?>
     </time>
 </dd>

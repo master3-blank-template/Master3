@@ -21,10 +21,10 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 <dd class="published">
     <?php
     if ($jsIcons !== 'none') {
-        echo '<span data-uk-icon="icon:calendar"></span>&nbsp;';
+        echo '<span data-uk-icon="icon:calendar"></span>';
     }
     ?>
-    <time datetime="<?php echo HTMLHelper::_( 'date', $displayData[ 'item' ]->publish_up, 'c' ); ?>" itemprop="datePublished">
-        <?php echo Text::sprintf( 'COM_CONTENT_PUBLISHED_DATE_ON', HTMLHelper::_( 'date', $displayData[ 'item' ]->publish_up, Text::_( 'd.m.Y' ) ) ); ?>
+    <time datetime="<?php echo HTMLHelper::_('date', $displayData['item']->publish_up, 'c'); ?>" itemprop="datePublished">
+        <?php echo Text::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', HTMLHelper::_('date', $displayData['item']->publish_up, Text::_('d.m.Y'))); ?>
     </time>
 </dd>
