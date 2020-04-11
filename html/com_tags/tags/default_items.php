@@ -26,19 +26,18 @@ $canCreate = $user->authorise('core.create', 'com_tags');
 $canEditState = $user->authorise('core.edit.state', 'com_tags');
 
 $columns = $this->params->get('tag_columns', 1);
+$all_tags_show_tag_description = $this->params->get('all_tags_show_tag_description', 1);
+$all_tags_show_tag_hits = $this->params->get('all_tags_show_tag_hits');
+$all_tags_show_tag_image = $this->params->get('all_tags_show_tag_image');
+$show_float_intro = (bool) $this->params->get('float_intro');
 
 if ($columns < 1) {
     $columns = 1;
 }
 
-$bsspans = floor(12 / $columns);
-
-if ($bsspans < 1) {
-    $bsspans = 1;
+if ($columns > 6) {
+    $columns = 6;
 }
-
-$bscolumns = min($columns, floor(12 / $bsspans));
-$n = count($this->items);
 
 Factory::getDocument()->addScriptDeclaration("
 var resetFilter = function() {
@@ -51,17 +50,33 @@ var resetFilter = function() {
     <?php
     if ($this->params->get('filter_field') || $this->params->get('show_pagination_limit')) {
     ?>
-    <div class="uk-flex uk-margin-medium-bottom" data-uk-margin>
+    <div class="uk-grid uk-grid-small uk-child-width-auto uk-margin-medium-bottom" data-uk-grid>
         <?php if ($this->params->get('filter_field')) { ?>
         <div class="uk-button-group">
             <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="uk-input uk-form-small uk-form-width-medium" onchange="document.adminForm.submit();" title="<?php echo Text::_('COM_TAGS_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo Text::_('COM_TAGS_TITLE_FILTER_LABEL'); ?>" />
-            <button type="button" name="filter-search-button" title="<?php echo Text::_('JSEARCH_FILTER_SUBMIT'); ?>" onclick="document.adminForm.submit();" class="uk-button uk-button-primary uk-button-small"><span data-uk-icon="icon:search"></span></button>
-            <button type="reset" name="filter-clear-button" title="<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>" class="uk-button uk-button-default uk-button-small" onclick="resetFilter(); document.adminForm.submit();"><span class="icon:close"></span></button>
+            <button type="button" name="filter-search-button" title="<?php echo Text::_('JSEARCH_FILTER_SUBMIT'); ?>" onclick="document.adminForm.submit();" class="uk-button uk-button-primary uk-button-small"><span data-uk-icon="icon:search;ratio:0.75"></span></button>
+            <button type="reset" name="filter-clear-button" title="<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>" class="uk-button uk-button-default uk-button-small" onclick="resetFilter(); document.adminForm.submit();"><span data-uk-icon="icon:close;ratio:0.75"></span></button>
         </div>
         <?php
         }
         if ($this->params->get('show_pagination_limit')) {
-            echo $this->pagination->getLimitBox();
+            echo '<div>';
+            
+            $limits = [];
+            for ($i = 5; $i <= 30; $i += 5) {
+                $limits[] = HTMLHelper::_('select.option', "$i");
+            }
+            $limits[] = HTMLHelper::_('select.option', '50', Text::_('J50'));
+            $limits[] = HTMLHelper::_('select.option', '100', Text::_('J100'));
+            $limits[] = HTMLHelper::_('select.option', '0', Text::_('JALL'));
+    
+            $selected = filter_input(INPUT_POST, 'limit', FILTER_SANITIZE_NUMBER_INT);
+            if (!isset($selected)) {
+                $selected = 0;
+            }
+            echo HTMLHelper::_('select.genericlist', $limits, $this->prefix . 'limit', 'class="uk-select uk-form-width-mini uk-form-small" onchange="this.form.submit()"', 'value', 'text', $selected);
+                
+            echo '</div>';
         }
         ?>
 
@@ -73,61 +88,63 @@ var resetFilter = function() {
     <?php
     }
 
-    if ($this->items == false || $n === 0) {
+    if (!count($this->items)) {
     ?>
     <div class="uk-alert"><?php echo Text::_('COM_TAGS_NO_TAGS'); ?></div>
     <?php
     } else {
+        
+        echo $columns > 1 ? 
+            '<div class="uk-grid uk-child-width-1-' . $columns . '" data-uk-grid="margin:uk-margin-top">' : 
+            '<ul class="uk-list thumbnails">';
+        $itemHtmlTag = $columns > 1 ? 'div' : 'li';
+        
         foreach ($this->items as $i => $item) {
-            if ($n === 1 || $i === 0 || $bscolumns === 1 || $i % $bscolumns === 0) {
-        ?>
-        <ul class="uk-list thumbnails">
-        <?php
-        }
-        if ((!empty($item->access)) && in_array($item->access, $this->user->getAuthorisedViewLevels())) {
+            if ((!empty($item->access)) && in_array($item->access, $this->user->getAuthorisedViewLevels())) {
+                echo '<' . $itemHtmlTag . '>';
             ?>
-            <li>
-                <h3><a href="<?php echo Route::_(TagsHelperRoute::getTagRoute($item->id . ':' . $item->alias)); ?>"><?php echo $this->escape($item->title); ?></a></h3>
-            <?php
-        }
-        if ($this->params->get('all_tags_show_tag_image') && !empty($item->images)) {
-            $images = json_decode($item->images);
-            ?>
-                <div class="tag-body">
-                    <?php
-                    if (!empty($images->image_intro)) {
-                        $imgfloat = empty($images->float_intro) ? $this->params->get('float_intro') : $images->float_intro;
-                        ?>
-                        <div class="uk-align-<?php echo htmlspecialchars($imgfloat); ?> item-image">
-                            <img
-                                <?php
-                                if ($images->image_intro_caption) {
-                                    echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_intro_caption) . '"';
-                                }
-                                ?>
-                                src="<?php echo $images->image_intro; ?>"
-                                alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>"
-                            />
-                        </div>
-                    <?php } ?>
-                </div>
-            <?php } ?>
+            <a class="uk-text-large uk-display-block" href="<?php echo Route::_(TagsHelperRoute::getTagRoute($item->id . ':' . $item->alias)); ?>"><?php echo $this->escape($item->title); ?></a>
+                <?php
+                if ($all_tags_show_tag_image && !empty($item->images)) {
+                    $images = json_decode($item->images);
+                    ?>
+                    <div class="tag-body">
+                        <?php
+                        if (!empty($images->image_intro)) {
+                            $imgfloat = empty($images->float_intro) ? $show_float_intro : $images->float_intro;
+                            ?>
+                            <div class="uk-align-<?php echo htmlspecialchars($imgfloat); ?> item-image">
+                                <img
+                                    <?php
+                                    if ($images->image_intro_caption) {
+                                        echo 'class="caption"' . ' title="' . htmlspecialchars($images->image_intro_caption) . '"';
+                                    }
+                                    ?>
+                                    src="<?php echo $images->image_intro; ?>"
+                                    alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>"
+                                />
+                            </div>
+                        <?php } ?>
+                    </div>
+                <?php
+                }
+                if (($all_tags_show_tag_description && $item->description) || $all_tags_show_tag_hits) {
+                ?>
                 <div class="caption">
-                    <?php if ($this->params->get('all_tags_show_tag_description', 1)) { ?>
+                    <?php if ($all_tags_show_tag_description && $item->description) { ?>
                     <span class="tag-body"><?php echo HTMLHelper::_('string.truncate', $item->description, $this->params->get('all_tags_tag_maximum_characters')); ?></span>
                     <?php } ?>
                     
-                    <?php if ($this->params->get('all_tags_show_tag_hits')) { ?>
-                    <span class="uk-badge"><?php echo Text::sprintf('JGLOBAL_HITS_COUNT', $item->hits); ?></span>
+                    <?php if ($all_tags_show_tag_hits) { ?>
+                    <span class="tag-view"> (<?php echo Text::sprintf('JGLOBAL_HITS_COUNT', $item->hits); ?>)</span>
                     <?php } ?>
                 </div>
-            </li>
-            
-            <?php if (($i === 0 && $n === 1) || $i === $n - 1 || $bscolumns === 1 || (($i + 1) % $bscolumns === 0)) { ?>
-            </ul>
-            <?php
+                <?
+                }
+                echo '</' . $itemHtmlTag . '>';
             }
         }
+        echo $columns > 1 ? '</div>' : '</ul>';
     }
 
     if (!empty($this->items)) {
