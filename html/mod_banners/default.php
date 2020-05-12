@@ -43,7 +43,7 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
                 $alt = $item->params->get('alt');
                 $alt = $alt ? : $item->name;
                 $alt = $alt ? : Text::_('MOD_BANNERS_BANNER');
-                $img = '<img data-src="' . $baseurl . $imageurl . '" alt="' . $alt . '"' . (!empty($width) ? ' width="' . $width . '"' : '') . (!empty($height) ? ' height="' . $height . '"' : '') . ' />';
+                $img = '<img data-src="' . $baseurl . $imageurl . '" alt="' . $alt . '"' . (!empty($width) ? ' width="' . $width . '"' : '') . (!empty($height) ? ' height="' . $height . '"' : '') . ' data-uk-img>';
 
                 if ($item->clickurl) {
                     // Wrap the banner in a link
