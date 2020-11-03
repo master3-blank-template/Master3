@@ -2,13 +2,14 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
+
 /**
  * Make thing clear
  * @var JForm   $tmpl             The Empty form for template
@@ -24,6 +25,10 @@ use Joomla\CMS\HTML\HTMLHelper;
  * @var bool    $groupByFieldset  Whether group the subform fields by it`s fieldset
  */
 extract($displayData);
+
+JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
+$templateConfig = \Master3Config::getInstance();
+$jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 if (!$buttons['add'] && !$buttons['remove'] && !$buttons['move']) {
     $buttons = [];
@@ -43,7 +48,7 @@ $sublayout = empty($groupByFieldset) ? 'section' : 'section-byfieldsets';
         data-bt-add="a.group-add" data-bt-remove="a.group-remove" data-bt-move="a.group-move"
         data-repeatable-element="div.subform-repeatable-group" data-minimum="<?php echo $min; ?>" data-maximum="<?php echo $max; ?>">
         <?php if (!empty($buttons['add'])) { ?>
-        <a class="uk-button uk-button-small uk-button-primary group-add btn btn-mini button btn-success" aria-label="<?php echo Text::_('JGLOBAL_FIELD_ADD'); ?>"><span data-uk-icon="icon:plus" aria-hidden="true"></span> </a>
+        <a class="uk-button uk-button-small uk-button-primary group-add btn btn-mini button btn-success" aria-label="<?php echo Text::_('JGLOBAL_FIELD_ADD'); ?>"><?php echo $jsIcons !== 'none' ? '<span data-uk-icon="icon:plus" aria-hidden="true"></span>' : Text::_('JGLOBAL_FIELD_ADD'); ?></a>
         <?php } ?>
     <?php
     foreach ($forms as $k => $form) {

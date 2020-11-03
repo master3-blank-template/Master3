@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_fields
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -49,8 +49,6 @@ if (!$fields) {
         }
         $class = $field->params->get('render_class');
         ?>
-        <dd class="field-entry <?php echo $class; ?>">
-            <?php echo \FieldsHelper::render($context, 'field.render', array('field' => $field)); ?>
-        </dd>
+        <?php echo \FieldsHelper::render($context, 'field.render', array('field' => $field, 'class' => $class)); ?>
     <?php } ?>
 </dl>

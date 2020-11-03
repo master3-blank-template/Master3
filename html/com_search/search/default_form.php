@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_search
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,16 +18,16 @@ $upper_limit = $lang->getUpperLimitSearchWord();
 
 ?>
 <form id="searchForm" action="<?php echo Route::_('index.php?option=com_search'); ?>" method="post">
-    
+
     <div class="uk-margin-bottom">
         <div class="uk-button-group uk-width">
-            <input type="text" name="searchword" title="<?php echo Text::_('COM_SEARCH_SEARCH_KEYWORD'); ?>" placeholder="<?php echo Text::_('COM_SEARCH_SEARCH_KEYWORD'); ?>" id="search-searchword" maxlength="<?php echo $upper_limit; ?>" value="<?php echo $this->escape($this->origkeyword); ?>" class="uk-input" />
+            <input type="text" name="searchword" title="<?php echo Text::_('COM_SEARCH_SEARCH_KEYWORD'); ?>" placeholder="<?php echo Text::_('COM_SEARCH_SEARCH_KEYWORD'); ?>" id="search-searchword" maxlength="<?php echo $upper_limit; ?>" value="<?php echo $this->escape($this->origkeyword); ?>" class="uk-input">
             <button name="Search" onclick="this.form.submit()" class="uk-button uk-button-primary uk-text-nowrap" data-uk-tooltip="<?php echo Text::_('COM_SEARCH_SEARCH'); ?>">
                 <span class="uk-margin-small-right" data-uk-search-icon></span>
                 <?php echo Text::_('JSEARCH_FILTER_SUBMIT'); ?>
             </button>
         </div>
-        <input type="hidden" name="task" value="search" />
+        <input type="hidden" name="task" value="search">
     </div>
 
     <?php if (!empty($this->searchword)) { ?>
@@ -74,7 +74,7 @@ $upper_limit = $lang->getUpperLimitSearchWord();
         ?>
         <div class="uk-margin-small-top">
             <label for="area-<?php echo $val; ?>" class="uk-form-label">
-                <input type="checkbox" name="areas[]" value="<?php echo $val; ?>" id="area-<?php echo $val; ?>" <?php echo $checked; ?> class="uk-checkbox" />
+                <input type="checkbox" name="areas[]" value="<?php echo $val; ?>" id="area-<?php echo $val; ?>" <?php echo $checked; ?> class="uk-checkbox">
                 <?php echo Text::_($txt); ?>
             </label>
         </div>
@@ -90,18 +90,18 @@ $upper_limit = $lang->getUpperLimitSearchWord();
         <div class="form-limit">
             <label for="limit" class="uk-form-label"><?php echo Text::_('JGLOBAL_DISPLAY_NUM'); ?></label>
             <?php
-				$limits = array();
-                
-                for ($i = 5; $i <= 30; $i += 5) {
-			        $limits[] = HTMLHelper::_('select.option', "$i");
-		        }
+                $limits = array();
 
-		        $limits[] = HTMLHelper::_('select.option', '50', Text::_('J50'));
-		        $limits[] = HTMLHelper::_('select.option', '100', Text::_('J100'));
-		        $limits[] = HTMLHelper::_('select.option', '0', Text::_('JALL'));
+                for ($i = 5; $i <= 30; $i += 5) {
+                    $limits[] = HTMLHelper::_('select.option', "$i");
+                }
+
+                $limits[] = HTMLHelper::_('select.option', '50', Text::_('J50'));
+                $limits[] = HTMLHelper::_('select.option', '100', Text::_('J100'));
+                $limits[] = HTMLHelper::_('select.option', '0', Text::_('JALL'));
 
                 $selected = $this->pagination->get('viewall') ? 0 : $this->pagination->limit;
-                
+
                 echo HTMLHelper::_('select.genericlist', $limits, $this->pagination->prefix . 'limit', 'class="uk-select uk-form-small uk-form-width-small" onchange="this.form.submit()"', 'value', 'text', $selected);
             ?>
         </div>

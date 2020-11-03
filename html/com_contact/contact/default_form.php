@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_contact
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -41,10 +41,10 @@ use Joomla\CMS\Router\Route;
         } ?>
         <div class="uk-margin-top">
             <button class="uk-button uk-button-primary validate" type="submit"><?php echo Text::_('COM_CONTACT_CONTACT_SEND'); ?></button>
-            <input type="hidden" name="option" value="com_contact" />
-            <input type="hidden" name="task" value="contact.submit" />
-            <input type="hidden" name="return" value="<?php echo $this->return_page; ?>" />
-            <input type="hidden" name="id" value="<?php echo $this->contact->slug; ?>" />
+            <input type="hidden" name="option" value="com_contact">
+            <input type="hidden" name="task" value="contact.submit">
+            <input type="hidden" name="return" value="<?php echo $this->return_page; ?>">
+            <input type="hidden" name="id" value="<?php echo $this->contact->slug; ?>">
             <?php echo HTMLHelper::_('form.token'); ?>
         </div>
     </form>

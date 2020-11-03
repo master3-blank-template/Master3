@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_tags
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,6 +14,10 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
 
+JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
+$templateConfig = \Master3Config::getInstance();
+$jsIcons = $templateConfig->params->get('jsIcons', 'none');
+
 Factory::getDocument()->addScriptDeclaration("
 var resetFilter = function() {
     document.getElementById( 'filter-search' ).value = '';
@@ -22,14 +26,19 @@ var resetFilter = function() {
 
 ?>
 <form action="<?php echo htmlspecialchars(Uri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm" class="form-inline">
-    
+
     <?php if ($this->params->get('show_headings') || $this->params->get('filter_field') || $this->params->get('show_pagination_limit')) { ?>
     <div class="uk-margin-medium uk-flex" data-uk-margin>
         <?php if ($this->params->get('filter_field')) { ?>
         <div class="uk-button-group">
-            <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="uk-input uk-form-small uk-form-width-medium" onchange="document.adminForm.submit();" title="<?php echo Text::_('COM_TAGS_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo Text::_('COM_TAGS_TITLE_FILTER_LABEL'); ?>" />
+            <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape($this->state->get('list.filter')); ?>" class="uk-input uk-form-small uk-form-width-medium" onchange="document.adminForm.submit();" title="<?php echo Text::_('COM_TAGS_FILTER_SEARCH_DESC'); ?>" placeholder="<?php echo Text::_('COM_TAGS_TITLE_FILTER_LABEL'); ?>">
+            <?php if ($jsIcons !== 'none') { ?>
             <button type="button" name="filter-search-button" title="<?php echo Text::_('JSEARCH_FILTER_SUBMIT'); ?>" onclick="document.adminForm.submit();" class="uk-button uk-button-small uk-button-primary"><span data-uk-icon="icon:search"></span></button>
             <button type="reset" name="filter-clear-button" title="<?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?>" class="uk-button uk-button-small uk-button-default" onclick="resetFilter(); document.adminForm.submit();"><span data-uk-icon="icon:close"></span></button>
+            <?php } else { ?>
+            <button type="button" name="filter-search-button" onclick="document.adminForm.submit();" class="uk-button uk-button-small uk-button-primary"><?php echo Text::_('JSEARCH_FILTER_SUBMIT'); ?></button>
+            <button type="reset" name="filter-clear-button" class="uk-button uk-button-small uk-button-default" onclick="resetFilter(); document.adminForm.submit();"><?php echo Text::_('JSEARCH_FILTER_CLEAR'); ?></button>
+            <?php } ?>
         </div>
         <?php
         }
@@ -37,10 +46,10 @@ var resetFilter = function() {
             echo $this->pagination->getLimitBox();
         }
         ?>
-        <input type="hidden" name="filter_order" value="" />
-        <input type="hidden" name="filter_order_Dir" value="" />
-        <input type="hidden" name="limitstart" value="" />
-        <input type="hidden" name="task" value="" />
+        <input type="hidden" name="filter_order" value="">
+        <input type="hidden" name="filter_order_Dir" value="">
+        <input type="hidden" name="limitstart" value="">
+        <input type="hidden" name="task" value="">
     </div>
     <?php
     }
@@ -76,7 +85,7 @@ var resetFilter = function() {
             if ($this->params->get('tag_list_show_item_image', 1) == 1 && !empty($images->image_intro)) {
             ?>
             <a href="<?php echo Route::_($item->link); ?>" itemprop="url">
-                <img src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>" itemprop="image">
+                <img src="<?php echo htmlspecialchars($images->image_intro); ?>" alt="<?php echo htmlspecialchars($images->image_intro_alt); ?>" itemprop="image" loading="lazy">
             </a>
             <?php
             }

@@ -4,7 +4,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -26,20 +26,20 @@ extract($displayData);
 
 <div class="subform-tabs-group" data-base-name="<?php echo $basegroup; ?>" data-group="<?php echo $group; ?>">
 
-	<?php foreach ($form->getFieldsets() as $fieldset) { ?>
-	<fieldset <?php if (!empty($fieldset->class)) { echo 'class="' . $fieldset->class . '"'; } ?>>
-		
-		<?php if (!empty($fieldset->label)) { ?>
-		<legend><?php echo Text::_($fieldset->label); ?></legend>
-		<?php } ?>
+    <?php foreach ($form->getFieldsets() as $fieldset) { ?>
+    <fieldset <?php if (!empty($fieldset->class)) { echo 'class="' . $fieldset->class . '"'; } ?>>
 
-		<?php
-		foreach ($form->getFieldset($fieldset->name) as $field) {
-			echo $field->renderField();
-		}
-		?>
-		
-	</fieldset>
-	<?php } ?>
+        <?php if (!empty($fieldset->label)) { ?>
+        <legend><?php echo Text::_($fieldset->label); ?></legend>
+        <?php } ?>
+
+        <?php
+        foreach ($form->getFieldset($fieldset->name) as $field) {
+            echo $field->renderField();
+        }
+        ?>
+
+    </fieldset>
+    <?php } ?>
 
 </div>

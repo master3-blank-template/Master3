@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_contact
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -11,6 +11,10 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 use Joomla\CMS\Uri\Uri;
+
+JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
+$templateConfig = \Master3Config::getInstance();
+$jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>
 <form action="<?php echo htmlspecialchars(Uri::getInstance()->toString()); ?>" method="post" name="adminForm" id="adminForm">
@@ -26,7 +30,7 @@ use Joomla\CMS\Uri\Uri;
                 class="uk-input uk-form-width-small"
                 onchange="document.adminForm.submit();"
                 placeholder="<?php echo Text::_('COM_CONTACT_FILTER_SEARCH_DESC'); ?>"
-            />
+            >
         </div>
         <?php
         }
@@ -64,10 +68,10 @@ use Joomla\CMS\Uri\Uri;
                     <?php } ?>
                 </div>
                 <?php } ?>
-                
+
                 <div class="uk-width-expand">
                     <a href="<?php echo Route::_(ContactHelperRoute::getContactRoute($item->slug, $item->catid)); ?>"><?php echo $item->name; ?></a>
-                    
+
                     <?php if ($this->items[$i]->published == 0) { ?>
                     <span class="uk-text--warning"><?php echo Text::_('JUNPUBLISHED'); ?></span>
                     <?php
@@ -77,13 +81,13 @@ use Joomla\CMS\Uri\Uri;
                     echo $item->event->beforeDisplayContent;
                     ?>
                     <ul class="uk-list uk-margin-small-top">
-                        
-                        <?php if ($this->params->get('show_position_headings')) { ?>
-                        <li><span class="uk-margin-small-right" data-uk-icon="icon:cog" data-uk-tooltip="<?php echo Text::_('COM_CONTACT_POSITION'); ?>"></span><?php echo $item->con_position; ?></li>
+
+                    <?php if ($this->params->get('show_position_headings')) { ?>
+                        <li><?php echo ($jsIcons !== 'none' ? '<span class="uk-margin-small-right" data-uk-icon="icon:cog" data-uk-tooltip="' . Text::_('COM_CONTACT_POSITION') . '"></span>' : Text::_('COM_CONTACT_POSITION') . ': '), $item->con_position; ?></li>
                         <?php } ?>
 
                         <?php if ($this->params->get('show_email_headings')) { ?>
-                        <li><span class="uk-margin-small-right" data-uk-icon="icon:main" data-uk-tooltip="<?php echo Text::_('COM_CONTACT_EMAIL_LABEL'); ?>"></span><?php echo $item->email_to; ?></li>
+                        <li><?php echo ($jsIcons !== 'none' ? '<span class="uk-margin-small-right" data-uk-icon="icon:main" data-uk-tooltip="' . Text::_('COM_CONTACT_EMAIL_LABEL') . '"></span>' : Text::_('COM_CONTACT_EMAIL_LABEL') . ': '), $item->email_to; ?></li>
                         <?php } ?>
 
                         <?php
@@ -98,18 +102,18 @@ use Joomla\CMS\Uri\Uri;
                             $location[] = $item->country;
                         }
                         ?>
-                        <li><span class="uk-margin-small-right" data-uk-icon="icon:location" data-uk-tooltip="<?php echo Text::_('COM_CONTACT_ADDRESS'); ?>"></span><?php echo implode(', ', $location); ?></li>
+                        <li><?php echo ($jsIcons !== 'none' ? '<span class="uk-margin-small-right" data-uk-icon="icon:location" data-uk-tooltip="' . Text::_('COM_CONTACT_ADDRESS') . '"></span>' : Text::_('COM_CONTACT_ADDRESS') . ': '), implode(', ', $location); ?></li>
 
                         <?php if ($this->params->get('show_telephone_headings') && !empty($item->telephone)) { ?>
-                        <li><span class="uk-margin-small-right" data-uk-icon="icon:receiver" data-uk-tooltip="<?php echo Text::_('COM_CONTACT_TELEPHONE'); ?>"></span><?php echo Text::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $item->telephone); ?></li>
+                        <li><?php echo ($jsIcons !== 'none' ? '<span class="uk-margin-small-right" data-uk-icon="icon:receiver" data-uk-tooltip="' . Text::_('COM_CONTACT_TELEPHONE') . '"></span>' : ''), Text::sprintf('COM_CONTACT_TELEPHONE_NUMBER', $item->telephone); ?></li>
                         <?php } ?>
-                        
+
                         <?php if ($this->params->get('show_fax_headings') && !empty($item->fax)) { ?>
-                        <li><span class="uk-margin-small-right" data-uk-icon="icon:receiver" data-uk-tooltip="<?php echo Text::_('COM_CONTACT_FAX'); ?>"></span><?php echo Text::sprintf('COM_CONTACT_FAX_NUMBER', $item->fax); ?></li>
+                        <li><?php echo ($jsIcons !== 'none' ? '<span class="uk-margin-small-right" data-uk-icon="icon:receiver" data-uk-tooltip="' . Text::_('COM_CONTACT_FAX') . '"></span>' : ''), Text::sprintf('COM_CONTACT_FAX_NUMBER', $item->fax); ?></li>
                         <?php } ?>
-                        
+
                         <?php if ($this->params->get('show_mobile_headings') && !empty($item->mobile)) { ?>
-                        <li><span class="uk-margin-small-right" data-uk-icon="icon:phone" data-uk-tooltip="<?php echo Text::_('COM_CONTACT_MOBILE'); ?>"></span><?php echo Text::sprintf('COM_CONTACT_MOBILE_NUMBER', $item->mobile); ?></li>
+                        <li><?php echo ($jsIcons !== 'none' ? '<span class="uk-margin-small-right" data-uk-icon="icon:phone" data-uk-tooltip="' . Text::_('COM_CONTACT_MOBILE') . '"></span>' : ''), Text::sprintf('COM_CONTACT_MOBILE_NUMBER', $item->mobile); ?></li>
                         <?php } ?>
 
                     </ul>
@@ -117,7 +121,7 @@ use Joomla\CMS\Uri\Uri;
 
             <div>
             <?php echo $item->event->afterDisplayContent; ?>
-                
+
         </li>
         <?php
             }
@@ -135,15 +139,15 @@ use Joomla\CMS\Uri\Uri;
     <div class="uk-margin-top uk-flex uk-flex-center<?php if ($show_pagination_results) { echo ' uk-flex-between@s'; } ?>">
 
         <div><?php echo $this->pagination->getPagesLinks(); ?></div>
-        
+
         <?php if ($show_pagination_results) { ?>
         <div><?php echo $this->pagination->getPagesCounter(); ?></div>
         <?php } ?>
-        
+
     </div>
     <?php } ?>
     <div>
-        <input type="hidden" name="filter_order" value="<?php echo $this->escape($this->state->get('list.ordering')); ?>" />
-        <input type="hidden" name="filter_order_Dir" value="<?php echo $this->escape($this->state->get('list.direction')); ?>" />
+        <input type="hidden" name="filter_order" value="<?php echo $this->escape($this->state->get('list.ordering')); ?>">
+        <input type="hidden" name="filter_order_Dir" value="<?php echo $this->escape($this->state->get('list.direction')); ?>">
     </div>
 </form>

@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  User.terms
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -68,11 +68,11 @@ $label = '<label id="' . $id . '-lbl" for="' . $id . '" class="' . $class . '"';
 
 // If a description is specified, use it to build a tooltip.
 if (!empty($description)) {
-	if ($text && $text !== $description) {
-		$label .= ' data-uk-tooltip="' . htmlspecialchars($description) . '"';
-	} else {
-		$label .= ' data-uk-tooltip="' . HTMLHelper::_('tooltipText', trim($text, ':'), htmlspecialchars($description), 0) . '"';
-	}
+    if ($text && $text !== $description) {
+        $label .= ' data-uk-tooltip="' . htmlspecialchars($description) . '"';
+    } else {
+        $label .= ' data-uk-tooltip="' . HTMLHelper::_('tooltipText', trim($text, ':'), htmlspecialchars($description), 0) . '"';
+    }
 }
 
 $attribs = [];
@@ -80,9 +80,9 @@ $attribs['class'] = 'modal';
 $attribs['rel'] = '{handler: \'iframe\', size: {x:800, y:500}}';
 
 if ($article) {
-	$link = HTMLHelper::_('link', Route::_($article->link . '&tmpl=component'), $text, $attribs);
+    $link = HTMLHelper::_('link', Route::_($article->link . '&tmpl=component'), $text, $attribs);
 } else {
-	$link = $text;
+    $link = $text;
 }
 
 // Add the label text and closing tag.

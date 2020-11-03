@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright ( C ) 2005 - 2018 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright ( C ) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -57,7 +57,7 @@ HTMLHelper::_('stylesheet', 'jui/jquery.simplecolors.css', ['version' => 'auto',
 HTMLHelper::_('script', 'system/color-field-init.min.js', ['version' => 'auto', 'relative' => true]);
 ?>
 <select
-    name="<?php echo $name; ?>" 
+    name="<?php echo $name; ?>"
     id="<?php echo $id; ?>"
     <?php echo $disabled; ?>
     <?php echo $readonly; ?>

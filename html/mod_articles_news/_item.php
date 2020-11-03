@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  mod_articles_news
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -21,7 +21,7 @@ if ($params->get('item_title')) {
 
 if ($params->get('img_intro_full') !== 'none' && !empty($item->imageSrc)) {
     echo '<figure class="newsflash-image">';
-    echo '<img src="' . $item->imageSrc . '" alt="' . $item->imageAlt . '">';
+    echo '<img src="' . $item->imageSrc . '" alt="' . $item->imageAlt . '" loading="lazy">';
     if (!empty($item->imageCaption)) {
         echo '<figcaption>' . $item->imageCaption . '</figcaption>';
     }

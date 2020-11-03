@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  Fields.User
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,27 +14,27 @@ use Joomla\CMS\Factory;
 $value = $field->value;
 
 if ($value == '') {
-	return;
+    return;
 }
 
 $value = (array)$value;
 $texts = [];
 
 foreach ($value as $userId) {
-	if (!$userId) {
-		continue;
-	}
+    if (!$userId) {
+        continue;
+    }
 
-	$user = Factory::getUser($userId);
+    $user = Factory::getUser($userId);
 
-	if ($user) {
-		// Use the Username
-		$texts[] = $user->name;
-		continue;
-	}
+    if ($user) {
+        // Use the Username
+        $texts[] = $user->name;
+        continue;
+    }
 
-	// Fallback and add the User ID if we get no JUser Object
-	$texts[] = $userId;
+    // Fallback and add the User ID if we get no JUser Object
+    $texts[] = $userId;
 }
 
 echo htmlentities(implode(', ', $texts));

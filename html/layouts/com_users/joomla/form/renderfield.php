@@ -4,7 +4,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -24,8 +24,8 @@ extract($displayData);
  */
 
 if (!empty($options['showonEnabled'])) {
-	HTMLHelper::_('jquery.framework');
-	HTMLHelper::_('script', 'jui/cms.js', array('version' => 'auto', 'relative' => true));
+    HTMLHelper::_('jquery.framework');
+    HTMLHelper::_('script', 'jui/cms.js', array('version' => 'auto', 'relative' => true));
 }
 
 $class = empty($options['class']) ? '' : ' ' . $options['class'];
@@ -49,15 +49,15 @@ $typeOfSpacer = (strpos($label, 'spacer-lbl') !== false);
 ?>
 
 <div class="uk-form-stacked uk-margin <?php echo $class; ?>"<?php echo $rel; ?>>
-	<?php if (empty($options['hiddenLabel'])) { ?>
-	<div class="uk-form-label">
-		<?php
-		echo $label;
-		if (!$required && !$typeOfSpacer) {
-		?>
-		<span class="optional"><?php echo Text::_('COM_USERS_OPTIONAL'); ?></span>
-		<?php } ?>
-	</div>
-	<?php } ?>
-	<div class="uk-form-controls"><?php echo $input; ?></div>
+    <?php if (empty($options['hiddenLabel'])) { ?>
+    <div class="uk-form-label">
+        <?php
+        echo $label;
+        if (!$required && !$typeOfSpacer) {
+        ?>
+        <span class="optional"><?php echo Text::_('COM_USERS_OPTIONAL'); ?></span>
+        <?php } ?>
+    </div>
+    <?php } ?>
+    <div class="uk-form-controls"><?php echo $input; ?></div>
 </div>

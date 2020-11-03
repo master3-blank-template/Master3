@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_wrapper
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -17,7 +17,7 @@ $title = $this->escape($this->params->get('page_heading')) ? $this->escape($this
 
 ?>
 <div class="uk-article <?php echo $this->pageclass_sfx; ?>">
-    
+
     <?php if ($this->params->get('show_page_heading')) { ?>
     <h1 class="uk-article-title"><?php echo $title; ?></h1>
     <?php } ?>

@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -50,7 +50,7 @@ HTMLHelper::_('script', 'system/html5fallback.js', array('version' => 'auto', 'r
  *     %3 - value
  *     %4 = any other attributes
  */
-$format = '<input type="radio" class="uk-radio" id="%1$s" name="%2$s" value="%3$s" %4$s />';
+$format = '<input type="radio" class="uk-radio" id="%1$s" name="%2$s" value="%3$s" %4$s>';
 $alt    = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $name);
 ?>
 <div id="<?php echo $id; ?>" class="<?php echo trim($class . ' radio' . ($readonly || $disabled ? ' disabled' : '') . ($readonly ? ' readonly' : '')); ?>"

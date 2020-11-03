@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -16,7 +16,7 @@ HTMLHelper::addIncludePath(JPATH_COMPONENT . '/helpers');
 // It will be a separate class if the user starts it with a space
 ?>
 <div class="blog-featured<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
-    
+
     <?php if ($this->params->get('show_page_heading')) { ?>
     <h1 class="uk-article-title"><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
     <?php
@@ -72,11 +72,11 @@ HTMLHelper::addIncludePath(JPATH_COMPONENT . '/helpers');
     <div class="uk-margin-top uk-flex uk-flex-center<?php if ($show_pagination_results) { echo ' uk-flex-between@s'; } ?>">
 
         <div><?php echo $this->pagination->getPagesLinks(); ?></div>
-        
+
         <?php if ($show_pagination_results) { ?>
         <div><?php echo $this->pagination->getPagesCounter(); ?></div>
         <?php } ?>
-        
+
     </div>
     <?php } ?>
 

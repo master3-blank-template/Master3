@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Form
- * 
+ *
  * @copyright   Copyright (C) Aleksey A. Morozov (AlekVolsk). All rights reserved.
  * @license     GNU General Public License version 3 or later; see http://www.gnu.org/licenses/gpl-3.0.txt
  */

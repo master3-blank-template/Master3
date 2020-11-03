@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  mod_languages
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -21,12 +21,12 @@ use Joomla\CMS\Uri\Uri;
 
     if ($params->get('dropdown', 0) && !$params->get('dropdownimage', 1)) {
     ?>
-    
+
     <form name="lang" method="post" action="<?php echo htmlspecialchars(Uri::current(), ENT_COMPAT, 'UTF-8'); ?>">
         <select class="uk-select uk-width-auto" onchange="document.location.replace( this.value );" >
             <?php foreach ($list as $language) { ?>
             <option dir=<?php echo $language->rtl ? '"rtl"' : '"ltr"'; ?> value="<?php echo htmlspecialchars($language->link, ENT_QUOTES, 'UTF-8'); ?>" <?php echo $language->active ? 'selected="selected"' : ''; ?>><?php echo $language->title_native; ?></option>
-            <?php 
+            <?php
         } ?>
         </select>
     </form>
@@ -84,7 +84,7 @@ use Joomla\CMS\Uri\Uri;
             </ul>
         </div>
     </div>
-    
+
     <?php } else { ?>
 
     <ul class="<?php echo $params->get('inline', 1) ? 'uk-subnav uk-margin-remove' : 'uk-list uk-margin-remove'; ?>">
@@ -131,7 +131,7 @@ use Joomla\CMS\Uri\Uri;
     if ($footerText) {
         ?>
         <div class="uk-margin-top posttext"><p><?php echo $footerText; ?></p></div>
-        <?php 
+        <?php
     }
     ?>
 

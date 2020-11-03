@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_contact
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -19,7 +19,7 @@ if (empty($this->items)) {
 <div class="uk-alert"><?php echo Text::_('COM_CONTACT_NO_CONTACTS'); ?></div>
 <?php } else { ?>
 <table class="uk-table uk-table-striped uk-table-responsive uk-table-hover">
-    
+
     <?php if ($this->params->get('show_headings')) { ?>
     <thead>
         <tr>
@@ -66,7 +66,7 @@ if (empty($this->items)) {
     <tbody>
         <?php foreach ($this->items as $i => $item) { ?>
         <tr itemscope itemtype="https://schema.org/Person">
-            
+
             <td><?php echo $i; ?></td>
 
             <td>
@@ -107,7 +107,7 @@ if (empty($this->items)) {
             <?php if ($this->params->get('show_country_headings')) { ?>
             <td itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="addressCountry"><?php echo $item->country; ?></span></td>
             <?php } ?>
-            
+
         </tr>
         <?php } ?>
 

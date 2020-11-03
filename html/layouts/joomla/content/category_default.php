@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -53,7 +53,7 @@ $tagsData = $category->tags->itemTags;
         <?php if ($params->get('show_category_title', 1)) { ?>
         <h2><?php echo HTMLHelper::_('content.prepare', $category->title, '', $extension . '.category.title'); ?></h2>
         <?php } ?>
-        
+
         <?php echo $afterDisplayTitle; ?>
 
         <?php
@@ -64,7 +64,7 @@ $tagsData = $category->tags->itemTags;
         if ($beforeDisplayContent || $afterDisplayContent || $params->get('show_description', 1) || $params->def('show_description_image', 1)) {
             echo '<div class="category-desc">';
             if ($params->get('show_description_image') && $category->getParams()->get('image')) {
-                echo '<img src="' . $category->getParams()->get('image') . '" alt="' . htmlspecialchars($category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8') . '"/>';
+                echo '<img src="' . $category->getParams()->get('image') . '" alt="' . htmlspecialchars($category->getParams()->get('image_alt'), ENT_COMPAT, 'UTF-8') . '" loading="lazy">';
             }
 
             echo $beforeDisplayContent;

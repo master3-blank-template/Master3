@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,6 +12,10 @@ use Joomla\Utilities\ArrayHelper;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\HTML\HTMLHelper;
+
+JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
+$templateConfig = \Master3Config::getInstance();
+$jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 extract($displayData);
 /**
@@ -89,13 +93,13 @@ $anchorAttributes = ['class' => 'uk-button uk-button-primary modal_' . $id, 'tit
 
 ?>
 <div class="uk-button-group uk-width">
-    <input <?php echo ArrayHelper::toString($inputAttributes); ?> readonly />
+    <input <?php echo ArrayHelper::toString($inputAttributes); ?> readonly>
     <?php
     if (!$readonly) {
-        echo HTMLHelper::_('link', (string)$uri, '<span data-uk-icon="icon:user"></span>', $anchorAttributes);
+        echo HTMLHelper::_('link', (string)$uri, $jsIcons ? '<span data-uk-icon="icon:user"></span>' : '&darr;', $anchorAttributes);
     }
     ?>
 </div>
 <?php if (!$readonly) { ?>
-    <input type="hidden" id="<?php echo $id; ?>_id" name="<?php echo $name; ?>" value="<?php echo (int)$value; ?>" data-onchange="<?php echo $this->escape($onchange); ?>" />
+    <input type="hidden" id="<?php echo $id; ?>_id" name="<?php echo $name; ?>" value="<?php echo (int)$value; ?>" data-onchange="<?php echo $this->escape($onchange); ?>">
 <?php }

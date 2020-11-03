@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -13,7 +13,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Filesystem\Path;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
-
 $templateName = \Master3Config::getTemplateName();
 
 $item = $displayData;

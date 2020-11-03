@@ -4,7 +4,7 @@
  * @package     Joomla.Site
  * @subpackage  Layout
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -36,40 +36,40 @@ extract($displayData);
 HTMLHelper::_('stylesheet', 'system/subform-tabs.css', ['version' => 'auto', 'relative' => true]);
 
 if (!$forms) {
-	echo '<div class="alert alert-warning uk-alert uk-alert-warning">Subform elements not found.</div>';
+    echo '<div class="alert alert-warning uk-alert uk-alert-warning">Subform elements not found.</div>';
 } else {
-	$fieldset = $forms[0]->getFieldset('');
-	$keyField = array_shift($fieldset);
+    $fieldset = $forms[0]->getFieldset('');
+    $keyField = array_shift($fieldset);
 
-	$uid = uniqid() . '-' . $fieldname;
+    $uid = uniqid() . '-' . $fieldname;
 
-	$tab_name = 'subform-tabset-' . $uid;
+    $tab_name = 'subform-tabset-' . $uid;
 
-	$out = [];
+    $out = [];
 
-	$out[] = '<div class="subform-tabs tabs-left">';
+    $out[] = '<div class="subform-tabs tabs-left">';
 
-	$out[] = '<ul class="nav nav-tabs" id="' . $tab_name . 'Tabs">';
+    $out[] = '<ul class="nav nav-tabs" id="' . $tab_name . 'Tabs">';
 
-	$class = ' class="active"';
-	foreach ($forms as $k => $form) {
-		$out[] = '<li' . $class . '><a href="#subform-tab-' . $uid . '-' . $keyField->fieldname . '-' . $k . '" data-toggle="tab">' . $form->getValue($keyField->fieldname, $keyField->group ? $keyField->group : null) . '</a></li>';
-		$class = '';
-	}
-	$out[] = '</ul>';
+    $class = ' class="active"';
+    foreach ($forms as $k => $form) {
+        $out[] = '<li' . $class . '><a href="#subform-tab-' . $uid . '-' . $keyField->fieldname . '-' . $k . '" data-toggle="tab">' . $form->getValue($keyField->fieldname, $keyField->group ? $keyField->group : null) . '</a></li>';
+        $class = '';
+    }
+    $out[] = '</ul>';
 
-	$out[] = '<div class="tab-content" id="' . $tab_name . 'Content">';
-	$class = ' active';
-	foreach ($forms as $k => $form) {
-		$out[] = '<div id="subform-tab-' . $uid . '-' . $keyField->fieldname . '-' . $k . '" class="tab-pane' . $class . '">';
-		$class = '';
-		$out[] = $this->sublayout('section', array('form' => $form, 'basegroup' => $fieldname, 'group' => $fieldname . $k, 'buttons' => $buttons));
-		$out[] = '</div>';
-	}
-	$out[] = '</div>';
+    $out[] = '<div class="tab-content" id="' . $tab_name . 'Content">';
+    $class = ' active';
+    foreach ($forms as $k => $form) {
+        $out[] = '<div id="subform-tab-' . $uid . '-' . $keyField->fieldname . '-' . $k . '" class="tab-pane' . $class . '">';
+        $class = '';
+        $out[] = $this->sublayout('section', array('form' => $form, 'basegroup' => $fieldname, 'group' => $fieldname . $k, 'buttons' => $buttons));
+        $out[] = '</div>';
+    }
+    $out[] = '</div>';
 
-	$out[] = '</div>';
+    $out[] = '</div>';
 
-	echo implode('', $out);
-	unset($out);
+    echo implode('', $out);
+    unset($out);
 }

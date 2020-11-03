@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu.subnav
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -23,7 +23,7 @@ $firstLevel = (int) $list[array_key_first($list)]->level;
 echo '<ul class="uk-subnav' . $class_sfx . '"' . $id . '>';
 
 foreach ($list as $i => &$item) {
-    
+
     $class = 'item-' . $item->id;
 
     if ($item->id == $active_id) {

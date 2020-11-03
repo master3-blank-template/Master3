@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -17,6 +17,10 @@ use Joomla\CMS\Layout\LayoutHelper;
 HTMLHelper::_('behavior.tabstate');
 HTMLHelper::_('behavior.keepalive');
 HTMLHelper::_('behavior.formvalidator');
+
+JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
+$templateConfig = \Master3Config::getInstance();
+$jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 $this->tab_name = 'com-content-form';
 $this->ignore_fieldsets = array('image-intro', 'image-full', 'jmetadata', 'item_associations');
@@ -51,7 +55,7 @@ Factory::getDocument()->addScriptDeclaration("
     <?php } ?>
 
     <form action="<?php echo Route::_('index.php?option=com_content&a_id=' . ( int )$this->item->id); ?>" method="post" name="adminForm" id="adminForm" class="form-validate form-vertical">
-        
+
         <?php
         echo HTMLHelper::_('bootstrap.startTabSet', $this->tab_name, array('uk-active' => 'editor'));
 
@@ -159,16 +163,16 @@ Factory::getDocument()->addScriptDeclaration("
         echo HTMLHelper::_('bootstrap.endTabSet');
         ?>
 
-        <input type="hidden" name="task" value="" />
-        <input type="hidden" name="return" value="<?php echo $this->return_page; ?>" />
+        <input type="hidden" name="task" value="">
+        <input type="hidden" name="return" value="<?php echo $this->return_page; ?>">
         <?php echo HTMLHelper::_('form.token'); ?>
 
         <hr class="uk-margin-medium">
 
         <div class="uk-flex">
-            <button type="button" class="uk-button uk-button-primary uk-margin-small-right" onclick="Joomla.submitbutton( 'article.save' )"><span data-uk-icon="icon:ok"></span><?php echo Text::_('JSAVE') ?></button>
-            <button type="button" class="uk-button uk-button-default uk-margin-small-right" onclick="Joomla.submitbutton( 'article.cancel' )"><span data-uk-icon="icon:cancel"></span><?php echo Text::_('JCANCEL') ?></button>
-            
+            <button type="button" class="uk-button uk-button-primary uk-margin-small-right" onclick="Joomla.submitbutton( 'article.save' )"><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:ok"></span>' : ''), Text::_('JSAVE') ?></button>
+            <button type="button" class="uk-button uk-button-default uk-margin-small-right" onclick="Joomla.submitbutton( 'article.cancel' )"><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:cancel"></span>' : ''), Text::_('JCANCEL') ?></button>
+
             <?php
             if ($params->get('save_history', 0) && $this->item->id) {
                 echo $this->form->getInput('contenthistory');

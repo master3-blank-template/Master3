@@ -9,9 +9,7 @@
 defined('_JEXEC') or die;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
-
 $config = \Master3Config::getInstance();
-
 $systemOutput = $config->getSystemOutput();
 
 ?>

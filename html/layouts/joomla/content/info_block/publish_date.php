@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,9 +12,7 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\HTML\HTMLHelper;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
-
 $templateConfig = \Master3Config::getInstance();
-
 $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>

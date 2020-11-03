@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_users
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -13,21 +13,19 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Router\Route;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
-
 $templateConfig = \Master3Config::getInstance();
-
 $denyUserAuthorization = $templateConfig->getDUA();
 
 if (!$denyUserAuthorization) {
     ?>
 <div class="registration<?php echo $this->pageclass_sfx; ?>">
-    
+
     <?php if ($this->params->get('show_page_heading')) { ?>
     <h1 class="uk-article-title"><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
     <?php } ?>
 
     <form id="member-registration" action="<?php echo Route::_('index.php?option=com_users&task=registration.register'); ?>" method="post" class="form-validate form-horizontal well" enctype="multipart/form-data">
-        
+
         <ul data-uk-tab="connect:#com-users-registration-content">
             <?php
             foreach ($this->form->getFieldsets() as $fieldset) {
@@ -39,7 +37,7 @@ if (!$denyUserAuthorization) {
             }
             ?>
         </ul>
-        
+
         <ul id="com-users-registration-content" class="uk-margin uk-switcher">
             <?php
             // Iterate through the form fieldsets and display each one.
@@ -55,7 +53,7 @@ if (!$denyUserAuthorization) {
                     <legend class="uk-h4 uk-text-primary"><?php echo Text::_($fieldset->label); ?></legend>
                     <?php
                     }
-                    
+
                     // Iterate through the fields in the set and display them.
                     foreach ($fields as $field) {
                         // If the field is hidden, just display the input.
@@ -92,8 +90,8 @@ if (!$denyUserAuthorization) {
             <a class="uk-button uk-button-default" href="<?php echo Route::_(''); ?>" title="<?php echo Text::_('JCANCEL'); ?>"><?php echo Text::_('JCANCEL'); ?></a>
         </div>
 
-        <input type="hidden" name="option" value="com_users" />
-        <input type="hidden" name="task" value="registration.register" />
+        <input type="hidden" name="option" value="com_users">
+        <input type="hidden" name="task" value="registration.register">
         <?php echo HTMLHelper::_('form.token'); ?>
 
     </form>

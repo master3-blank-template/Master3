@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -101,8 +101,8 @@ switch ($preview) {
         break;
 }
 
-echo '<input type="text" name="' . $name . '" id="' . $id . 
-    '" value="' . htmlspecialchars($value, ENT_COMPAT, 'UTF-8') . 
+echo '<input type="text" name="' . $name . '" id="' . $id .
+    '" value="' . htmlspecialchars($value, ENT_COMPAT, 'UTF-8') .
     '" readonly="readonly"' . $attr . ' data-basepath="' . Uri::root() . '">';
 ?>
 <a class="modal uk-button uk-button-primary" title="<?php echo Text::_('JLIB_FORM_BUTTON_SELECT'); ?>" href="<?php echo ($readonly ?: ($link ?: 'index.php?option=com_media&amp;view=images&amp;tmpl=component&amp;asset=' . $asset . '&amp;author=' . $authorField) . '&amp;fieldid=' . $id . '&amp;folder=' . $folder); ?>" rel="{handler: \'iframe\', size: {x: 800, y: 500}}"><?php echo Text::_('JLIB_FORM_BUTTON_SELECT'); ?></a>

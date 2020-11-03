@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_contact
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -10,6 +10,10 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\String\PunycodeHelper;
+
+JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
+$templateConfig = \Master3Config::getInstance();
+$jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>
 
@@ -34,42 +38,42 @@ use Joomla\CMS\String\PunycodeHelper;
         }
         $address = implode(', ', $address);
         ?>
-    <dt><span class="uk-margin-small-right" data-uk-icon="icon:location"></span><?php echo Text::_('COM_CONTACT_ADDRESS'); ?>:</dt>
+    <dt><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:location"></span>' : ''), Text::_('COM_CONTACT_ADDRESS'); ?>:</dt>
     <dd><?php echo $address; ?></dd>
     <?php
     }
 
     if ($this->contact->email_to && $this->params->get('show_email')) {
     ?>
-    <dt><span class="uk-margin-small-right" data-uk-icon="icon:main"></span><?php echo Text::_('COM_CONTACT_EMAIL_LABEL'); ?>:</dt>
+    <dt><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:main"></span>' : ''), Text::_('COM_CONTACT_EMAIL_LABEL'); ?>:</dt>
     <dd itemprop="email"><?php echo $this->contact->email_to; ?></dd>
     <?php
     }
 
     if ($this->contact->telephone && $this->params->get('show_telephone')) {
     ?>
-    <dt><span class="uk-margin-small-right" data-uk-icon="icon:receiver"></span><?php echo Text::_('COM_CONTACT_TELEPHONE'); ?>:</dt>
+    <dt><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:receiver"></span>' : ''), Text::_('COM_CONTACT_TELEPHONE'); ?>:</dt>
     <dd itemprop="telephone"><?php echo $this->contact->telephone; ?></dd>
     <?php
     }
-    
+
     if ($this->contact->fax && $this->params->get('show_fax')) {
     ?>
-    <dt><span class="uk-margin-small-right" data-uk-icon="icon:receiver"></span><?php echo Text::_('COM_CONTACT_FAX'); ?>:</dt>
+    <dt><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:receiver"></span>' : ''), Text::_('COM_CONTACT_FAX'); ?>:</dt>
     <dd itemprop="faxNumber"><?php echo $this->contact->fax; ?></dd>
     <?php
     }
 
     if ($this->contact->mobile && $this->params->get('show_mobile')) {
     ?>
-    <dt><span class="uk-margin-small-right" data-uk-icon="icon:phone"></span><?php echo Text::_('COM_CONTACT_MOBILE'); ?>:</dt>
+    <dt><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:phone"></span>' : ''), Text::_('COM_CONTACT_MOBILE'); ?>:</dt>
     <dd itemprop="telephone"><?php echo $this->contact->mobile; ?></dd>
     <?php
     }
 
     if ($this->contact->webpage && $this->params->get('show_webpage')) {
     ?>
-    <dt><span class="uk-margin-small-right" data-uk-icon="icon:world"></span><?php echo Text::_('URL'); ?>:</dt>
+    <dt><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:world"></span>' : ''), Text::_('URL'); ?>:</dt>
     <dd><a href="<?php echo $this->contact->webpage; ?>" target="_blank" rel="noopener noreferrer" itemprop="url"><?php echo PunycodeHelper::urlToUTF8($this->contact->webpage); ?></a></dd>
     <?php } ?>
 </dl>

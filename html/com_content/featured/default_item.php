@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -69,7 +69,7 @@ $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_da
 
 if ($useDefList && ($info == 0 || $info == 2)) {
     echo '<div class="uk-article-meta">';
-    
+
     // Todo: for Joomla4 joomla.content.info_block.block can be changed to joomla.content.info_block
     echo LayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'above'));
 
@@ -93,7 +93,7 @@ echo $this->item->introtext;
 
 if ($useDefList && ($info == 1 || $info == 2)) {
     echo '<div class="uk-article-meta">';
-    
+
     // Todo: for Joomla4 joomla.content.info_block.block can be changed to joomla.content.info_block
     echo LayoutHelper::render('joomla.content.info_block.block', array('item' => $this->item, 'params' => $params, 'position' => 'below'));
 

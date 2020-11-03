@@ -4,7 +4,7 @@
  * @package     Joomla.Plugin
  * @subpackage  Fields.Sql
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 defined('_JEXEC') or die;
@@ -14,7 +14,7 @@ use Joomla\CMS\Factory;
 $value = $field->value;
 
 if ($value == '') {
-	return;
+    return;
 }
 
 $db = Factory::getDbo();
@@ -22,11 +22,11 @@ $value = (array)$value;
 $condition = '';
 
 foreach ($value as $v) {
-	if (!$v) {
-		continue;
-	}
+    if (!$v) {
+        continue;
+    }
 
-	$condition .= ', ' . $db->q($v);
+    $condition .= ', ' . $db->q($v);
 }
 
 $query = $fieldParams->get('query', '');
@@ -35,19 +35,19 @@ $query = $fieldParams->get('query', '');
 $db->setQuery($query . ' having value in (' . trim($condition, ',') . ')');
 
 try {
-	$items = $db->loadObjectlist();
+    $items = $db->loadObjectlist();
 } catch (\Exception $e) {
-	// If the query failed, we fetch all elements
-	$db->setQuery($query);
-	$items = $db->loadObjectlist();
+    // If the query failed, we fetch all elements
+    $db->setQuery($query);
+    $items = $db->loadObjectlist();
 }
 
 $texts = [];
 
 foreach ($items as $item) {
-	if (in_array($item->value, $value)) {
-		$texts[] = $item->text;
-	}
+    if (in_array($item->value, $value)) {
+        $texts[] = $item->text;
+    }
 }
 
 echo htmlentities(implode(', ', $texts));

@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  mod_banners
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,7 +18,7 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
 
 <?php if ($headerText) { ?>
 <div class="uk-margin-bottom"><?php echo $headerText; ?></div>
-<?php 
+<?php
 } ?>
 
 <div class="uk-child-width-1-1 <?php echo $moduleclass_sfx; ?>" data-uk-grid>
@@ -37,13 +37,13 @@ JLoader::register('BannerHelper', JPATH_ROOT . '/components/com_banners/helpers/
 
             if (BannerHelper::isImage($imageurl)) {
                 $name = htmlspecialchars($item->name, ENT_QUOTES, 'UTF-8');
-            
+
                 // Image based banner
                 $baseurl = strpos($imageurl, 'http') === 0 ? '' : Uri::base();
                 $alt = $item->params->get('alt');
                 $alt = $alt ? : $item->name;
                 $alt = $alt ? : Text::_('MOD_BANNERS_BANNER');
-                $img = '<img data-src="' . $baseurl . $imageurl . '" alt="' . $alt . '"' . (!empty($width) ? ' width="' . $width . '"' : '') . (!empty($height) ? ' height="' . $height . '"' : '') . ' data-uk-img>';
+                $img = '<img data-src="' . $baseurl . $imageurl . '" alt="' . $alt . '"' . (!empty($width) ? ' width="' . $width . '"' : '') . (!empty($height) ? ' height="' . $height . '"' : '') . ' data-uk-img loading="lazy">';
 
                 if ($item->clickurl) {
                     // Wrap the banner in a link

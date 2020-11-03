@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -20,7 +20,7 @@ $articleId = $displayData['item']->id;
     if (empty($displayData['print'])) {
         if ($canEdit || $displayData['params']->get('show_print_icon') || $displayData['params']->get('show_email_icon')) {
             if ($displayData['params']->get('show_print_icon')) {
-                echo HTMLHelper::_('icon.print_popup', $displayData['item'], $displayData['params'], ['class' => 'uk-button uk-button-link uk-margin-small-right', 'data-uk-tooltip' => Text::sprintf('JGLOBAL_PRINT_TITLE', $displayData['item']->title)]);
+                echo HTMLHelper::_('icon.print_popup', $displayData['item'], $displayData['params'], ['class' => 'uk-button uk-button-link uk-margin-small-right', 'data-uk-tooltip' => str_replace(['<', '>'], ['«', '»'], Text::sprintf('JGLOBAL_PRINT_TITLE', $displayData['item']->title))]);
             }
 
             if ($displayData['params']->get('show_email_icon')) {
@@ -32,7 +32,7 @@ $articleId = $displayData['item']->id;
             }
         }
     } else {
-        echo HTMLHelper::_('icon.print_screen', $displayData['item'], $displayData['params'], ['class' => 'uk-button uk-button-link', 'data-uk-tooltip' => Text::sprintf('JGLOBAL_PRINT_TITLE', $displayData['item']->title)]);
+        echo HTMLHelper::_('icon.print_screen', $displayData['item'], $displayData['params'], ['class' => 'uk-button uk-button-link', 'data-uk-tooltip' => str_replace(['<', '>'], ['«', '»'], Text::sprintf('JGLOBAL_PRINT_TITLE', $displayData['item']->title))]);
     }
     ?>
 </div>

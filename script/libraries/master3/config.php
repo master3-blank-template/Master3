@@ -77,7 +77,7 @@ final class Master3Config
 
     /*
      * Get static Instance
-     * 
+     *
      * @return object this
      */
     static public function getInstance()
@@ -141,7 +141,7 @@ final class Master3Config
 
     /*
      * Get template name
-     * 
+     *
      * @retutn string
      */
     static public function getTemplateName()
@@ -371,9 +371,9 @@ final class Master3Config
 
     /*
      * Get mime-type
-     * 
+     *
      * @param string $file
-     * 
+     *
      * @retutn string
      */
     protected function getMime($file)
@@ -536,7 +536,7 @@ final class Master3Config
 
     /*
      * Google Fonts links
-     * 
+     *
      * @return array
      */
     protected function getFonts()
@@ -602,7 +602,7 @@ final class Master3Config
 
     /*
      * Get template layout
-     * 
+     *
      * @return string
      */
     public function getLayout()
@@ -631,7 +631,7 @@ final class Master3Config
 
     /*
      * Logo position render
-     * 
+     *
      * @return text/html
      */
     public function getLogo()
@@ -656,7 +656,7 @@ final class Master3Config
                     if ($mime == 'image/svg' || $mime == 'image/svg+xml') {
                         $out .= file_get_contents(Path::clean(JPATH_BASE . '/' . $logoFile));
                     } else {
-                        $out .= "<img src=\"{$logoFile}\" alt=\"{$siteTitle}\">";
+                        $out .= "<img src=\"{$logoFile}\" alt=\"{$siteTitle}\" loading=\"lazy\">";
                     }
                 }
 
@@ -676,7 +676,7 @@ final class Master3Config
 
     /*
      * Get component buffer
-     * 
+     *
      * @return text/html
      */
     public function getSystemOutput()
@@ -699,7 +699,7 @@ final class Master3Config
 
     /*
      * Get attributes for <html> tag
-     * 
+     *
      * @return string
      */
     public function getHtmlAttrsibutes()
@@ -710,7 +710,7 @@ final class Master3Config
 
     /*
      * Get classes for <body> tag
-     * 
+     *
      * @return string
      */
     public function getBodyClasses()
@@ -748,9 +748,9 @@ final class Master3Config
 
     /*
      * Get section params
-     * 
+     *
      * @param string $sectionName
-     * 
+     *
      * @return oject
      */
     public function getSectionParams($sectionName, $sectionType = 0)
@@ -873,9 +873,9 @@ final class Master3Config
 
     /*
      * Get off-canvas params
-     * 
+     *
      * @param string $position
-     * 
+     *
      * @retutn array
      */
     public function getOffcanvasParams($position)
@@ -898,9 +898,9 @@ final class Master3Config
 
     /*
      * Get modile params
-     * 
+     *
      * @param string $moduleId
-     * 
+     *
      * @return array
      */
     public function getModuleParams($moduleId)
@@ -929,7 +929,7 @@ final class Master3Config
 
     /*
      * Get off-canvas toggle sfx class
-     * 
+     *
      * @retutn string
      */
     public function getOffcanvasToggle()
@@ -940,9 +940,9 @@ final class Master3Config
 
     /*
      * Get menuitem params
-     * 
+     *
      * @param int $itemId
-     * 
+     *
      * @retutn array
      */
     public function getMenuItemParams($itemId)
@@ -968,7 +968,7 @@ final class Master3Config
 
     /*
      * Get DUA params
-     * 
+     *
      * @retutn string
      */
     public function getDUA()

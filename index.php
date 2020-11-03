@@ -9,7 +9,6 @@
 defined('_JEXEC') or die;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
-
 $config = \Master3Config::getInstance();
 
 $htmlAttrs = $config->getHtmlAttrsibutes();
@@ -25,8 +24,8 @@ $bodyClass = $bodyClass ? ' class="' . $bodyClass . '"' : '';
     <jdoc:include type="head"/>
 </head>
 <body<?php echo $bodyClass; ?>>
-    
-    
+
+
     <?php
     /*
      * include layout

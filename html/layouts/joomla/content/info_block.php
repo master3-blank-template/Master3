@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -13,11 +13,13 @@ use Joomla\CMS\Language\Text;
 $blockPosition = $displayData['params']->get('info_block_position', 0);
 
 ?>
-<dl class="uk-description-list">
+<div class="uk-margin">
 
     <?php
     if ($displayData['position'] === 'above' && ($blockPosition == 0 || $blockPosition == 2) || $displayData['position'] === 'below' && ($blockPosition == 1)) {
-        if ($displayData['params']->get('info_block_show_title', 1)) echo '<dt class="article-info-term">' . Text::_('COM_CONTENT_ARTICLE_INFO') . '</dt>';
+        if ($displayData['params']->get('info_block_show_title', 1)) {
+            echo '<div class="article-info-term uk-h5 uk-margin-small">' . Text::_('COM_CONTENT_ARTICLE_INFO') . '</div>';
+        }
 
         if ($displayData['params']->get('show_author') && !empty($displayData['item']->author)) {
             echo $this->sublayout('author', $displayData);
@@ -56,4 +58,4 @@ $blockPosition = $displayData['params']->get('info_block_position', 0);
         }
     }
     ?>
-</dl> 
+</div>

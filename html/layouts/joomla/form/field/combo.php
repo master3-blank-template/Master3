@@ -2,13 +2,17 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
 defined('JPATH_BASE') or die;
 
 use Joomla\CMS\HTML\HTMLHelper;
+
+JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
+$templateConfig = \Master3Config::getInstance();
+$jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 extract($displayData);
 /**
@@ -63,9 +67,9 @@ $attr .= !empty($onchange) ? ' onchange="' . $onchange . '"' : '';
         value="<?php echo htmlspecialchars($value, ENT_COMPAT, 'UTF-8'); ?>"
         <?php echo $attr; ?>
         autocomplete="off"
-    />
+    >
     <div class="uk-inline">
-        <button type="button" class="uk-button"><span data-uk-icon="icon:triangle-down"></span></button>
+        <button type="button" class="uk-button"><?php echo $jsIcons ? '<span data-uk-icon="icon:triangle-down"></span>' : '&darr;'; ?></button>
         <div data-uk-dropdown="mode:click">
             <ul class="uk-list dropdown-menu">
                 <?php foreach ($options as $option) { ?>

@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  Fields.Editor
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,7 +14,7 @@ use Joomla\CMS\HTML\HTMLHelper;
 $value = $field->value;
 
 if ($value == '') {
-	return;
+    return;
 }
 
 echo HTMLHelper::_('content.prepare', $value);

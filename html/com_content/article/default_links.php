@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -35,10 +35,10 @@ if ($urls && (!empty($urls->urla) || !empty($urls->urlb) || !empty($urls->urlc))
             if (!$link) {
                 continue;
             }
-            
+
             // If no label is present, take the link
             $label = $label ? : $link;
-            
+
             // If no target is present, use the default
             $target = $target ? : $params->get('target' . $id);
 

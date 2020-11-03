@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_users
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -22,10 +22,10 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
 
 ?>
 <div class="profile-edit<?php echo $this->pageclass_sfx; ?>">
-    
+
     <?php if ($this->params->get('show_page_heading')) { ?>
     <h1><?php echo $this->escape($this->params->get('page_heading')); ?></h1>
-    <?php 
+    <?php
 } ?>
 
     <script type="text/javascript">
@@ -48,7 +48,7 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
     </script>
 
     <form id="member-profile" action="<?php echo Route::_('index.php?option=com_users&task=profile.save'); ?>" method="post" class="form-validate form-horizontal well" enctype="multipart/form-data">
-        
+
         <ul data-uk-tab="connect:#com-users-profile-edit-content">
             <?php
             foreach ($this->form->getFieldsets() as $group => $fieldset) {
@@ -64,7 +64,7 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
             <li><a href="#"><?php echo Text::_('COM_USERS_PROFILE_TWO_FACTOR_AUTH'); ?></a></li>
             <?php } ?>
         </ul>
-        
+
         <ul id="com-users-profile-edit-content" class="uk-margin uk-switcher">
             <?php
             // Iterate through the form fieldsets and display each one.
@@ -131,11 +131,11 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
             ?>
             <li>
                 <legend class="uk-h4 uk-text-primary"><?php echo Text::_('COM_USERS_PROFILE_TWO_FACTOR_AUTH'); ?></legend>
-                
+
                 <div class="uk-form-stacked uk-margin">
                     <div class="uk-form-label">
                         <label id="jform_twofactor_method-lbl" for="jform_twofactor_method" class="hasTooltip"
-                            title="<?php echo '<strong>' . Text::_('COM_USERS_PROFILE_TWOFACTOR_LABEL') . '</strong><br />' . Text::_('COM_USERS_PROFILE_TWOFACTOR_DESC'); ?>">
+                            title="<?php echo '<strong>' . Text::_('COM_USERS_PROFILE_TWOFACTOR_LABEL') . '</strong><br>' . Text::_('COM_USERS_PROFILE_TWOFACTOR_DESC'); ?>">
                             <?php echo Text::_('COM_USERS_PROFILE_TWOFACTOR_LABEL'); ?>
                         </label>
                     </div>
@@ -143,7 +143,7 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
                         <?php echo HTMLHelper::_('select.genericlist', $this->twofactormethods, 'jform[twofactor][method]', ['class' => 'uk-select', 'onchange' => 'Joomla.twoFactorMethodChange()'], 'value', 'text', $this->otpConfig->method, 'jform_twofactor_method', false); ?>
                     </div>
                 </div>
-                
+
                 <div id="com_users_twofactor_forms_container">
                     <?php foreach ($this->twofactorform as $form) { ?>
                         <?php $style = $form['method'] == $this->otpConfig->method ? 'display: block' : 'display: none'; ?>
@@ -154,11 +154,11 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
                 </div>
 
                 <hr>
-                
+
                 <legend class="uk-h4 uk-text-primary"><?php echo Text::_('COM_USERS_PROFILE_OTEPS'); ?></legend>
 
                 <div class="uk-alert"><?php echo Text::_('COM_USERS_PROFILE_OTEPS_DESC'); ?></div>
-                
+
                 <?php if (empty($this->otpConfig->otep)) { ?>
                 <div class="uk-alert uk-alert-warning"><?php echo Text::_('COM_USERS_PROFILE_OTEPS_WAIT_DESC'); ?></div>
                 <?php
@@ -173,16 +173,16 @@ $lang->load('plg_user_profile', JPATH_ADMINISTRATOR);
             </li>
             <?php } ?>
         </ul>
-        
+
         <hr class="uk-margin-medium">
 
         <div class="uk-flex">
             <button type="submit" class="uk-button uk-button-primary uk-margin-small-right validate"><?php echo Text::_('JSUBMIT'); ?></button>
             <a class="uk-button uk-button-default" href="<?php echo Route::_('index.php?option=com_users&view=profile'); ?>" title="<?php echo Text::_('JCANCEL'); ?>"><?php echo Text::_('JCANCEL'); ?></a>
         </div>
-        
-        <input type="hidden" name="option" value="com_users" />
-        <input type="hidden" name="task" value="profile.save" />
+
+        <input type="hidden" name="option" value="com_users">
+        <input type="hidden" name="task" value="profile.save">
         <?php echo HTMLHelper::_('form.token'); ?>
 
     </form>

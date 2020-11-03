@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -40,14 +40,14 @@ if ( !empty( $this->items ) )
 $tableClass = $this->params->get( 'show_headings' ) != 1 ? ' table-noheader' : '';
 ?>
 <form action="<?php echo htmlspecialchars( Uri::getInstance()->toString() ); ?>" method="post" name="adminForm" id="adminForm" class="uk-margin-medium-top">
-    
+
     <?php if ( $this->params->get( 'filter_field' ) !== 'hide' || $this->params->get( 'show_pagination_limit' ) ) { ?>
         <legend class="uk-hidden"><?php echo Text::_( 'COM_CONTENT_FORM_FILTER_LEGEND' ); ?></legend>
         <div class="uk-grid-small uk-margin-medium-bottom" data-uk-grid>
             <?php if ( $this->params->get( 'filter_field' ) !== 'hide' ) { ?>
             <div>
                 <?php if ( $this->params->get( 'filter_field' ) !== 'tag' ) { ?>
-                    <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape( $this->state->get( 'list.filter' ) ); ?>" class="uk-input uk-form-small uk-form-width-medium" onchange="document.adminForm.submit();" title="<?php echo Text::_( 'COM_CONTENT_FILTER_SEARCH_DESC' ); ?>" placeholder="<?php echo Text::_( 'COM_CONTENT_' . $this->params->get( 'filter_field' ) . '_FILTER_LABEL' ); ?>" />
+                    <input type="text" name="filter-search" id="filter-search" value="<?php echo $this->escape( $this->state->get( 'list.filter' ) ); ?>" class="uk-input uk-form-small uk-form-width-medium" onchange="document.adminForm.submit();" title="<?php echo Text::_( 'COM_CONTENT_FILTER_SEARCH_DESC' ); ?>" placeholder="<?php echo Text::_( 'COM_CONTENT_' . $this->params->get( 'filter_field' ) . '_FILTER_LABEL' ); ?>">
                 <?php } else { ?>
                     <select class="uk-select uk-form-small uk-form-width-medium" name="filter_tag" id="filter_tag" onchange="document.adminForm.submit();" >
                         <option value=""><?php echo Text::_( 'JOPTION_SELECT_TAG' ); ?></option>
@@ -68,10 +68,10 @@ $tableClass = $this->params->get( 'show_headings' ) != 1 ? ' table-noheader' : '
                 <button type="submit" name="filter_submit" class="uk-button uk-button-small"><?php echo Text::_( 'COM_CONTENT_FORM_FILTER_SUBMIT' ); ?></button>
             </div>
         </div>
-        <input type="hidden" name="filter_order" value="" />
-        <input type="hidden" name="filter_order_Dir" value="" />
-        <input type="hidden" name="limitstart" value="" />
-        <input type="hidden" name="task" value="" />
+        <input type="hidden" name="filter_order" value="">
+        <input type="hidden" name="filter_order_Dir" value="">
+        <input type="hidden" name="limitstart" value="">
+        <input type="hidden" name="task" value="">
 
     <?php
     }
@@ -92,41 +92,41 @@ $tableClass = $this->params->get( 'show_headings' ) != 1 ? ' table-noheader' : '
         <caption class="uk-hidden"><?php echo Text::sprintf( 'COM_CONTENT_CATEGORY_LIST_TABLE_CAPTION', $this->category->title ); ?></caption>
         <thead>
             <tr>
-                
+
                 <th><?php echo Text::_( 'JGLOBAL_TITLE' ); ?></th>
-                
+
                 <?php if ( $date = $this->params->get( 'list_show_date' ) ) { ?>
                 <th><?php echo Text::_( 'COM_CONTENT_' . $date . '_DATE' ); ?></th>
                 <?php } ?>
-                
+
                 <?php if ( $this->params->get( 'list_show_author' ) ) { ?>
                 <th><?php echo Text::_( 'JAUTHOR' ); ?></th>
                 <?php } ?>
-                
+
                 <?php if ( $this->params->get( 'list_show_hits' ) ) { ?>
                 <th><?php echo Text::_( 'JGLOBAL_HITS' ); ?></th>
                 <?php } ?>
-                
+
                 <?php if ( $this->params->get( 'list_show_votes', 0 ) && $this->vote ) { ?>
                 <th><?php echo Text::_( 'COM_CONTENT_VOTES' ); ?></th>
                 <?php } ?>
-                
+
                 <?php if ( $this->params->get( 'list_show_ratings', 0 ) && $this->vote ) { ?>
                 <th><?php echo Text::_( 'COM_CONTENT_RATINGS' ); ?><</th>
                 <?php } ?>
-                
+
                 <?php if ( $isEditable ) { ?>
                 <th><?php echo Text::_( 'COM_CONTENT_EDIT_ITEM' ); ?></th>
                 <?php } ?>
 
             </tr>
         </thead>
-        
+
         <tbody>
             <?php foreach ( $this->items as $i => $article ) { ?>
-            
+
             <tr class="<?php if ( $this->items[$i]->state == 0 ) { echo 'uk-text-muted '; } ?>cat-list-row<?php echo $i % 2; ?>">
-            
+
                 <td headers="categorylist_header_title" class="list-title">
                     <?php
                     if ( in_array( $article->access, $this->user->getAuthorisedViewLevels() ) )
@@ -181,7 +181,7 @@ $tableClass = $this->params->get( 'show_headings' ) != 1 ? ' table-noheader' : '
                             }
                         }
                     }
-                    
+
                     if ( $article->state == 0 )
                     {
                     ?>
@@ -202,11 +202,11 @@ $tableClass = $this->params->get( 'show_headings' ) != 1 ? ' table-noheader' : '
                     }
                     ?>
                 </td>
-                
+
                 <?php if ( $this->params->get( 'list_show_date' ) ) { ?>
                 <td><?php echo HTMLHelper::_( 'date', $article->displayDate, $this->escape( $this->params->get( 'date_format', Text::_( 'd.m.Y' ) ) ) ); ?></td>
                 <?php } ?>
-                
+
                 <?php if ( $this->params->get( 'list_show_author', 1 ) ) { ?>
                 <td>
                     <?php
@@ -226,19 +226,19 @@ $tableClass = $this->params->get( 'show_headings' ) != 1 ? ' table-noheader' : '
                     ?>
                 </td>
                 <?php } ?>
-                
+
                 <?php if ( $this->params->get( 'list_show_hits', 1 ) ) { ?>
                 <td><?php echo $article->hits; ?></td>
                 <?php } ?>
-                
+
                 <?php if ( $this->params->get( 'list_show_votes', 0 ) && $this->vote ) { ?>
                 <td><?php echo Text::sprintf( 'COM_CONTENT_VOTES_COUNT', $article->rating_count ); ?></td>
                 <?php } ?>
-                
+
                 <?php if ( $this->params->get( 'list_show_ratings', 0 ) && $this->vote ) { ?>
                 <td><?php echo Text::sprintf( 'COM_CONTENT_RATINGS_COUNT', $article->rating ); ?></td>
                 <?php } ?>
-                
+
                 <?php if ( $isEditable ) { ?>
                 <td><?php if ( $article->params->get( 'access-edit' ) ) { echo HTMLHelper::_( 'icon.edit', $article, $params, ['class' => 'uk-button uk-button-link', 'data-uk-tooltip' => Text::_( 'JGLOBAL_EDIT_TITLE' ) ] ); } ?></td>
                 <?php } ?>

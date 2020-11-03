@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  Content.vote
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -24,7 +24,7 @@ use Joomla\CMS\Language\Text;
 
 if ($context == 'com_content.categories')
 {
-	return;
+    return;
 }
 
 $rating = (int) $row->rating;
@@ -38,22 +38,22 @@ $img = '';
 
 for ($i = 0; $i < $rating; $i++)
 {
-	$img .= $starImageOn;
+    $img .= $starImageOn;
 }
 
 for ($i = $rating; $i < 5; $i++)
 {
-	$img .= $starImageOff;
+    $img .= $starImageOff;
 }
 
 ?>
 <div class="uk-flex content_rating">
-	<?php echo $img; ?>
-	<?php if ($rcount) { ?>
-		<p class="uk-display-inline-block uk-margin-small-left unseen element-invisible" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
-			<?php echo Text::sprintf('PLG_VOTE_USER_RATING', '<span itemprop="ratingValue">' . $rating . '</span>', '<span itemprop="bestRating">5</span>'); ?>
-			<meta itemprop="ratingCount" content="<?php echo $rcount; ?>" />
-			<meta itemprop="worstRating" content="1" />
-		</p>
-	<?php } ?>
+    <?php echo $img; ?>
+    <?php if ($rcount) { ?>
+        <p class="uk-display-inline-block uk-margin-small-left unseen element-invisible" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+            <?php echo Text::sprintf('PLG_VOTE_USER_RATING', '<span itemprop="ratingValue">' . $rating . '</span>', '<span itemprop="bestRating">5</span>'); ?>
+            <meta itemprop="ratingCount" content="<?php echo $rcount; ?>" />
+            <meta itemprop="worstRating" content="1" />
+        </p>
+    <?php } ?>
 </div>

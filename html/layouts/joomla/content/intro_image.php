@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -23,11 +23,11 @@ if (isset($images->image_intro) && !empty($images->image_intro)) {
     <a href="<?php echo Route::_(ContentHelperRoute::getArticleRoute($displayData->slug, $displayData->catid, $displayData->language)); ?>">
         <img <?php if ($images->image_intro_caption) {
                 echo 'class="caption" title="' . htmlspecialchars($images->image_intro_caption) . '"';
-            } ?> src="<?php echo htmlspecialchars($images->image_intro, ENT_COMPAT, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($alt, ENT_COMPAT, 'UTF-8'); ?>" itemprop="thumbnailUrl"/></a>
+            } ?> src="<?php echo htmlspecialchars($images->image_intro, ENT_COMPAT, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($alt, ENT_COMPAT, 'UTF-8'); ?>" itemprop="thumbnailUrl" loading="lazy"></a>
     <?php } else { ?>
     <img <?php if ($images->image_intro_caption) {
             echo 'class="caption" title="' . htmlspecialchars($images->image_intro_caption, ENT_COMPAT, 'UTF-8') . '"';
-        } ?> src="<?php echo htmlspecialchars($images->image_intro, ENT_COMPAT, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($alt, ENT_COMPAT, 'UTF-8'); ?>" itemprop="thumbnailUrl"/>
+        } ?> src="<?php echo htmlspecialchars($images->image_intro, ENT_COMPAT, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($alt, ENT_COMPAT, 'UTF-8'); ?>" itemprop="thumbnailUrl" loading="lazy">
     <?php } ?>
 </div>
 <?php

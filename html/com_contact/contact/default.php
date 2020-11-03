@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_contact
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -16,12 +16,16 @@ use Joomla\CMS\Router\Route;
 use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Layout\FileLayout;
 
+JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
+$templateConfig = \Master3Config::getInstance();
+$jsIcons = $templateConfig->params->get('jsIcons', 'none');
+
 $tparams = $this->item->params;
 
 ?>
 
 <div class="contact<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Person">
-    
+
     <?php if ($this->contact->name && $tparams->get('show_name')) { ?>
     <h1 class="uk-article-title">
         <?php if ($this->item->published == 0) { ?>
@@ -76,7 +80,7 @@ $tparams = $this->item->params;
     <?php
     }
 
-    
+
     // info
     if ($this->params->get('show_info', 1)) {
 
@@ -107,7 +111,7 @@ $tparams = $this->item->params;
         if ($this->contact->con_position && $tparams->get('show_position')) {
         ?>
         <dl class="uk-description-list">
-            <dt><span class="uk-margin-small-right" data-uk-icon="icon:cog"></span><?php echo Text::_('COM_CONTACT_POSITION'); ?>:</dt>
+            <dt><?php echo ($jsIcons ? '<span class="uk-margin-small-right" data-uk-icon="icon:cog"></span>' : ''), Text::_('COM_CONTACT_POSITION'); ?>:</dt>
             <dd itemprop="jobTitle"><?php echo $this->contact->con_position; ?></dd>
         </dl>
         <?php
@@ -134,7 +138,7 @@ $tparams = $this->item->params;
     }
 
 
-    // form    
+    // form
     if ($tparams->get('show_email_form') && ($this->contact->email_to || $this->contact->user_id)) {
         if ($presentation_style === 'sliders') {
         ?>
@@ -166,7 +170,7 @@ $tparams = $this->item->params;
         }
     }
 
-    
+
     // links
     if ($tparams->get('show_links')) {
         echo $this->loadTemplate('links');
@@ -285,7 +289,7 @@ $tparams = $this->item->params;
     } elseif ($tabSetStarted) {
         echo HTMLHelper::_('bootstrap.endTabSet');
     }
-    
+
     echo $this->item->event->afterDisplayContent;
     ?>
 </div>

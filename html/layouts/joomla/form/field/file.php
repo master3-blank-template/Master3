@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -55,14 +55,15 @@ $maxSize = Text::sprintf('JGLOBAL_MAXIMUM_UPLOAD_SIZE_LIMIT', HTMLHelper::_('num
 $hint = isset($hint) && $hint ? $hint . ', ' . $maxSize : $maxSize;
 ?>
 <div class="uk-button-group uk-width" data-uk-form-custom>
-<input type="file" name="<?php echo $name; ?>" id="<?php echo $id; ?>" <?php
-    echo !empty($size) ? ' size="' . $size . '"' : '';
-    echo !empty($accept) ? ' accept="' . $accept . '"' : '';
-    echo !empty($class) ? ' class="' . $class . '"' : '';
-    echo !empty($multiple) ? ' multiple' : '';
-    echo $disabled ? ' disabled' : '';
-    echo $autofocus ? ' autofocus' : '';
-    echo !empty($onchange) ? ' onchange="' . $onchange . '"' : '';
-    echo $required ? ' required aria-required="true"' : ''; ?> />
+    <input type="file" name="<?php echo $name; ?>" id="<?php echo $id; ?>" <?php
+        echo !empty($size) ? ' size="' . $size . '"' : '';
+        echo !empty($accept) ? ' accept="' . $accept . '"' : '';
+        echo !empty($class) ? ' class="' . $class . '"' : '';
+        echo !empty($multiple) ? ' multiple' : '';
+        echo $disabled ? ' disabled' : '';
+        echo $autofocus ? ' autofocus' : '';
+        echo !empty($onchange) ? ' onchange="' . $onchange . '"' : '';
+        echo $required ? ' required aria-required="true"' : ''; ?>
+    >
     <input class="uk-input uk-form-width-medium" type="text" placeholder="<?php echo htmlspecialchars($hint, ENT_COMPAT, 'UTF-8'); ?>" disabled>
 </div>

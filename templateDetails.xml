@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="3.9" type="template" client="site" method="upgrade">
     <name>Master3</name>
-    <version>1.2.15</version>
-    <creationDate>May 2020</creationDate>
+    <version>1.2.16</version>
+    <creationDate>November 2020</creationDate>
     <author>Aleksey A. Morozov</author>
     <authorEmail>alekvolsk@yandex.ru</authorEmail>
     <authorUrl>https://master3.alekvolsk.info/</authorUrl>
@@ -11,7 +11,7 @@
     <description><![CDATA[
         <span style="display:inline-flex;align-items:center;margin:30px 0;color:#1E87F0;text-decoration:none;"><svg height="50" viewBox="0 0 122 141" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M61 0L84.6129 13.6266L61 27.2631L37.3871 13.6266L61 0ZM97.4032 21.0155L73.7805 34.6421L98.3871 48.8492V77.2634L122 63.6368V35.2127L97.4032 21.0155ZM36.3934 99.4005V126.664L61 140.871L84.6129 127.244L36.3934 99.4005ZM73.7805 106.229C73.7805 106.229 65.0339 101.181 97.3934 119.855H97.4032L122 105.658V78.385L73.7805 106.229ZM0 105.658V48.8689L23.6129 62.5053V119.285L0 105.658Z" fill="#1E87F0"/></svg><span style="margin-left:20px;font-weight:400;"><span style="display:block;font-size:20px;line-height:20px;margin-bottom:10px;"><strong>Master3</strong></span><span style="display:block;font-size:15px;line-height:20px;"><strong>The Joomla! 3 site template based on UIkit 3.</strong></span></span></span>
         <span style="display:block;margin-bottom:20px;">
-            <img src="https://img.shields.io/badge/VERSION-1.2.15-28A5F5.svg?style=for-the-badge" alt="Master3 version" style="margin-right:10px">
+            <img src="https://img.shields.io/badge/VERSION-1.2.16-28A5F5.svg?style=for-the-badge" alt="Master3 version" style="margin-right:10px">
             <a href="https://master3.alekvolsk.info/" target="_blank" style="margin-right:10px"><img src="https://img.shields.io/badge/-official_page-28A5F5.svg?style=for-the-badge" alt="Official page"></a>
             <a href="https://master3.alekvolsk.info/documentation" target="_blank" style="margin-right:10px"><img src="https://img.shields.io/badge/-documentation-28A5F5.svg?style=for-the-badge" alt="Documentation"></a>
             <a href="https://master3.alekvolsk.info/positions" target="_blank"><img src="https://img.shields.io/badge/-positions-28A5F5.svg?style=for-the-badge" alt="Positions"></a>
@@ -23,13 +23,13 @@
         </span>
     ]]></description>
     <php_minimum>5.6</php_minimum>
-    <uikit_actual>3.4.0</uikit_actual>
+    <uikit_actual>3.5.9</uikit_actual>
     <scriptfile>script.php</scriptfile>
-    
+
     <updateservers>
         <server type="extension" priority="1" name="Master3"><![CDATA[https://master3.alekvolsk.info/files/master3_update.xml]]></server>
     </updateservers>
-    
+
     <files>
         <filename>index.php</filename>
         <filename>component.php</filename>
@@ -42,7 +42,7 @@
         <folder>html</folder>
         <folder>layouts</folder>
     </files>
-    
+
     <positions>
         <position section="toolbar">toolbar-left</position>
         <position section="toolbar">toolbar-right</position>
@@ -72,19 +72,19 @@
         <position offcanvas="">offcanvas</position>
         <position offcanvas="">offcanvas-menu</position>
     </positions>
-    
+
     <languages>
         <language tag="en-GB">language/en-GB/en-GB.tpl_master3.ini</language>
         <language tag="en-GB">language/en-GB/en-GB.tpl_master3.sys.ini</language>
     </languages>
-    
+
     <config>
         <fields name="params" addfieldpath="/libraries/master3/fields">
-            
+
             <fieldset name="basic" label="TPL_MASTER3_TAB_BASIC_LABEL">
                 <field name="templateLayouts" type="subformlayouts" label="TPL_MASTER3_TEMPLATELAYOUTS_LABEL" formsource="libraries/master3/forms/layouts.xml" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.repeatable-table" buttons="none" />
                 <field name="spacerLauouts" type="spacer" hr="true" />
-                
+
                 <field name="noteLogo" type="note" label="TPL_MASTER3_SUBTITLE_LOGO" />
                 <field name="logoFile" type="media" label="TPL_MASTER3_LOGO_LABEL" description="TPL_MASTER3_LOGO_DESC" class="input-xlarge" default="" />
                 <field name="siteTitle" type="text" label="TPL_MASTER3_TITLE_LABEL" description="TPL_MASTER3_TITLE_DESC" class="input-xlarge" default="" filter="string" />
@@ -94,7 +94,7 @@
                 <field name="favicon" type="media" label="TPL_MASTER3_FAVICON_LABEL" class="input-xlarge" default="" />
                 <field name="faviconApple" type="media" label="TPL_MASTER3_FAVICONAPPLE_LABEL" class="input-xlarge" default="" />
                 <field name="spacerIcons" type="spacer" hr="true" />
-                
+
                 <field name="noteSidebars" type="note" label="TPL_MASTER3_SUBTITLE_SIDEBARS" />
                 <field name="sbWidth" type="list" label="TPL_MASTER3_SIDEBARS_WIDTH_LABEL" default="1-5" class="input-medium">
                     <option value="1-6">18% ( 1/6)</option>
@@ -144,7 +144,7 @@
 
             <fieldset name="head" label="TPL_MASTER3_TAB_HEAD_LABEL">
                 <field name="noteFonts" type="note" label="TPL_MASTER3_SUBTITLE_FONTS" />
-                
+
                 <field name="fontHtml" type="text" label="TPL_MASTER3_FONT_HTML_LABEL" description="TPL_MASTER3_FONT_DESC" class="input-xlarge" default="" filter="string" />
                 <field name="fontHeading" type="text" label="TPL_MASTER3_FONT_HEADING_LABEL" description="TPL_MASTER3_FONT_DESC" class="input-xlarge" default="" filter="string" />
                 <field name="fontLogo" type="text" label="TPL_MASTER3_FONT_LOGO_LABEL" description="TPL_MASTER3_FONT_DESC" class="input-xlarge" default="" filter="string" />
@@ -197,7 +197,7 @@
                     <option value="vietnamese">vietnamese</option>
                 </field>
                 <field name="spacerFonts" type="spacer" hr="true" />
-                
+
                 <field name="noteCSS" type="note" label="TPL_MASTER3_SUBTITLE_CSS" />
                 <field name="cssUikit" type="list" label="TPL_MASTER3_CSS_UIKIT_LABEL" default="uikit.min.css">
                     <option value="none">TPL_MASTER3_CSS_UIKIT_NO</option>
@@ -209,7 +209,7 @@
                 <field name="cssFiles" type="subformfiles" label="TPL_MASTER3_CSS_FILES_LABEL" formsource="libraries/master3/forms/files.xml" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.repeatable-table" buttons="none" folder="css" />
                 <field name="cssAddons" type="textarea" label="TPL_MASTER3_CSS_ADDONS_LABEL" description="TPL_MASTER3_CSS_ADDONS_DESC" rows="3" default="" class="input-xxlarge" />
                 <field name="spacerCSS" type="spacer" hr="true" />
-                
+
                 <field name="noteJS" type="note" label="TPL_MASTER3_SUBTITLE_JS" />
                 <field name="jsJQ" type="radio" label="TPL_MASTER3_JS_JQ_LABEL" default="0" class="btn-group">
                     <option value="1">JYES</option>
@@ -228,7 +228,7 @@
                 <field name="jsFiles" type="subformfiles" label="TPL_MASTER3_JS_FILES_LABEL" formsource="libraries/master3/forms/files.xml" groupByFieldset="false" multiple="true" layout="joomla.form.field.subform.repeatable-table" buttons="none" folder="js" />
                 <field name="jsAddons" type="textarea" label="TPL_MASTER3_JS_ADDONS_LABEL" description="TPL_MASTER3_JS_ADDONS_DESC" rows="3" default="" class="input-xxlarge" />
                 <field name="spacerJS" type="spacer" hr="true" />
-                
+
                 <field name="ss" type="aes" label="" script="0" styles="1" />
             </fieldset>
 

@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  Fields.List
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,7 +14,7 @@ use Joomla\CMS\Language\Text;
 $fieldValue = $field->value;
 
 if ($fieldValue == '') {
-	return;
+    return;
 }
 
 $fieldValue = (array)$fieldValue;
@@ -22,9 +22,9 @@ $texts = [];
 $options = $this->getOptionsFromField($field);
 
 foreach ($options as $value => $name) {
-	if (in_array((string)$value, $fieldValue)) {
-		$texts[] = Text::_($name);
-	}
+    if (in_array((string)$value, $fieldValue)) {
+        $texts[] = Text::_($name);
+    }
 }
 
 

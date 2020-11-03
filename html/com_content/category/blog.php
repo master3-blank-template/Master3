@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -31,7 +31,7 @@ $afterDisplayContent = trim( implode( "\n", $results ) );
 
 ?>
 <div class="blog<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Blog">
-    
+
     <?php if ( $this->params->get( 'show_page_heading' ) ) { ?>
     <h1 class="uk-article-title"><?php echo $this->escape( $this->params->get( 'page_heading' ) ); ?></h1>
     <?php
@@ -58,7 +58,7 @@ $afterDisplayContent = trim( implode( "\n", $results ) );
     ?>
     <div class="uk-margin-large category-desc">
         <?php if ( $this->params->get( 'show_description_image' ) && $this->category->getParams()->get( 'image' ) ) { ?>
-        <img class="uk-width" src="<?php echo $this->category->getParams()->get( 'image' ); ?>" alt="<?php echo htmlspecialchars( $this->category->getParams()->get( 'image_alt' ), ENT_COMPAT, 'UTF-8' ); ?>"/>
+        <img class="uk-width" src="<?php echo $this->category->getParams()->get( 'image' ); ?>" alt="<?php echo htmlspecialchars( $this->category->getParams()->get( 'image_alt' ), ENT_COMPAT, 'UTF-8' ); ?>" loading="lazy">
         <?php
         }
         echo $beforeDisplayContent;
@@ -81,7 +81,7 @@ $afterDisplayContent = trim( implode( "\n", $results ) );
         }
     }
 
-    
+
     $leadingcount = 0;
     if ( !empty( $this->lead_items ) )
     {
@@ -123,13 +123,13 @@ $afterDisplayContent = trim( implode( "\n", $results ) );
     </div>
     <?php
     }
-    
-    
+
+
     if ( !empty( $this->link_items ) )
     {
         echo $this->loadTemplate( 'links' );
     }
-    
+
     if ( $this->maxLevel != 0 && !empty( $this->children[$this->category->id] ) )
     {
     ?>
@@ -143,7 +143,7 @@ $afterDisplayContent = trim( implode( "\n", $results ) );
         ?>
     </div>
     <?php } ?>
-    
+
     <?php
     $show_pagination = $this->params->def( 'show_pagination', 2 ) == 1 || ( $this->params->get( 'show_pagination' ) == 2 );
     $show_pagination_results = $this->params->def( 'show_pagination_results', 1 );
@@ -154,11 +154,11 @@ $afterDisplayContent = trim( implode( "\n", $results ) );
     <div class="uk-margin-top uk-flex uk-flex-center<?php if ( $show_pagination_results ) { echo ' uk-flex-between@s'; } ?>">
 
         <div><?php echo $this->pagination->getPagesLinks(); ?></div>
-        
+
         <?php if ( $show_pagination_results ) { ?>
         <div><?php echo $this->pagination->getPagesCounter(); ?></div>
         <?php } ?>
-        
+
     </div>
     <?php } ?>
 </div>

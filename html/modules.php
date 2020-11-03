@@ -70,7 +70,7 @@ function modChrome_navbar($module, &$params, &$attribs)
 
             if ($masterParams->offtoggle) {
                 $moduleClass .= ' uk-visible' . $sfx;
-                echo '<a class="uk-navbar-toggle uk-hidden' . $sfx . '" href="#" data-uk-navbar-toggle-icon data-uk-toggle="target:#' . $masterParams->offtoggle . '"></a>';
+                echo '<a class="uk-navbar-toggle uk-hidden' . $sfx . '" href="#" data-uk-navbar-toggle-icon data-uk-toggle="target:#' . $masterParams->offtoggle . '" name="Menu"></a>';
             }
         } else {
             $moduleClass .= ' ' . $config->getModuleParams($module->id)->display;

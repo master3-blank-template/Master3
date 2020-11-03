@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  mod_menu.navbar
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -29,7 +29,7 @@ $linktype = (int)$item->level === $firstLevel ? '<span class="uk-display-block">
 
 if ($item->menu_image) {
     $linktype .= (int)$item->level === $firstLevel ? '<span class="uk-flex uk-flex-middle">' : '';
-    
+
     if ($item->menu_image_css) {
         $image_attributes['class'] = $item->menu_image_css;
         $linktype .= HTMLHelper::_('image', $item->menu_image, $item->title, $image_attributes);
@@ -40,7 +40,7 @@ if ($item->menu_image) {
     if ($item->params->get('menu_text', 1)) {
         $linktype .= '<span class="uk-display-inline-block uk-margin-small-left">' . $item->title . '</span>';
     }
-    
+
     $linktype .= (int)$item->level === $firstLevel ? '</span>' : '';
 } else {
     $linktype .= $item->title;

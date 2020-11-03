@@ -13,33 +13,33 @@ use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Language\Text;
 
 $errorLevelStr = Factory::getConfig()->get('error_reporting', 'default');
-$isTable = ($errorLevelStr === 'maximum') || ($errorLevelStr === 'development');
+$isShowFile = ($errorLevelStr === 'maximum') || ($errorLevelStr === 'development');
 $isBacktrace = $errorLevelStr === 'development';
 
 $errorCode = $this->error->getCode();
-
+$errorFile = str_replace(JPATH_ROOT, 'JROOT', $this->error->getFile());
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo $this->language; ?>" dir="<?php echo $this->direction; ?>">
 <head>
     <meta charset="utf-8" />
-	<base href="<?php echo Uri::base(); ?>" />
+    <base href="<?php echo Uri::base(); ?>" />
     <title><?php echo $this->title; ?> – <?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="robots" content="noindex, nofollow">
     <link href="<?php echo Uri::base(true); ?>/media/master3/images/favicon.png" rel="shortcut icon" type="image/png" />
     <link href="<?php echo Uri::base(true); ?>/media/uikit3/dist/css/uikit.min.css" rel="stylesheet" />
 </head>
 <body>
-    
-    
+
+
     <header class="uk-section uk-section-default uk-section-small">
         <div class="uk-container">
             <div class="uk-logo"><?php echo Factory::getConfig()->get('sitename', $this->template); ?></div>
         </div>
     </header>
-        
-        
+
+
     <div class="uk-section uk-section-muted uk-padding-remove">
         <div class="uk-container">
             <div class="uk-navbar">
@@ -49,32 +49,21 @@ $errorCode = $this->error->getCode();
             </div>
         </div>
     </div>
-        
-        
+
+
     <div class="uk-section uk-section-default">
         <div class="uk-container">
             <div>
                 <h1><?php echo Text::_(($errorCode == 404 ? 'JERROR_LAYOUT_PAGE_NOT_FOUND' : 'JERROR_LAYOUT_REQUESTED_RESOURCE_WAS_NOT_FOUND')); ?></h1>
-                
+
                 <div class="uk-margin-large-top"><?php echo Text::_('JERROR_LAYOUT_PLEASE_CONTACT_THE_SYSTEM_ADMINISTRATOR'); ?></div>
 
-                <?php if ($isTable) { ?>
-                <table class="uk-table uk-table-divider uk-table-striped uk-margin uk-table-responsive uk-margin-large-top">
-                    <tr>
-                        <td class="uk-text-bold">Error Code</td>
-                        <td class="uk-table-expand"><?php echo $errorCode ?></td>
-                    </tr>
-                    <tr>
-                        <td class="uk-text-bold">Error Message</td>
-                        <td><?php echo htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></td>
-                    </tr>
-                    <tr>
-                        <td class="uk-text-bold">Error File</td>
-                        <td><?php echo htmlspecialchars($this->error->getFile(), ENT_QUOTES, 'UTF-8'), ':', $this->error->getLine(); ?></td>
-                    </tr>
-                </table>
+                <div class="uk-h3"><?php echo $errorCode, ': ', htmlspecialchars($this->error->getMessage(), ENT_QUOTES, 'UTF-8'); ?></div>
+
+                <?php if ($isShowFile) { ?>
+                <div class="uk-h4 uk-margin-remove-top"><?php echo htmlspecialchars($errorFile, ENT_QUOTES, 'UTF-8'), ':', $this->error->getLine(); ?></div>
                 <?php } ?>
-                
+
                 <?php if ($isBacktrace) { ?>
                 <div class="uk-margin-large-top">
                     <?php

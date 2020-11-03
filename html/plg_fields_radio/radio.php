@@ -3,7 +3,7 @@
  * @package     Joomla.Plugin
  * @subpackage  Fields.Radio
  *
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -14,7 +14,7 @@ use Joomla\CMS\Language\Text;
 $value = $field->value;
 
 if ($value == '') {
-	return;
+    return;
 }
 
 $value = (array)$value;
@@ -22,9 +22,9 @@ $texts = [];
 $options = $this->getOptionsFromField($field);
 
 foreach ($options as $optionValue => $optionText) {
-	if (in_array((string)$optionValue, $value)) {
-		$texts[] = Text::_($optionText);
-	}
+    if (in_array((string)$optionValue, $value)) {
+        $texts[] = Text::_($optionText);
+    }
 }
 
 

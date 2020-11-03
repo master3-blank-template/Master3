@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  Layout
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -12,14 +12,12 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
-
 $templateConfig = \Master3Config::getInstance();
-
 $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>
 <dd class="parent-category-name">
-    <?php 
+    <?php
     $icon = $jsIcons !== 'none' ? '<span data-uk-icon="icon:folder"></span> ' : '';
     $title = $this->escape($displayData['item']->parent_title);
     if ($displayData['params']->get('link_parent_category') && !empty($displayData['item']->parent_slug)) {

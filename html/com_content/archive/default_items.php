@@ -2,7 +2,7 @@
 /**
  * @package     Joomla.Site
  * @subpackage  com_content
- * @copyright   Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+ * @copyright   Copyright (C) Open Source Matters, Inc. All rights reserved.
  * @license     GNU General Public License version 2 or later; see LICENSE.txt
  */
 
@@ -18,7 +18,7 @@ $params = $this->params;
 ?>
 
 <div id="archive-items" class="uk-child-width-1-1" data-uk-grid>
-    
+
 <?php
 foreach ($this->items as $i => $item) {
     $info = $item->params->get('info_block_position', 0);
@@ -40,12 +40,11 @@ foreach ($this->items as $i => $item) {
 
         if ($useDefList && ($info == 0 || $info == 2)) {
         ?>
-        <div class="uk-article-meta">
-            <dl class="uk-description-list">
-                <dt class="article-info-term"><?php echo Text::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
-                
+        <div class="uk-article-meta uk-margin">
+                <div class="article-info-term uk-h5 uk-margin-small"><?php echo Text::_('COM_CONTENT_ARTICLE_INFO'); ?></div>
+
                 <?php if ($params->get('show_author') && !empty($item->author)) { ?>
-                <dd class="uk-article-meta" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <div class="uk-article-meta" itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <?php
                     $author = $item->created_by_alias ? : $item->author;
                     $author = '<span itemprop="name">' . $author . '</span>';
@@ -55,13 +54,13 @@ foreach ($this->items as $i => $item) {
                         echo Text::sprintf('COM_CONTENT_WRITTEN_BY', $author);
                     }
                     ?>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_parent_category') && !empty($item->parent_slug)) {
                 ?>
-                <dd>
+                <div>
                     <?php
                     $title = $this->escape($item->parent_title);
                     if ($params->get('link_parent_category') && !empty($item->parent_slug)) {
@@ -71,13 +70,13 @@ foreach ($this->items as $i => $item) {
                         echo Text::sprintf('COM_CONTENT_PARENT', '<span itemprop="genre">' . $title . '</span>');
                     }
                     ?>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_category')) {
                 ?>
-                <dd>
+                <div>
                     <?php
                     $title = $this->escape($item->category_title);
                     if ($params->get('link_category') && $item->catslug) {
@@ -87,52 +86,52 @@ foreach ($this->items as $i => $item) {
                         echo Text::sprintf('COM_CONTENT_CATEGORY', '<span itemprop="genre">' . $title . '</span>');
                     }
                     ?>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_publish_date')) {
                 ?>
-                <dd>
+                <div>
                     <time datetime="<?php echo HTMLHelper::_('date', $item->publish_up, 'c'); ?>" itemprop="datePublished">
                         <?php echo Text::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', HTMLHelper::_('date', $item->publish_up, Text::_('d.m.Y'))); ?>
                     </time>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($info == 0) {
                     if ($params->get('show_modify_date')) {
                 ?>
-                <dd>
+                <div>
                     <time datetime="<?php echo HTMLHelper::_('date', $item->modified, 'c'); ?>" itemprop="dateModified">
                         <?php echo Text::sprintf('COM_CONTENT_LAST_UPDATED', HTMLHelper::_('date', $item->modified, Text::_('d.m.Y'))); ?>
                     </time>
-                </dd>
+                </div>
                 <?php
-                }
+                    }
 
-                if ($params->get('show_create_date')) {
+                    if ($params->get('show_create_date')) {
                 ?>
-                <dd>
+                <div>
                     <time datetime="<?php echo HTMLHelper::_('date', $item->created, 'c'); ?>" itemprop="dateCreated">
                         <?php echo Text::sprintf('COM_CONTENT_CREATED_DATE_ON', HTMLHelper::_('date', $item->created, Text::_('d.m.Y'))); ?>
                     </time>
-                </dd>
+                </div>
                 <?php
-                }
+                    }
 
-                if ($params->get('show_hits')) {
+                    if ($params->get('show_hits')) {
                 ?>
-                <dd>
+                <div>
                     <meta itemprop="interactionCount" content="UserPageVisits:<?php echo $item->hits; ?>" />
                     <?php echo Text::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
-                </dd>
+                </div>
                 <?php
+                    }
                 }
-            }
-            ?>
-        </dl>
+                ?>
+        </div>
     </div>
     <?php
     }
@@ -149,12 +148,11 @@ foreach ($this->items as $i => $item) {
 
         if ($useDefList && ($info == 1 || $info == 2)) {
         ?>
-        <div class="uk-article-meta">
-            <dl class="uk-description-list">
-                <dt class="article-info-term"><?php echo Text::_('COM_CONTENT_ARTICLE_INFO'); ?></dt>
-                
+        <div class="uk-article-meta uk-margin">
+                <div class="article-info-term uk-h5 uk-margin-small"><?php echo Text::_('COM_CONTENT_ARTICLE_INFO'); ?></div>
+
                 <?php if ($params->get('show_author') && !empty($item->author)) { ?>
-                <dd class="uk-article-meta" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                <div class="uk-article-meta" itemprop="author" itemscope itemtype="https://schema.org/Person">
                     <?php
                     $author = $item->created_by_alias ? : $item->author;
                     $author = '<span itemprop="name">' . $author . '</span>';
@@ -164,13 +162,13 @@ foreach ($this->items as $i => $item) {
                         echo Text::sprintf('COM_CONTENT_WRITTEN_BY', $author);
                     }
                     ?>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_parent_category') && !empty($item->parent_slug)) {
                 ?>
-                <dd>
+                <div>
                     <?php
                     $title = $this->escape($item->parent_title);
                     if ($params->get('link_parent_category') && !empty($item->parent_slug)) {
@@ -180,13 +178,13 @@ foreach ($this->items as $i => $item) {
                         echo Text::sprintf('COM_CONTENT_PARENT', '<span itemprop="genre">' . $title . '</span>');
                     }
                     ?>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_category')) {
                 ?>
-                <dd>
+                <div>
                     <?php
                     $title = $this->escape($item->category_title);
                     if ($params->get('link_category') && $item->catslug) {
@@ -196,53 +194,52 @@ foreach ($this->items as $i => $item) {
                         echo Text::sprintf('COM_CONTENT_CATEGORY', '<span itemprop="genre">' . $title . '</span>');
                     }
                     ?>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_publish_date')) {
                 ?>
-                <dd>
+                <div>
                     <time datetime="<?php echo HTMLHelper::_('date', $item->publish_up, 'c'); ?>" itemprop="datePublished">
                         <?php echo Text::sprintf('COM_CONTENT_PUBLISHED_DATE_ON', HTMLHelper::_('date', $item->publish_up, Text::_('d.m.Y'))); ?>
                     </time>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_modify_date')) {
                 ?>
-                <dd>
+                <div>
                     <time datetime="<?php echo HTMLHelper::_('date', $item->modified, 'c'); ?>" itemprop="dateModified">
                         <?php echo Text::sprintf('COM_CONTENT_LAST_UPDATED', HTMLHelper::_('date', $item->modified, Text::_('d.m.Y'))); ?>
                     </time>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_create_date')) {
                 ?>
-                <dd>
+                <div>
                     <time datetime="<?php echo HTMLHelper::_('date', $item->created, 'c'); ?>" itemprop="dateCreated">
                         <?php echo Text::sprintf('COM_CONTENT_CREATED_DATE_ON', HTMLHelper::_('date', $item->created, Text::_('d.m.Y'))); ?>
                     </time>
-                </dd>
+                </div>
                 <?php
                 }
 
                 if ($params->get('show_hits')) {
                 ?>
-                <dd>
+                <div>
                     <meta itemprop="interactionCount" content="UserPageVisits:<?php echo $item->hits; ?>" />
                     <?php echo Text::sprintf('COM_CONTENT_ARTICLE_HITS', $item->hits); ?>
-                </dd>
+                </div>
                 <?php } ?>
-            </dl>
         </div>
         <?php
         }
 
-        
+
         // Content is generated by content plugin event "onContentAfterDisplay"
         echo $item->event->afterDisplayContent;
         ?>

@@ -9,7 +9,6 @@
 defined('_JEXEC') or die;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
-
 $config = \Master3Config::getInstance();
 
 if (file_exists(realpath(__DIR__ . '/layouts/template.offline.php'))) {
