@@ -52,6 +52,8 @@ if (!empty($this->item->pagination) && $this->item->pagination && !$this->item->
     <h1 class="uk-article-title uk-margin-medium-bottom" itemprop="headline"><?php echo $this->escape($params->get('page_heading')); ?></h1>
     <?php } elseif ($params->get('show_title') != false) { ?>
     <h1 class="uk-article-title uk-margin-medium-bottom" itemprop="headline"><?php echo $this->escape($this->item->title); ?></h1>
+    <?php } else { ?>
+    <h1 class="uk-hidden" itemprop="headline"><?php echo $this->escape($this->item->title); ?></h1>
     <?php } ?>
 
     <meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? Factory::getConfig()->get('language') : $this->item->language; ?>" />

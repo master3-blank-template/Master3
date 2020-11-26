@@ -74,7 +74,7 @@ HTMLHelper::addIncludePath(JPATH_COMPONENT . '/helpers');
         <div><?php echo $this->pagination->getPagesLinks(); ?></div>
 
         <?php if ($show_pagination_results) { ?>
-        <div><?php echo $this->pagination->getPagesCounter(); ?></div>
+        <div class="pages-of"><?php echo $this->pagination->getPagesCounter(); ?></div>
         <?php } ?>
 
     </div>

@@ -341,7 +341,7 @@ if ($this->countModules('footer-left + footer-center + footer-right')) {
  * to-top scroller
  */
 if ($this->params->get('totop')) { ?>
-<a class="uk-padding-small uk-position-bottom-left uk-position-fixed" data-uk-totop data-uk-scroll name="Up"></a>
+<a class="uk-padding-small uk-position-bottom-left uk-position-fixed" data-uk-totop data-uk-scroll aria-label="Up" name="Up"></a>
 <?php } ?>
 
 
@@ -354,7 +354,7 @@ if ($this->countModules('offcanvas')) {
 ?>
 <aside id="offcanvas" data-uk-offcanvas="<?php echo $offcanvas->attrs; ?>">
     <div class="uk-offcanvas-bar<?php echo $offcanvas->class; ?>">
-        <a class="uk-offcanvas-close" data-uk-close name="<?php echo Text::_('JLIB_HTML_BEHAVIOR_CLOSE'); ?>"></a>
+        <a class="uk-offcanvas-close" data-uk-close name="<?php echo Text::_('JLIB_HTML_BEHAVIOR_CLOSE'); ?>" aria-label="<?php echo Text::_('JLIB_HTML_BEHAVIOR_CLOSE'); ?>"></a>
         <jdoc:include type="modules" name="offcanvas" style="<?php echo $section->style; ?>" />
     </div>
 </aside>
@@ -370,7 +370,7 @@ if ($this->countModules('offcanvas-menu')) {
 ?>
 <aside id="offcanvas-menu" data-uk-offcanvas="<?php echo $offcanvas->attrs; ?>">
     <div class="uk-offcanvas-bar<?php echo $offcanvas->class; ?>">
-        <a class="uk-offcanvas-close" data-uk-close name="<?php echo Text::_('JLIB_HTML_BEHAVIOR_CLOSE'); ?>"></a>
+        <a class="uk-offcanvas-close" data-uk-close name="<?php echo Text::_('JLIB_HTML_BEHAVIOR_CLOSE'); ?>" aria-label="<?php echo Text::_('JLIB_HTML_BEHAVIOR_CLOSE'); ?>"></a>
         <jdoc:include type="modules" name="offcanvas-menu" style="<?php echo $section->style; ?>" />
     </div>
 </aside>

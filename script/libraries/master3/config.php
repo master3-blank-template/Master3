@@ -74,6 +74,11 @@ final class Master3Config
      */
     public $isWebP = false;
 
+    /*
+     * bool
+     */
+    private $isRawDoc;
+
 
     /*
      * Get static Instance
@@ -181,7 +186,9 @@ final class Master3Config
 
         $this->doc = Factory::getDocument();
 
-        $this->params = $this->doc->params;
+        $this->isRawDoc = strpos(get_class($this->doc), 'RawDocument') !== false;
+
+        $this->params = $this->isRawDoc ? null : $this->doc->params;
 
         $app = Factory::getApplication();
 
@@ -365,7 +372,9 @@ final class Master3Config
 
 
         // set head data
-        $this->setHead();
+        if (!$this->isRawDoc) {
+            $this->setHead();
+        }
     }
 
 
