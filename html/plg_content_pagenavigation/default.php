@@ -20,7 +20,7 @@ $lang = Factory::getLanguage(); ?>
 
     <?php if ($row->prev) { ?>
     <div>
-        <a class="uk-button uk-button-link uk-flex uk-flex-middle" data-uk-tooltip="<?php echo htmlspecialchars($rows[$location - 1]->title); ?>" name="<?php echo JText::sprintf('JPREVIOUS_TITLE', htmlspecialchars($rows[$location - 1]->title)); ?>" href="<?php echo $row->prev; ?>" rel="prev">
+        <a class="uk-button uk-button-link uk-flex uk-flex-middle" data-uk-tooltip="<?php echo htmlspecialchars($rows[$location - 1]->title); ?>" aria-label="<?php echo JText::sprintf('JPREVIOUS_TITLE', htmlspecialchars($rows[$location - 1]->title)); ?>" href="<?php echo $row->prev; ?>" rel="prev">
             <?php if ($jsIcons !== 'none') { ?>
             <span data-uk-icon="icon:chevron-left" aria-hidden="true"></span>
             <?php } ?>
@@ -31,7 +31,7 @@ $lang = Factory::getLanguage(); ?>
 
     <?php if ($row->next) { ?>
     <div class="uk-flex uk-flex-1 uk-flex-right">
-        <a class="uk-button uk-button-link uk-flex uk-flex-middle" data-uk-tooltip="<?php echo htmlspecialchars($rows[$location + 1]->title); ?>" name="<?php echo JText::sprintf('JNEXT_TITLE', htmlspecialchars($rows[$location + 1]->title)); ?>" href="<?php echo $row->next; ?>" rel="next">
+        <a class="uk-button uk-button-link uk-flex uk-flex-middle" data-uk-tooltip="<?php echo htmlspecialchars($rows[$location + 1]->title); ?>" aria-label="<?php echo JText::sprintf('JNEXT_TITLE', htmlspecialchars($rows[$location + 1]->title)); ?>" href="<?php echo $row->next; ?>" rel="next">
             <span aria-hidden="true"><?php echo $row->next_label; ?></span>
             <?php if ($jsIcons !== 'none') { ?>
             <span data-uk-icon="icon:chevron-right" aria-hidden="true"></span>

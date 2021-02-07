@@ -48,7 +48,7 @@ if ($displayData['active']) {
     $title = '';
 
     if (!is_numeric($item->text)) {
-        $title = ' data-uk-tooltip="' . $item->text . '" ';
+        $title = ' data-uk-tooltip="' . $item->text . '" aria-label="' . $item->text . '"';
     }
 
     $onClick = 'document.adminForm.' . $item->prefix . 'limitstart.value=' . ($item->base > 0 ? $item->base : '0') . '; Joomla.submitform();return false;';

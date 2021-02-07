@@ -152,12 +152,12 @@ function pagination_item_active(&$item)
         $cls = "last";
         $title = Text::_('JLIB_HTML_END');
     } else {
-        $name = ' name="' . Text::sprintf('JLIB_HTML_GOTO_PAGE', $item->text) . '"';
+        $name = ' aria-label="' . Text::sprintf('JLIB_HTML_GOTO_PAGE', $item->text) . '"';
     }
 
     if ($cls) {
         $cls = ' class="' . $cls . '"';
-        $name = ' name="' . $title . '"';
+        $name = ' aria-label="' . $title . '"';
         $title = ' data-uk-tooltip="' . $title . '"';
     }
 

@@ -25,7 +25,7 @@ use Joomla\CMS\Router\Route;
             } else {
                 if (!empty($item->core_title)) {
                     ?>
-            <a href="<?php echo Route::_($item->link); ?>"><?php echo htmlspecialchars($item->core_title, ENT_COMPAT, 'UTF-8'); ?></a>
+            <a href="<?php echo Route::_($item->link); ?>" rel="tag"><?php echo htmlspecialchars($item->core_title, ENT_COMPAT, 'UTF-8'); ?></a>
             <?php
 
         }

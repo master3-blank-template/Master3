@@ -43,7 +43,7 @@ JLoader::register('TagsHelperRoute', JPATH_BASE . '/components/com_tags/helpers/
             }
             ?>
         <span class="tag uk-margin-small-right">
-            <a class="tag-name" style="font-size: <?php echo $fontsize . 'em'; ?>" href="<?php echo Route::_(TagsHelperRoute::getTagRoute($item->tag_id . ':' . $item->alias)); ?>"><?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?></a>
+            <a class="tag-name" style="font-size: <?php echo $fontsize . 'em'; ?>" href="<?php echo Route::_(TagsHelperRoute::getTagRoute($item->tag_id . ':' . $item->alias)); ?>" rel="tag"><?php echo htmlspecialchars($item->title, ENT_COMPAT, 'UTF-8'); ?></a>
             <?php if ($display_count) { ?>
                 <span class="tag-count uk-badge"><?php echo $item->count; ?></span>
             <?php } ?>
