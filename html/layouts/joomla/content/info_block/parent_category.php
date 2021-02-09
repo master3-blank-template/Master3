@@ -16,7 +16,7 @@ $templateConfig = \Master3Config::getInstance();
 $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>
-<dd class="parent-category-name">
+<div class="parent-category-name">
     <?php
     $icon = $jsIcons !== 'none' ? '<span data-uk-icon="icon:folder"></span> ' : '';
     $title = $this->escape($displayData['item']->parent_title);
@@ -27,4 +27,4 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
         echo Text::sprintf('COM_CONTENT_PARENT', '<span itemprop="genre">' . $icon . $title . '</span>');
     }
     ?>
-</dd>
+</div>

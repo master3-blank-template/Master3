@@ -15,7 +15,7 @@ $templateConfig = \Master3Config::getInstance();
 $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>
-<dd class="hits">
+<div class="hits">
     <?php
     if ($jsIcons !== 'none') {
         echo '<span data-uk-icon="icon:bolt"></span>';
@@ -23,4 +23,4 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
     ?>
     <meta itemprop="interactionCount" content="UserPageVisits:<?php echo $displayData['item']->hits; ?>" />
     <?php echo Text::sprintf('COM_CONTENT_ARTICLE_HITS', $displayData['item']->hits); ?>
-</dd>
+</div>

@@ -20,7 +20,7 @@ if (!empty($displayData['item']->associations)) {
     $associations = $displayData['item']->associations;
     ?>
 
-<dd class="association">
+<div class="association">
     <?php
     echo Text::_('JASSOCIATIONS');
     foreach ($associations as $association) {
@@ -38,6 +38,6 @@ if (!empty($displayData['item']->associations)) {
         }
     }
     ?>
-</dd>
+</div>
 <?php
 }

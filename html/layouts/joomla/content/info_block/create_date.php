@@ -16,7 +16,7 @@ $templateConfig = \Master3Config::getInstance();
 $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>
-<dd class="create">
+<div class="create">
     <?php
     if ($jsIcons !== 'none') {
         echo '<span data-uk-icon="icon:calendar"></span>';
@@ -25,4 +25,4 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
     <time datetime="<?php echo HTMLHelper::_('date', $displayData['item']->created, 'c'); ?>" itemprop="dateCreated">
         <?php echo Text::sprintf('COM_CONTENT_CREATED_DATE_ON', HTMLHelper::_('date', $displayData['item']->created, Text::_('d.m.Y'))); ?>
     </time>
-</dd>
+</div>

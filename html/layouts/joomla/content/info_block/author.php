@@ -16,7 +16,7 @@ $templateConfig = \Master3Config::getInstance();
 $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>
-<dd class="createdby" itemprop="author" itemscope itemtype="https://schema.org/Person">
+<div class="createdby" itemprop="author" itemscope itemtype="https://schema.org/Person">
     <?php
     if ($jsIcons !== 'none') {
         echo '<span data-uk-icon="icon:user"></span> ';
@@ -29,4 +29,4 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
         echo Text::sprintf('COM_CONTENT_WRITTEN_BY', $author);
     }
     ?>
-</dd>
+</div>

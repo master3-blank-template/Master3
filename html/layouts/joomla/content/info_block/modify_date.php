@@ -16,7 +16,7 @@ $templateConfig = \Master3Config::getInstance();
 $jsIcons = $templateConfig->params->get('jsIcons', 'none');
 
 ?>
-<dd class="modified">
+<div class="modified">
     <?php
     if ($jsIcons !== 'none') {
         echo '<span data-uk-icon="icon:calendar"></span>';
@@ -25,4 +25,4 @@ $jsIcons = $templateConfig->params->get('jsIcons', 'none');
     <time datetime="<?php echo HTMLHelper::_('date', $displayData['item']->modified, 'c'); ?>" itemprop="dateModified">
         <?php echo Text::sprintf('COM_CONTENT_LAST_UPDATED', HTMLHelper::_('date', $displayData['item']->modified, Text::_('d.m.Y'))); ?>
     </time>
-</dd>
+</div>
