@@ -9,6 +9,7 @@
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Filesystem\Path;
+use Joomla\CMS\Language\Text;
 
 ?>
 

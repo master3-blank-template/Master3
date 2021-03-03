@@ -7,8 +7,8 @@
 [![Documentation](https://img.shields.io/badge/-documentation-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/documentation)
 [![Suppurt](https://img.shields.io/badge/-support-28A5F5.svg?style=for-the-badge)](https://master3.alekvolsk.info/support)
 
-![Last Update](https://img.shields.io/badge/last_update-2021.02.09-28A5F5.svg?style=for-the-badge)
-![Version](https://img.shields.io/badge/version-1.2.19-28A5F5.svg?style=for-the-badge)
+![Last Update](https://img.shields.io/badge/last_update-2021.03.04-28A5F5.svg?style=for-the-badge)
+![Version](https://img.shields.io/badge/version-1.2.20-28A5F5.svg?style=for-the-badge)
 ![UIkit](https://img.shields.io/badge/UIkit-3.6.16-1e87f0.svg?style=for-the-badge)
 
 ![Joomla](https://img.shields.io/badge/joomla-3.9+-1A3867.svg?style=for-the-badge)
