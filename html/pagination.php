@@ -8,6 +8,7 @@
 
 defined('_JEXEC') or die;
 
+use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
 
 JLoader::register('Master3Config', JPATH_LIBRARIES . '/master3/config.php');
@@ -87,6 +88,34 @@ function pagination_list_render($list)
     foreach ($list['pages'] as $id => $page) {
         if (!$page['active']) {
             $currentId = $id;
+        }
+    }
+
+    $config = \Master3Config::getInstance();
+    $paginationTitles = $config->params->get('paginationtitles', 0);
+    if ($currentId > 1 && $paginationTitles > 0) {
+        if ($paginationTitles == 1) {
+            $sfx = ' (' . Text::sprintf('JLIB_HTML_PAGE_CURRENT', $currentId) . ')';
+        } else {
+            $sfx = ' (' . Text::sprintf('JLIB_HTML_PAGE_CURRENT_OF_TOTAL', $currentId, count($list['pages'])) . ')';
+        }
+        $doc = Factory::getDocument();
+
+        $sitename = Factory::getConfig()->get('sitename');
+        $pageTitlesMode = Factory::getConfig()->get('sitename_pagetitles');
+
+        $pageTitle = $doc->getTitle();
+        if ($pageTitlesMode == 2) {
+            $_i = mb_stripos($pageTitle, ' - ' . $sitename);
+            $pageTitle = mb_eregi_replace(' - ' . $sitename, '', $pageTitle) . $sfx . ' - ' . $sitename;
+        } else {
+            $pageTitle .= $sfx;
+        }
+        $doc->setTitle($pageTitle);
+
+        $pageDescription = $doc->getDescription();
+        if (!empty($pageDescription)) {
+            $doc->setDescription($pageDescription . $sfx);
         }
     }
 
