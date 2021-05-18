@@ -55,7 +55,8 @@ class master3InstallerScript
 
     function preflight($type, $parent)
     {
-        $minJoomlaVersion = $parent->get('manifest')->attributes()->version[0];
+        $manifest = $parent->getManifest();
+        $minJoomlaVersion = $manifest->attributes()->version[0];
 
         if (!class_exists('Joomla\CMS\Version')) {
             JFactory::getApplication()->enqueueMessage(JText::sprintf('J_JOOMLA_COMPATIBLE', JText::_($parent->manifest->name[0]), $minJoomlaVersion), 'error');
@@ -64,8 +65,8 @@ class master3InstallerScript
 
         if (strtolower($type) === 'install' && Version::MAJOR_VERSION < 4) {
             $msg = '';
-            $name = Text::_($parent->manifest->name[0]);
-            $minPhpVersion = $parent->manifest->php_minimum[0];
+            $name = Text::_($manifest->name[0]);
+            $minPhpVersion = $manifest->php_minimum[0];
 
             $ver = new Version();
 
@@ -213,7 +214,8 @@ class master3InstallerScript
     private function installUikit3($parent)
     {
         $isUikit3 = false;
-        $actualVersion = (string) $parent->manifest->uikit_actual[0];
+        $manifest = $parent->getManifest();
+        $actualVersion = (string) $manifest->uikit_actual[0];
 
         $manifestFile = Path::clean(JPATH_ADMINISTRATOR . '/manifests/files/file_uikit3.xml');
 
