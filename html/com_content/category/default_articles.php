@@ -18,7 +18,6 @@ use Joomla\CMS\Language\Associations;
 HTMLHelper::addIncludePath( JPATH_COMPONENT . '/helpers/html' );
 
 // Create some shortcuts.
-$params    = &$this->item->params;
 $n         = count( $this->items );
 
 // Check for at least one editable article
@@ -240,7 +239,7 @@ $tableClass = $this->params->get( 'show_headings' ) != 1 ? ' table-noheader' : '
                 <?php } ?>
 
                 <?php if ( $isEditable ) { ?>
-                <td><?php if ( $article->params->get( 'access-edit' ) ) { echo HTMLHelper::_( 'icon.edit', $article, $params, ['class' => 'uk-button uk-button-link', 'data-uk-tooltip' => Text::_( 'JGLOBAL_EDIT_TITLE' ) ] ); } ?></td>
+                <td><?php if ( $article->params->get( 'access-edit' ) ) { echo HTMLHelper::_( 'icon.edit', $article, $article->params, ['class' => 'uk-button uk-button-link', 'data-uk-tooltip' => Text::_( 'JGLOBAL_EDIT_TITLE' ) ] ); } ?></td>
                 <?php } ?>
 
             </tr>
