@@ -254,7 +254,7 @@ class master3InstallerScript
             try {
                 $archive->extract($tmpFile, $extDir);
             } catch (\Exception $e) {
-                return Text::sprintf('TPL_MASTER3_UIKIT3_IE_FAILER_UNZIP', $tmpFile, $extDir, $e->getMesage());
+                return Text::sprintf('TPL_MASTER3_UIKIT3_IE_FAILER_UNZIP', $tmpFile, $extDir, $e->getMessage());
             }
 
             $installer = new Installer();
