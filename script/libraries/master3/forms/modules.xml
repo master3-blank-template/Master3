@@ -44,7 +44,7 @@
             <field name="moduleClass" type="text" label="TPL_MASTER3_MODULE_FORM_CLASS" default="" class="input-xlarge" />
             <field name="moduleDataAttrs" type="text" label="TPL_MASTER3_MODULE_FORM_DATA_ATTRS" default="" class="input-xlarge" filter="raw" />
             <field name="offtoggle" type="poslist" label="TPL_MASTER3_MODULE_FORM_OFFTOGGLE" default="0" postype="offcanvas" showon="type:mod_menu">
-                <option value="1">JNO</option>
+                <option value="0">JNO</option>
             </field>
         </fieldset>
         <fieldset name="fsTitle" label="TPL_MASTER3_MODULE_FORM_FIELDSET_TITLE">
