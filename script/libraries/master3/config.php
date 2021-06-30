@@ -463,7 +463,7 @@ final class Master3Config
                 $cssFile = realpath(Path::clean(JPATH_ROOT . '/templates/' . $this->name . '/css/' . htmlspecialchars(trim($cssFile->form->fName))));
                 if (is_file($cssFile) && strtolower(pathinfo($cssFile, PATHINFO_EXTENSION)) == 'css') {
                     $cssFile = str_replace('\\', '/', str_replace(JPATH_ROOT . DIRECTORY_SEPARATOR, '', $cssFile));
-                    HTMLHelper::stylesheet($cssFile, [], ['options' => ['version' => filemtime($cssFile)]]);
+                    HTMLHelper::stylesheet($cssFile, [], ['options' => ['version' => filemtime(Path::clean(JPATH_ROOT . '/' . $cssFile))]]);
                 }
             }
         }
@@ -474,7 +474,7 @@ final class Master3Config
             $cssAddonFile = realpath(Path::clean(JPATH_ROOT . '/' . htmlspecialchars(trim($cssAddonFile))));
             if (is_file($cssAddonFile) && strtolower(pathinfo($cssAddonFile, PATHINFO_EXTENSION)) == 'css') {
                 $cssAddonFile = str_replace('\\', '/', str_replace(JPATH_ROOT . DIRECTORY_SEPARATOR, '', $cssAddonFile));
-                HTMLHelper::stylesheet($cssAddonFile, [], ['options' => ['version' => filemtime($cssAddonFile)]]);
+                HTMLHelper::stylesheet($cssAddonFile, [], ['options' => ['version' => filemtime(Path::clean(JPATH_ROOT . '/' . $cssAddonFile))]]);
             }
         }
 
@@ -504,7 +504,7 @@ final class Master3Config
                 $jsFile = realpath(Path::clean(JPATH_ROOT . '/templates/' . $this->name . '/js/' . htmlspecialchars(trim($jsFile->form->fName))));
                 if (is_file($jsFile) && strtolower(pathinfo($jsFile, PATHINFO_EXTENSION)) == 'js') {
                     $jsFile = str_replace('\\', '/', str_replace(JPATH_ROOT . DIRECTORY_SEPARATOR, '', $jsFile));
-                    HTMLHelper::script($jsFile, [], ['options' => ['version' => filemtime($jsFile)]]);
+                    HTMLHelper::script($jsFile, [], ['options' => ['version' => filemtime(Path::clean(JPATH_ROOT . '/' . $jsFile))]]);
                 }
             }
         }
@@ -515,7 +515,7 @@ final class Master3Config
             $jsAddonFile = realpath(Path::clean(JPATH_ROOT . '/' . htmlspecialchars(trim($jsAddonFile))));
             if (is_file($jsAddonFile) && strtolower(pathinfo($jsAddonFile, PATHINFO_EXTENSION)) == 'js') {
                 $jsAddonFile = str_replace('\\', '/', str_replace(JPATH_ROOT . DIRECTORY_SEPARATOR, '', $jsAddonFile));
-                HTMLHelper::script($jsAddonFile, [], ['options' => ['version' => filemtime($jsAddonFile)]]);
+                HTMLHelper::script($jsAddonFile, [], ['options' => ['version' => filemtime(Path::clean(JPATH_ROOT . '/' . $jsAddonFile))]]);
             }
         }
 

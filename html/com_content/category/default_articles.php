@@ -35,7 +35,6 @@ if ( !empty( $this->items ) )
     }
 }
 
-
 ?>
 <form action="<?php echo htmlspecialchars( Uri::getInstance()->toString() ); ?>" method="post" name="adminForm" id="adminForm" class="uk-margin-medium-top">
 
@@ -88,7 +87,7 @@ if ( !empty( $this->items ) )
     ?>
     <table class="category uk-table uk-table-striped uk-table-responsive uk-table-hover<?php echo $tableClass; ?>">
         <caption class="uk-hidden"><?php echo Text::sprintf( 'COM_CONTENT_CATEGORY_LIST_TABLE_CAPTION', $this->category->title ); ?></caption>
-        <thead <?php if ($this->params->get('show_headings') != 1) : ?>class="uk-hidden"<?php endif ?>>
+        <thead <?php echo ($this->params->get('show_headings') != 1) ? 'class="uk-hidden"' : ''; ?>>
             <tr>
 
                 <th><?php echo Text::_( 'JGLOBAL_TITLE' ); ?></th>
