@@ -282,6 +282,7 @@
                     <option value="@s">TPL_MASTER3_NAVBAR_OFFTOGGLE_SMALL</option>
                     <option value="@m">TPL_MASTER3_NAVBAR_OFFTOGGLE_MEDIUM</option>
                     <option value="@l">TPL_MASTER3_NAVBAR_OFFTOGGLE_LARGE</option>
+                    <option value="@xl">TPL_MASTER3_NAVBAR_OFFTOGGLE_XLARGE</option>
                 </field>
                 <field name="nbLeftDisplay" type="list" label="TPL_MASTER3_NAVBAR_LEFT_DISPLAY" default="" class="input-medium">
                     <option value="">TPL_MASTER3_MODULE_FORM_DISPLAY_ALWAYS</option>
