@@ -36,7 +36,7 @@ foreach ($fieldValues as $value) {
             unset($value[$vKey]);
         }
         if ($aFields[$vKey] === 'media' & $vValue !== '') {
-            $value[$vKey] = '<span class="uk-icon uk-icon-image" style="background-image:url(\'/' . $vValue . '\');"></span>';
+            $value[$vKey] = '<span class="uk-icon uk-icon-image" style="background-image:url(\'' . $vValue . '\');"></span>';
         }
     }
     $html .= '<li>' . implode(', ', $value) . '</li>';
