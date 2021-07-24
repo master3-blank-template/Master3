@@ -48,7 +48,14 @@ if (!$fields) {
             continue;
         }
         $class = $field->params->get('render_class');
+        $layout = $field->params->get('layout', 'render');
+        $content = \FieldsHelper::render($context, 'field.' . $layout, array('field' => $field, 'class' => $class));
+
+        // If the content is empty do nothing
+        if (trim($content) === '') {
+          continue;
+        }
         ?>
-        <?php echo \FieldsHelper::render($context, 'field.render', array('field' => $field, 'class' => $class)); ?>
+        <?php echo $content ?>
     <?php } ?>
 </dl>
