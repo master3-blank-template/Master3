@@ -40,22 +40,30 @@ if (!$fields) {
     return;
 }
 
+$output = array();
+
+foreach ($fields as $field) {
+  if (!isset($field->value) || $field->value == '') {
+      continue;
+  }
+  $class = $field->params->get('render_class');
+  $layout = $field->params->get('layout', 'render');
+  $content = \FieldsHelper::render($context, 'field.' . $layout, array('field' => $field, 'class' => $class));
+
+  // If the content is empty do nothing
+  if (trim($content) === '') {
+    continue;
+  }
+
+  $output[] = $content;
+}
+
+if (empty($output))
+{
+  return;
+}
+
 ?>
 <dl class="uk-description-list fields-container">
-    <?php
-    foreach ($fields as $field) {
-        if (!isset($field->value) || $field->value == '') {
-            continue;
-        }
-        $class = $field->params->get('render_class');
-        $layout = $field->params->get('layout', 'render');
-        $content = \FieldsHelper::render($context, 'field.' . $layout, array('field' => $field, 'class' => $class));
-
-        // If the content is empty do nothing
-        if (trim($content) === '') {
-          continue;
-        }
-        ?>
-        <?php echo $content ?>
-    <?php } ?>
+  <?php echo implode("\n", $output); ?>
 </dl>
