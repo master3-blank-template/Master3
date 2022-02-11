@@ -833,7 +833,7 @@ final class Master3Config
                         $section->mainGridSize = $countSidebarA && $countSidebarB ? '1-5' : '3-5';
                         break;
                     case '1-2':
-                        $section->mainGridSize = '1-1';
+                        $section->mainGridSize = $countSidebarA && $countSidebarB ? '1-1' : '1-2';
                         break;
                 }
             }
